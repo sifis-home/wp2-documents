@@ -3,6 +3,9 @@
 This repository saves and renders the WP2 Deliverables and some other documents
 into the `Docx` and `PDF` formats automatically.
 
+To render documents, you need to install `pandoc` and `pandoc-citeproc` on your
+operating system.
+
 ## Render PDF
 
 ```
