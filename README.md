@@ -17,4 +17,4 @@ pandoc --filter=pandoc-citeproc --standalone --csl citation-style.csl --bibliogr
 
 ## Citation Styles
 
-[Zotero](https://www.zotero.org/styles citation styles)
+[Zotero](https://www.zotero.org/styles)
