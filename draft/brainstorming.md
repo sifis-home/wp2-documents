@@ -1,6 +1,6 @@
 ---
 tags: wp2, brainstorming
-title: Brainstorming and useful resources
+title: brainstorming
 ---
 
 # Brainstorming
@@ -48,7 +48,7 @@ It is composed by different objects that interact with each other. Each object i
 
 The data representation used to show how those objects interact one with each other is a graph.
 
-Nodes are the unique concepts of cyber threat intelligence and they are called SDO. You can find an exhaustive list with in addition the relative explanation of them here:
+Nodes are the unique concepts of cyber-threat intelligence and they are called SDO. You can find an exhaustive list with in addition the relative explanation of them here:
 
 https://oasis-open.github.io/cti-documentation/stix/intro.html#stix-21-defines-18-stix-domain-objects-sdos
 
@@ -95,6 +95,7 @@ Risks: Since the lowest certification level indicates a safe device, there is a 
 Possible standard we can follow in order to validate the fields that compose our label: 
 
 https://thedigitalstandard.org/
+
 https://github.com/TheDigitalStandard/TheDigitalStandard
 
 For each argument(Privacy, Security, Ownership and Governance), there are various criteria. At each criteria is associated an indicator and the releative procedure to evaluate the indicator through data/links/automatic tests and so on.
