@@ -1,6 +1,6 @@
 ---
 tags: wp2, tools
-title: Tools description (2.2)
+title: tools-description
 ---
 
 ## rust-code-analysis
