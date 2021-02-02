@@ -6,6 +6,9 @@ into the `Docx` and `PDF` formats automatically.
 To render documents, you need to install `pandoc` and `pandoc-citeproc` on your
 operating system.
 
+To have a bibliography, change the `.md` extension of your
+`BiBTex` citations file to `bib`.
+
 ## Render PDF
 
 ```
