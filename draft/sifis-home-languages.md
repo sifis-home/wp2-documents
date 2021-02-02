@@ -1,6 +1,6 @@
 ---
 tags: wp2
-title: Sifis-Home Languages
+title: sifis-home-languages
 ---
 
 # Languages
