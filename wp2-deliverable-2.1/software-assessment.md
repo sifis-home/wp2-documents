@@ -1,37 +1,23 @@
 ---
-tags: wp2, deliverable
-title: wp2-deliverable-2-1
-bibliography: wp2-deliverable-2-1-citations.bib
-csl: transactions-on-computational-logic.csl
+tags: wp2.1, wp2, deliverable
+title: software-assessment
 ---
-
-
-# Executive Summary
-
-Short explanation of the purpose of this document in the scope of the SIFIS-Home project.
-
-(look at the already published deliverables here: https://drive.google.com/drive/folders/1RRwJT16m60ocWaPavfinL4kRQQAjjlB6)
-
-# Introduction
-
-General discussion on the relevance of software quality in the project and about the need of evaluating these aspects in applications that will be run in the SIFIS-Home framework. Some text can be borrowed from the proposal.
-
-Assigned to @lucaardito
 
 # Software Assessment
 
-*Software Assessment* consists of several methodologies to define an assessment process for open-source software. Many methods have been developed over the years, and the most well-known one is the *Open Source Maturity Model (OSMM) from Capgemini*.
+*Software Assessment* consists of several methodologies to assess an open-source software.
 
-They are specifically thought for the *FLOSS* development process and most of them are released under a *Creative Commons* license. 
+A software can be assessed considering  refers to two related but distinct notions:
 
-Some of them can be interchangeably treated both as models and methodologies since they contain a series of elements to be assessed but also a set of rules and guidelines describing how to conduct an assessment process.
-
-Those models evaluates a series of non-functionality aspects related to the organization around the open-source project such as *maturity*, *durability*, and *strategy*, but also the ones more focused on software such as *maintainability*.
-
-## Software quality
+    Software functional quality reflects how well it complies with or conforms to a given design, based on functional requirements or specifications. That attribute can also be described as the fitness for purpose of a piece of software or how it compares to competitors in the marketplace as a worthwhile product.[1] It is the degree to which the correct software was produced.
+    Software structural quality refers to how it meets non-functional requirements that support the delivery of the functional requirements, such as robustness or maintainability. It has a lot more to do with the degree to which the software works as needed.
 
 
-@Luni-4: Which model should we use to analyze the development of Sifis? OSMM? Another one?
+Descrtibe Software quality
+
+but also the ones more focused on software such as *maintainability*.
+
+
 
 
 ## Software Maintainabilty
@@ -54,7 +40,7 @@ Hence, many methodologies have consolidated in software engineering research and
 
 From a more practical perspective, several frameworks which leverage on combinations of software code metrics either to predict or infer the maintainability of a project have been analyzed in literature [@kaur2014software; @amara2017towards; @mshelia2019can]. The most recent work in the field of metric computation is aiming at applying machine learning-based approaches to the prediction of maintainability by leveraging the measurements provided by static analysis tools [@schnappinger2019learning].
 
-## Static metrics
+## Software Metrics
 
 Describe the most known static metrics and describe the advantages and disadvantages of dynamic metrics. Why aren't we focusing on them?
 
@@ -65,6 +51,7 @@ What should be written here?
 - Why C code is problematic: https://en.m.wikipedia.org/wiki/International_Obfuscated_C_Code_Contest
 
 ## Tools
+
 Many tools have been presented in academic and industrial works or are commonly used by practitioners to compute automatically software metrics related to maintainability on source code artifacts developed in many different languages [@mshelia2017comparative]. 
 
 A recent systematic literature review had led to identify fourteen *open-source* tools able to compute a large set of different static metrics for a great variety of different programming languages [@ardito2020tool]. Below we present only a small set of those tools, evaluated according to their usage:
@@ -97,47 +84,3 @@ The emergence of new programming languages requires new software to compute and 
 
 
 *Rust* is a recent programming language whose focus is on developing reliable and efficient systems that exploit parallelism and concurrency. Conciseness, expressiveness, and memory safety are among the principal properties that guided the Rust development [@matsakis2014rust].
-
-
-
-
-
-### Other tools (we need to decide which one to consider)
-
-
-
-
-# Security and Privacy Metrics
-
-What should be written here?
-- Measures reporting code mistakes that might imply vulnerabilities (e.g. Stall Ratio, Critical Element Ratio...)
-- Usage of code blocks that expose the program to memory-based security attacks (e.g. buffer overflow).
-- Measures about data traceability, including approaches based on data tainting.
-- Usage of API and libraries known to be deprecated due to or implying security vulnerabilities.
-- Usage of security protocols in network-based applications.   
-
-# Privacy and Security Assessment Techniques
-
-*We need to validate the procedures used to create the privacy and security fields of our own label?*
-
-Below some links about a possible validation process and its explanation
-
-https://thedigitalstandard.org/ 
-
-https://github.com/TheDigitalStandard/TheDigitalStandard
-
-For each one of the arguments, Privacy, Security, Ownership and Governance), various criteria have been identified. Then, at each criteria is associated an indicator and the corresponding procedure to evaluate it through data/links/automatic tests and so on.
-
-# Infrastracture Assessment
-
-The label associated to an app that controls an *IoT* device within a house is analyzed (we need to define how, but first we need to create a label!!!). Then the average among the labels needs to be computed in some way such that the entire infrastructure can be assessed.
-
-Some questions: 
-
-* Where does the tool that assess the infrastructure should run? I presume on the gateway because we are following a WebThing approach. So the average among the labels occurs there. 
-* Since we are not interested in device labels, how can we get the labels associated to each app in order to compute the average? Whenever a request is sent to a gateway by an app?
-
-Need to know how the infrastructure is structured first.
-
-
-# Questions (this section is going to be deleted eventually)

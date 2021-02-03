@@ -1,5 +1,5 @@
 ---
-tags: wp2
+tags: wp2.1, wp2, deliverable
 title: wp2-deliverable-2-1-citations
 ---
 

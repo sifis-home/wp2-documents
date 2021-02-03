@@ -1,5 +1,5 @@
 ---
-tags: wp2, brainstorming
+tags: Ideas, brainstorming, wp2
 title: brainstorming
 ---
 

@@ -1,5 +1,5 @@
 ---
-tags: wp2
+tags: Ideas, wp2
 title: sifis-home-languages
 ---
 
