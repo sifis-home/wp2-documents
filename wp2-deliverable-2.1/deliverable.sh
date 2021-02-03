@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Stops at the first error
+set -e
+
 MAIN_FILE=wp2-deliverable-2-1.md
 MD_FILES="software-assessment.md security-privacy.md infrastructure-assessment.md"
 CITATIONS_FILENAME=wp2-deliverable-2-1-citations
@@ -24,7 +27,7 @@ cp $CITATIONS_FILENAME.md $CITATIONS_FILENAME.bib
 # Remove first 5 lines of HackMD metadata
 for MD_FILE in $MD_FILES
 do
-    cp $MD_FILE /tmp
+    cp $MD_FILE /tmp/$MD_FILE
     tail -n +5 $MD_FILE > $MD_FILE-new
     mv $MD_FILE-new $MD_FILE
 done

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Stops at the first error
+set -e
+
 MD_FILES="brainstorming sifis-home-languages tools-description"
 OUTPUT_DIR=../output/documents
 
