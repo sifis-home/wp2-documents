@@ -1,0 +1,40 @@
+name: deploy
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+jobs:
+  deploy:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout the repository
+        uses: actions/checkout@v2
+
+      - name: Install LateX base
+        run: sudo apt-get install texlive-latex-base
+
+      - name: Install LateX fonts
+        run: sudo apt-get install texlive-fonts-recommended texlive-fonts-extra
+
+      - name: Install LateX extra
+        run: sudo apt-get install texlive-latex-extra
+
+      - name: Install pandoc
+        run: sudo apt-get install pandoc
+
+      - name: Install pandoc-citeproc
+        run: sudo apt-get install pandoc-citeproc
+
+      - name: Create deliverables and documents
+        run: ./create-documents.sh
+
+      - name: Upload deliverables and documents
+        uses: actions/upload-artifact@v2
+        with:
+          name: deliverables-and-documents
+          path: output/
+          retention-days: 4
