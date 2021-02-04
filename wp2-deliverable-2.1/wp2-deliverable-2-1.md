@@ -13,18 +13,22 @@ Short explanation of the purpose of this document in the scope of the SIFIS-Home
 
 # Table of contents
 
-[Executive Summary](#Executive-Summary)
-1. [Introduction](#Introduction)
-2. [Software Assessment](#Software-Assessment)
-    1. [Software Maintainabilty](#Software-Maintainabilty)
-    2. [Software Metrics](#Software-Metrics)
-    3. [Code Clarity](#Code-Clarity)
-    4. [Tools](#Software-Metrics)
-        1. [Why tools written in Rust?](#Why-tools-written-in-Rust)
+[Executive Summary](#executive-summary)
+
+1. [Introduction](#introduction)
+2. [Software Assessment](#software-assessment)
+    1. [Software Maintainabilty](#software-maintainabilty)
+    2. [Software Metrics](#software-metrics)
+    3. [Code Clarity](#code-clarity)
+    4. [Tools](#software-metrics)
+        1. [Why tools written in Rust?](#why-tools-written-in-rust)
         2. [rust-code-analysis](#rust-code-analysis)
-3. [Security and Privacy Metrics](#Security-and-Privacy-Metrics)
-4. [Privacy and Security Assessment Techniques](#Privacy-and-Security-Assessment-Techniques)
-5. [Infrastracture Assessment](#Infrastracture-Assessment)
+3. [Security and Privacy Metrics](#security-and-privacy-metrics)
+4. [Privacy and Security Assessment Techniques](#privacy-and-security-assessment-techniques)
+5. [Infrastracture Assessment](#infrastracture-assessment)
+6. [Conclusion](#conclusion)
+7. [Annex A: Glossary](#annex-a-glossary)
+8. [Annex B: Links](#annex-b-links)
 
 
 # Introduction
