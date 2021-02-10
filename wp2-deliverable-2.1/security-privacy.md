@@ -5,9 +5,9 @@ title: security-privacy
 
 # Security and Privacy Metrics
 
-What should we write here?
+Differently from software quality metrics, security metrics are a far more recent field of study, where the research community has started proposing objective measures to identify those pieces of code showing critical security issues.  
 
-- Measures reporting code mistakes that might imply vulnerabilities (e.g. Stall Ratio, Critical Element Ratio...)
+- Measures reporting code mistakes that might imply vulnerabilities (e.g. Stall Ratio, Critical Element Ratio, Unhandled Exceptions...)
 - Usage of code blocks that expose the program to memory-based security attacks (e.g. buffer overflow).
 - Measures about data traceability, including approaches based on data tainting.
 - Usage of API and libraries known to be deprecated due to or implying security vulnerabilities.
