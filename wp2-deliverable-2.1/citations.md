@@ -201,3 +201,40 @@ title: citations
   year={2014},
   publisher={ACM New York, NY, USA}
 }
+
+@inproceedings{nayrolles2018clever,
+author = {Nayrolles, Mathieu and Hamou-Lhadj, Abdelwahab},
+title = {CLEVER: Combining Code Metrics with Clone Detection for Just-in-Time Fault Prevention and Resolution in Large Industrial Projects},
+year = {2018},
+isbn = {9781450357166},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/3196398.3196438},
+doi = {10.1145/3196398.3196438},
+abstract = {Automatic prevention and resolution of faults is an important research topic in the field of software maintenance and evolution. Existing approaches leverage code and process metrics to build metric-based models that can effectively prevent defect insertion in a software project. Metrics, however, may vary from one project to another, hindering the reuse of these models. Moreover, they tend to generate high false positive rates by classifying healthy commits as risky. Finally, they do not provide sufficient insights to developers on how to fix the detected risky commits. In this paper, we propose an approach, called CLEVER (Combining Levels of Bug Prevention and Resolution techniques), which relies on a two-phase process for intercepting risky commits before they reach the central repository. When applied to 12 Ubisoft systems, the results show that CLEVER can detect risky commits with 79\% precision and 65\% recall, which outperforms the performance of Commit-guru, a recent approach that was proposed in the literature. In addition, CLEVER is able to recommend qualitative fixes to developers on how to fix risky commits in 66.7\% of the cases.},
+booktitle = {Proceedings of the 15th International Conference on Mining Software Repositories},
+pages = {153–164},
+numpages = {12},
+keywords = {software maintenance, fault fixing, software evolution, defect predictions},
+location = {Gothenburg, Sweden},
+series = {MSR '18}
+}
+
+@inproceedings{castelluccio2017uplift,
+  author={M. {Castelluccio} and L. {An} and F. {Khomh}},
+  booktitle={2017 IEEE International Conference on Software Maintenance and Evolution (ICSME)}, 
+  title={Is it Safe to Uplift this Patch?: An Empirical Study on Mozilla Firefox}, 
+  year={2017},
+  volume={},
+  number={},
+  pages={411-421}
+}
+
+@article{castelluccio2018uplift,
+  title={An empirical study of patch uplift in rapid release development pipelines},
+  author={Castelluccio, Marco and An, Le and Khomh, Foutse},
+  journal={Empirical Software Engineering},
+  pages={1--37},
+  year={2018},
+  publisher={Springer}
+}
