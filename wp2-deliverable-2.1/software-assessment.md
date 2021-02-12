@@ -54,9 +54,9 @@ Hence, many methodologies have consolidated in software engineering research and
 
 From a more practical perspective, several frameworks which leverage on combinations of software code metrics either to predict or infer the maintainability of a project have been analyzed in literature [@kaur2014software; @amara2017towards; @mshelia2019can]. The most recent work in the field of metric computation is aiming at applying machine learning-based approaches to the prediction of maintainability by leveraging the measurements provided by static analysis tools [@schnappinger2019learning].
 
-### Code quality
+### Code Quality
 
-#### Bug detection
+#### Bug Detection
 
 #### Code Sanitization
 
@@ -65,86 +65,57 @@ From a more practical perspective, several frameworks which leverage on combinat
 
 ### Code Clarity
 
-Describe the most known metrics to evaluate whether a code is understandable. 
+Describe the most known metrics to evaluate whether a code is understandable at the first impact.
 
-Describe: 
+A list of some of the most common code clarity metrics present in scientific literature:
 
- * **SLOC:** Source Lines of Code. It returns the total number of lines in a file.
-
- * **PLOC:** Physical Lines of Code. It returns the number of instructions and comment lines in a file.
-
- * **LLOC:** Logical Lines of Code. It returns the number of logical lines (statements) in a file.
-
+* **SLOC**: Source Lines of Code. It returns the total number of lines in a file.
+* **PLOC**: Physical Lines of Code. It returns the number of instructions and comment lines in a file.
+* **LLOC:** Logical Lines of Code. It returns the number of logical lines (statements) in a file.
  * **CLOC:** Comment Lines of Code. It returns the number of comment lines in a file.
-
  * **BLANK:** Blank Lines of Code. It returns the number of blank lines in a file.
-
  * **NOM:** Number of Methods. It counts the number of methods in a file.
+ * **NARGS**: Number of Arguments. It counts the number of arguments of each method in a file.
+ * **NEXITS**: Number of Exit Points. It counts the number of exit points of each method in a file.
+ * **CC:** McCabe's Cyclomatic Complexity. It calculates the code complexity examining the control flow of a program.
+ * **COGNITIVE**: Cognitive Complexity. It is a measure of how difficult a unit of code is to intuitively understand. 
+ * **Halstead:** It calculates the Halstead suite. 
+ * **MI:** Maintainability Index. It is a suite to measure the maintainability of a code. It is calculated both on files and functions.
 
- * **NARGS**: Number of Arguments. It counts the number of arguments of
-   each method in a file.
-
- * **NEXITS**: Number of Exit Points. It counts the number of exit points of
-   each method in a file.
-
- * **CC:** McCabe's Cyclomatic Complexity. It calculates the code complexity
-   examining the control flow of a program.
-
- * **COGNITIVE**: Cognitive Complexity. It is a measure of how difficult
-   a unit of code is to intuitively understand.
-   
- * **Halstead:** It calculates the Halstead suite.
- 
- * **MI:** Maintainability Index. It is a suite to measure the maintainability of a code.
-   It is calculated both on files and functions.
-
-
-## Tools
+ ## Tools
 
 Different software will be evaluated with a focus on software that are open source and widely available.
 
-### Code quality
+### Code Quality
 
-#### Bug detection
+#### Bug Detection
+
 Both LLVM and GCC provide static analysis capabilities to detect a number of faults in C and C++ codebases.
 
 Commercial solutions such as `coverity` and `LGTM` provide such even more advanced analysis as online services.
 
 #### Code Sanitization
+
 Multiple means to instrument the code to detect faults at runtime are provided by both LLVM and GCC.
 
 `valgrind` provides similar capabilities.
 
 #### Code Coverage
+
 Another form of instrumentation provided by both GCC and LLVM is profiling traces via `--coverage`
 
 
-### Code clarity
+### Code Clarity
 
-Many tools have been presented in academic and industrial works or are commonly used by practitioners to compute automatically software metrics related to maintainability on source code artifacts developed in many different languages [@mshelia2017comparative]. 
+Many tools have been presented in academic and industrial works or are commonly used by practitioners to compute code clarity metrics on source code artifacts developed in many different languages [@mshelia2017comparative]. 
 
-A recent systematic literature review had led to identify fourteen *open-source* tools able to compute a large set of different static metrics for a great variety of different programming languages [@ardito2020tool]. Below we present only a small set of those tools, evaluated according to their usage:
+A recent systematic literature review had led to identify fourteen *open-source* tools able to compute a large set of different static metrics for a great variety of different programming languages [@ardito2020tool]. 
 
-* *CBR Insight* is a tool based on the closed-source metrics computation framework called *Understand* which aims at computing reliability and maintainability metrics [@ludwig2019cbr]; 
+Those tools do not provide a complete coverage of the most common metrics, just a specific set of them. Other ones, instead, they provide only a certain number of metrics according to the type of the license acquired by a user. In addition, as a negative aspect, some of them appears to be unmaintained.
 
-* *CCFinderX* is tailored for finding duplicate code fragments [@matsushita2017detecting];
+In the following subsections, a series of tools adopted in this project, will be described.
 
-* *CKJM* is developed to compute the *C\&K* metrics suite and other method-related metrics for Java code [@kaur2014proposed]; 
- 
-* *CodeAnalyzers* a tool supporting more than 25 software maintainability metrics, that covers the highest number of programming languages along with CBR Insight [@sarwar2008comparative]; 
-
-* *Halstead Metrics Tool* is a no-more-developed tool for the computation of the Halstead Suite [@hariprasad2017software];
-
-* *Metrics Reloaded* is able to compute many software metrics for C and Java code both as and IntelliJ IDEA plug-in and through command line [@saifan2018evaluating]; 
-
-* *Squale* is a tool to measure high-level quality factors for software, measuring a set of code-level metrics to predict economic aspects of software quality [@ludwig2017compiling].
-
-As additional limitations of the identified set of tools, it is needed to point out that only few of them provide a complete coverage of the most common metrics.
-The other ones computes a specific set of metrics, for example the *Halstead Metrics Tool* computes only the *Halstead Metric suite*, and in some cases, *CodeAnalyzer*, the number of metrics is limited by the type of acquired license. 
-
-Also, some of the tools, *Squale* and *Halstead Metrics Tool*, appear to be no more actively developed by the time of the writing of this article.
-
-### rust-code-analysis
+#### rust-code-analysis
 
 *rust-code-analysis* is a *Rust* library to analyze and extract information from source code written in the following programming languages: *C++*, *C#*, *CSS*, *Go*, *HTML*, *Java*, *JavaScript*, *Python*, *Rust*, *Typescript*.
 
@@ -182,7 +153,7 @@ Metrics are computed independently for each function and then merged to determin
 
 ## Alternative approaches
 
-> [name=Luca Barbato] in this chapter we'll give a different solution. Reduce the bug number by switching to a better language.
+> [name=Luca Barbato] in this chapter we'll give a different solution. Reduce the number of bugs of a tool which computes software assessments' tasks could have by switching to a better language.
 
 The emergence of new programming languages requires new software to compute and evaluate software metrics. Each language needs indeed a dedicated parser and a semantic analyzer to compute a metric.
 
