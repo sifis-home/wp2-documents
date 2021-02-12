@@ -4,8 +4,7 @@
 set -e
 
 MAIN_FILE=wp2-deliverable-2-1.md
-MD_FILES="software-assessment.md security-privacy.md
-          infrastructure-assessment.md conclusion.md annex.md"
+MD_FILES="software-assessment.md security-privacy.md conclusion.md annex.md"
 CITATIONS_FILENAME=citations
 OUTPUT_FILENAME=wp2-deliverable-2.1
 OUTPUT_DIR=../output/$OUTPUT_FILENAME
