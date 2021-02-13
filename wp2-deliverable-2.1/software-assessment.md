@@ -82,7 +82,7 @@ A list of some of the most common code clarity metrics present in scientific lit
  * **Halstead:** It calculates the Halstead suite. 
  * **MI:** Maintainability Index. It is a suite to measure the maintainability of a code. It is calculated both on files and functions.
 
- ## Tools
+## Tools
 
 Different software will be evaluated with a focus on software that are open source and widely available.
 
