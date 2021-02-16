@@ -202,7 +202,7 @@ title: citations
   publisher={ACM New York, NY, USA}
 }
 
-@inproceedings{nayrolles2018clever,
+@inproceedings{readability,
 author = {Nayrolles, Mathieu and Hamou-Lhadj, Abdelwahab},
 title = {CLEVER: Combining Code Metrics with Clone Detection for Just-in-Time Fault Prevention and Resolution in Large Industrial Projects},
 year = {2018},
@@ -211,30 +211,170 @@ publisher = {Association for Computing Machinery},
 address = {New York, NY, USA},
 url = {https://doi.org/10.1145/3196398.3196438},
 doi = {10.1145/3196398.3196438},
-abstract = {Automatic prevention and resolution of faults is an important research topic in the field of software maintenance and evolution. Existing approaches leverage code and process metrics to build metric-based models that can effectively prevent defect insertion in a software project. Metrics, however, may vary from one project to another, hindering the reuse of these models. Moreover, they tend to generate high false positive rates by classifying healthy commits as risky. Finally, they do not provide sufficient insights to developers on how to fix the detected risky commits. In this paper, we propose an approach, called CLEVER (Combining Levels of Bug Prevention and Resolution techniques), which relies on a two-phase process for intercepting risky commits before they reach the central repository. When applied to 12 Ubisoft systems, the results show that CLEVER can detect risky commits with 79\% precision and 65\% recall, which outperforms the performance of Commit-guru, a recent approach that was proposed in the literature. In addition, CLEVER is able to recommend qualitative fixes to developers on how to fix risky commits in 66.7\% of the cases.},
-booktitle = {Proceedings of the 15th International Conference on Mining Software Repositories},
-pages = {153–164},
-numpages = {12},
-keywords = {software maintenance, fault fixing, software evolution, defect predictions},
-location = {Gothenburg, Sweden},
-series = {MSR '18}
+booktitle = {Proceedings of the 8th Working Conference on Mining Software Repositories},
+pages = {73–82},
+numpages = {10},
+keywords = {halstead, entropy, replication, readability},
+location = {Waikiki, Honolulu, HI, USA},
+series = {MSR '11}
 }
 
-@inproceedings{castelluccio2017uplift,
-  author={M. {Castelluccio} and L. {An} and F. {Khomh}},
-  booktitle={2017 IEEE International Conference on Software Maintenance and Evolution (ICSME)}, 
-  title={Is it Safe to Uplift this Patch?: An Empirical Study on Mozilla Firefox}, 
-  year={2017},
-  volume={},
-  number={},
-  pages={411-421}
+@article{Wichmann
+author= {Wichmann, Canning, Clutterbuck, Winsbarrow, Ward, and Marsh},
+title = {Industrial Perspective on Static Analysis},
+year = {1995},
+publisher = {Software Engineering Journal},
+pages = {69–75}
 }
 
-@article{castelluccio2018uplift,
-  title={An empirical study of patch uplift in rapid release development pipelines},
-  author={Castelluccio, Marco and An, Le and Khomh, Foutse},
-  journal={Empirical Software Engineering},
-  pages={1--37},
-  year={2018},
-  publisher={Springer}
+@article{Egele
+author= {Egele, Scholte, Kirda, and Kruegel},
+title = {A survey on automated dynamic malware-analysis techniques and tools},
+year = {2008}, 
+publisher = {ACM Computing Surveys}
 }
+
+@article{Livshits,
+author = {Livshits},
+title = {Improving Software Security with Precise Static and Runtime Analysis},
+publisher = {Stanford doctoral thesis},
+year = {2006}
+}
+
+@article{krishnan2007codetools,
+author = {Krishnan, R and Krishna, S Murali and Bharill, Nishil},
+title = {Code Quality Tools: Learning from Our Experience},
+year = {2007},
+publisher = {Association for Computing Machinery},
+volume = {32},
+number = {4},
+journal = {SIGSOFT Softw. Eng. Notes},
+pages = {5–es},
+numpages = {6},
+}
+
+@inproceedings{kothapalli2011codeq,
+author = {Kothapalli, Chaitanya and Ganesh, S. G. and Singh, Himanshu K. and Radhika, D. V. and Rajaram, T. and Ravikanth, K. and Gupta, Shrinath and Rao, Kiron},
+title = {Continual Monitoring of Code Quality},
+year = {2011},
+publisher = {Association for Computing Machinery},
+booktitle = {Proceedings of the 4th India Software Engineering Conference},
+pages = {175-–184},
+series = {ISEC '11}
+}
+
+@inproceedings{ernst2015measure,
+author = {Ernst, Neil A. and Bellomo, Stephany and Ozkaya, Ipek and Nord, Robert L. and Gorton, Ian},
+title = {Measure It? Manage It? Ignore It? Software Practitioners and Technical Debt},
+year = {2015},
+publisher = {Association for Computing Machinery},
+booktitle = {Proceedings of the 2015 10th Joint Meeting on Foundations of Software Engineering},
+pages = {50-–60},
+numpages = {11},
+series = {ESEC/FSE 2015}
+}
+
+@inproceedings{cunningham1992tech,
+author = {Cunningham, Ward},
+title = {The WyCash Portfolio Management System},
+year = {1992},
+publisher = {Association for Computing Machinery},
+booktitle = {Addendum to the Proceedings on Object-Oriented Programming Systems, Languages, and Applications (Addendum)},
+pages = {29-–30},
+numpages = {2},
+series = {OOPSLA '92}
+}
+
+
+@inproceedings{aggarwall2002measure,
+  author={K. K. {Aggarwal} and Y. {Singh} and J. K. {Chhabra}},
+  booktitle={Annual Reliability and Maintainability Symposium. 2002 Proceedings (Cat. No.02CH37318)}, 
+  title={An integrated measure of software maintainability}, 
+  year={2002},
+  pages={235--241},
+}
+
+@inproceedings{antonellis2007measure,
+author = {Antonellis, Panagiotis and Dimitris, Antoniou and Kanellopoulos, Yiannis and Makris, Christos and Theodoridis, Evangelos and Tjortjis, Christos and Tsirakis, Nikos},
+year = {2007},
+pages = {1--11},
+title = {A data mining methodology for evaluating maintainability according to ISO/IEC-9126 software engineering–product quality standard}
+}
+
+
+@inproceedings{heitlager2007sigmm,
+  author={I. {Heitlager} and T. {Kuipers} and J. {Visser}},
+  booktitle={6th International Conference on the Quality of Information and Communications Technology (QUATIC 2007)}, 
+  title={A Practical Model for Measuring Maintainability}, 
+  year={2007},
+  pages={30-39}
+}
+
+@inproceedings{bakota2011prob,
+  author={T. {Bakota} and P. {Hegedűs} and P. {Körtvélyesi} and R. {Ferenc} and T. {Gyimóthy}},
+  booktitle={2011 27th IEEE International Conference on Software Maintenance (ICSM)}, 
+  title={A probabilistic software quality model}, 
+  year={2011},
+  pages={243--252},
+}
+
+@inproceedings{letouzey2012sqale,
+  author={J. {Letouzey}},
+  booktitle={2012 Third International Workshop on Managing Technical Debt (MTD)}, 
+  title={The SQALE method for evaluating Technical Debt}, 
+  year={2012},
+  pages={31--36}
+}
+
+@inproceedings{wagner2012quamoco,
+  author={S. {Wagner} and K. {Lochmann} and L. {Heinemann} and M. {Kläs} and A. {Trendowicz} and R. {Plösch} and A. {Seidi} and A. {Goeb} and J. {Streit}},
+  booktitle={2012 34th International Conference on Software Engineering (ICSE)}, 
+  title={The Quamoco product quality modelling and assessment approach}, 
+  year={2012},
+  pages={1133--1142},
+}
+
+@inproceedings{bauer2012framework,
+  author={V. {Bauer} and L. {Heinemann} and B. {Hummel} and E. {Juergens} and M. {Conradt}},
+  booktitle={2012 28th IEEE International Conference on Software Maintenance (ICSM)}, 
+  title={A framework for incremental quality analysis of large software systems}, 
+  year={2012},
+  pages={537--546}
+}
+
+@inproceedings{dibiase2019dmm,
+  author={M. {di Biase} and A. {Rastogi} and M. {Bruntink} and A. {van Deursen}},
+  booktitle={2019 IEEE/ACM International Conference on Technical Debt (TechDebt)}, 
+  title={The Delta Maintainability Model: Measuring Maintainability of Fine-Grained Code Changes}, 
+  year={2019},
+  pages={113--122},
+}
+
+@book{codecomplete2,
+author = {McConnell, Steve},
+title = {Code Complete, Second Edition},
+year = {2004},
+isbn = {0735619670},
+publisher = {Microsoft Press},
+address = {USA},
+abstract = {Take a strategic approach to software construction-and produce superior products-with this fully updated edition of Steve McConnell's critically praised and award-winning guide to software development best practices.}
+}
+
+
+@article{swqualmapping,
+	Author = {Yan, Meng and Xia, Xin and Zhang, Xiaohong and Xu, Ling and Yang, Dan and Li, Shanping},
+	Da = {2019/07/26},
+	Date-Added = {2021-02-16 18:09:22 +0100},
+	Date-Modified = {2021-02-16 18:09:22 +0100},
+	Doi = {10.1007/s11432-018-9608-3},
+	Id = {Yan2019},
+	Isbn = {1869-1919},
+	Journal = {Science China Information Sciences},
+	Number = {9},
+	Pages = {191101},
+	Title = {Software quality assessment model: a systematic mapping study},
+	Ty = {JOUR},
+	Url = {https://doi.org/10.1007/s11432-018-9608-3},
+	Volume = {62},
+	Year = {2019},
+	Bdsk-Url-1 = {https://doi.org/10.1007/s11432-018-9608-3}}
