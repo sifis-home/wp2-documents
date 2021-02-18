@@ -219,7 +219,7 @@ location = {Waikiki, Honolulu, HI, USA},
 series = {MSR '11}
 }
 
-@article{Wichmann
+@article{Wichmann,
 author= {Wichmann, Canning, Clutterbuck, Winsbarrow, Ward, and Marsh},
 title = {Industrial Perspective on Static Analysis},
 year = {1995},
@@ -227,7 +227,7 @@ publisher = {Software Engineering Journal},
 pages = {69–75}
 }
 
-@article{Egele
+@article{Egele,
 author= {Egele, Scholte, Kirda, and Kruegel},
 title = {A survey on automated dynamic malware-analysis techniques and tools},
 year = {2008}, 
@@ -413,6 +413,14 @@ location = {Leipzig, Germany},
 series = {SESS '08}
 }
 
+@article{cmss12, 
+author = {Elizabeth LeMay and
+Karen Scarfone and
+Peter Mell},
+title = {The Common Misuse Scoring System (CMSS): Metrics for Software Feature Misuse Vulnerabilities},
+year = {2012},
+url = {https://doi.org/10.6028/NIST.IR.7864}
+booktitle}
 
 
 
