@@ -218,20 +218,20 @@ A list of some of the most common code clarity metrics present in scientific lit
  * **Halstead:** It calculates the Halstead suite. 
  * **MI:** Maintainability Index. It is a suite to measure the maintainability of a code. It is calculated both on files and functions.
 
-“Ieee standard glossary of software engineering terminology,” IEEE Std
+> “Ieee standard glossary of software engineering terminology,” IEEE Std
 610.12-1990, pp. 1–84, Dec 1990.
 
-J. Ostberg and S. Wagner, “On automatically collectable metrics for
+> J. Ostberg and S. Wagner, “On automatically collectable metrics for
 software maintainability evaluation,” in 2014 Joint Conference of the
 International Workshop on Software Measurement and the International
 Conference on Software Process and Product Measurement, pp. 32–37,
 Oct 2014.
 
-M. Saboe, “The use of software quality metrics in the materiel release pro-
+> M. Saboe, “The use of software quality metrics in the materiel release pro-
 cess experience report,” in Proceedings Second Asia-Pacific Conference
 on Quality Software, pp. 104–109, Dec 2001.
 
-@ARTICLE {7420491,
+> Reference {7420491,
 author = {G. J. Holzmann},
 journal = {IEEE Software},
 title = {Code Clarity},
