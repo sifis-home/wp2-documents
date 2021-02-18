@@ -1,6 +1,9 @@
 ---
 tags: wp2.1, wp2, deliverable
-title: wp2-deliverable-2-1
+title: Report on Security and Privacy
+author: WP2 Team
+date: March 31, 2021
+geometry: "left=3cm,right=3cm,top=2cm,bottom=2cm"
 bibliography: wp2-deliverable-2-1-citations.bib
 csl: transactions-on-computational-logic.csl
 ---
@@ -13,7 +16,9 @@ The document is intended to provide a baseline for the definition of secure codi
 A subset of these metrics will also be used for the mechanisms to evaluate the quality and security of SIFIS-Home applications provided by third-party developers through the tools defined in D2.4.
 
 
-(look at the already published deliverables here: https://drive.google.com/drive/folders/1RRwJT16m60ocWaPavfinL4kRQQAjjlB6)
+> Look at the already published deliverables here: 
+> 
+> https://drive.google.com/drive/folders/1RRwJT16m60ocWaPavfinL4kRQQAjjlB6
 
 # Table of contents
 
@@ -63,6 +68,7 @@ Internal parameters can be classified as follows:
 - Modularity: useful to measure how many modules a software is composed of. Modules are portions of source code containing instructions written to be reused multiple times in the same program.
 
 External parameters can be classified as follows [@codecomplete2]:
+
 - Correctness: The degree to which a system is free from faults in its specification, design, and implementation.
 - Usability: The ease with which users can learn and use a system. Efficiency Minimal use of system resources, including memory and execution time.
 - Reliability: The ability of a system to perform its required functions under stated conditions whenever required—having a long mean time between failures.
@@ -93,10 +99,11 @@ Over the years, it has been shown that measuring and improving code maintainabil
 the management of _technical debt_ [@ernst2015measure]. 
 
 There are many valid models in the literature for measuring source code maintainability:
-    - The authors of [@aggarwall2002measure] proposed a model based on three main characteristics: code readability (RSC), documentation quality (DOQ), and software understandability (UOS). The measures that are computed are transformed into _fuzzy_ values, which will be processed and retransformed by domain experts.
-   - [@antonellis2007measure] started from the characteristics of the ISO/IEC 9126 standard to propose a model for mapping _object-oriented_ metrics in order to evaluate and measure the maintainability of a software system. This method has been applied to an OSS-type software, demonstrating the possibility to measure code maintainability through a systematic process.
-    - SIG Maintainability Model (SIG-MM): this model involves linking system-level maintainability characteristics with code-level measures in two steps. In the first pass, system-level characteristics are mapped to source code-level properties. In the second, one or more source code measures are determined for each property [@heitlager2007sigmm].
-    - A probabilistic approach was adopted by [@bakota2011prob] for high-level computing features by integrating expert knowledge while addressing ambiguity. The value of code maintainability is viewed as a probability distribution.
+
+- The authors of [@aggarwall2002measure] proposed a model based on three main characteristics: code readability (RSC), documentation quality (DOQ), and software understandability (UOS). The measures that are computed are transformed into _fuzzy_ values, which will be processed and retransformed by domain experts.
+- [@antonellis2007measure] started from the characteristics of the ISO/IEC 9126 standard to propose a model for mapping _object-oriented_ metrics in order to evaluate and measure the maintainability of a software system. This method has been applied to an OSS-type software, demonstrating the possibility to measure code maintainability through a systematic process.
+- SIG Maintainability Model (SIG-MM): this model involves linking system-level maintainability characteristics with code-level measures in two steps. In the first pass, system-level characteristics are mapped to source code-level properties. In the second, one or more source code measures are determined for each property [@heitlager2007sigmm].
+- A probabilistic approach was adopted by [@bakota2011prob] for high-level computing features by integrating expert knowledge while addressing ambiguity. The value of code maintainability is viewed as a probability distribution.
 - SQUALE: this method is based on _Indices_, representing costs for evaluating various aspects of source code quality. There are two different models in the method: the _Quality Model_ used to formulate and organize the non-functional requirements related to code quality, and the _Analysis Model_ which contains both the rules that are used to normalize the measures and violations related to the code and the rules for aggregating the normalized values [@letouzey2012sqale].
 - QUAMOCO: This approach involves the development of a meta-model for software quality that starts from structuring quality-related concepts to defining the operational methods for assessing its fulfillment in a specific environment. Also, an evaluation method is provided to integrate with the previous meta-model. This approach is used for integrating the abstract quality definitions provided in the quality taxonomies with concrete software quality assessment and measurement techniques [@wagner2012quamoco].
 - [@bauer2012framework] proposed an alternative approach to the others analyzed so far, which involves using a framework that fits the needs of incremental quality and maintainability checks on the source code. This allows the incremental and distributed computation of quality metrics useful for software quality assessment and measurement, including both local and global metrics in the calculations.
