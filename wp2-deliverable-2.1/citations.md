@@ -420,7 +420,21 @@ Peter Mell},
 title = {The Common Misuse Scoring System (CMSS): Metrics for Software Feature Misuse Vulnerabilities},
 year = {2012},
 url = {https://doi.org/10.6028/NIST.IR.7864}
-booktitle}
+}
+
+@article{JOT:issue_2007_01/article4,
+  author = {<a href="contents/contents.php?query=Aggarwal">K.K. Aggarwal</a> and <a href="contents/contents.php?query=Singh">Yogesh Singh</a> and <a href="contents/contents.php?query=Kaur">Arvinder Kaur</a> and <a href="contents/contents.php?query=Malhotra">Ruchika Malhotra</a>},
+  title = {Software Design Metrics for Object-Oriented Software},
+  journal = {Journal of Object Technology},
+  volume = {6},
+  number = {1},
+  issn = {1660-1769},
+  year = {2007},
+  month = jan,
+  pages = {121-138},
+  doi = {10.5381/jot.2007.6.1.a4},
+  url = {http://www.jot.fm/contents/issue_2007_01/article4.html}
+}
 
 
 
