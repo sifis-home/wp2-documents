@@ -378,3 +378,43 @@ abstract = {Take a strategic approach to software construction-and produce super
 	Volume = {62},
 	Year = {2019},
 	Bdsk-Url-1 = {https://doi.org/10.1007/s11432-018-9608-3}}
+    
+@inproceedings{ecsa10,
+author = {Mellado, Daniel and Fern\'{a}ndez-Medina, Eduardo and Piattini, Mario},
+title = {A Comparison of Software Design Security Metrics},
+year = {2010},
+isbn = {9781450301794},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/1842752.1842797},
+doi = {10.1145/1842752.1842797},
+booktitle = {Proceedings of the Fourth European Conference on Software Architecture: Companion Volume},
+pages = {236–242},
+numpages = {7},
+keywords = {security metrics, metrics, design, measures, security},
+location = {Copenhagen, Denmark},
+series = {ECSA '10}
+}
+
+@inproceedings{chowdhury08,
+author = {Chowdhury, Istehad and Chan, Brian and Zulkernine, Mohammad},
+title = {Security Metrics for Source Code Structures},
+year = {2008},
+isbn = {9781605580425},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/1370905.1370913},
+doi = {10.1145/1370905.1370913},
+booktitle = {Proceedings of the Fourth International Workshop on Software Engineering for Secure Systems},
+pages = {57–64},
+numpages = {8},
+keywords = {metrics, code quality and security., security metrics},
+location = {Leipzig, Germany},
+series = {SESS '08}
+}
+
+
+
+
+
+
