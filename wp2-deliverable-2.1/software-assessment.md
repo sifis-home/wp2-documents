@@ -1,71 +1,207 @@
 ---
 tags: wp2.1, wp2, deliverable
-title: software-assessment
+title: 2.software-assessment
 ---
 
-TODO: When introducing the concept of static and dynamic analysis.
-
-Wichmann, B. A.; Canning, A. A.; Clutterbuck, D. L.; Winsbarrow, L. A.; Ward, N. J.; Marsh, D. W. R. (Mar 1995). "Industrial Perspective on Static Analysis" (PDF). Software Engineering Journal. 10 (2): 69–75. doi:10.1049/sej.1995.0010. Archived from the original (PDF) on 2011-09-27.
-
-Egele, Manuel; Scholte, Theodoor; Kirda, Engin; Kruegel, Christopher (2008-03-05). "A survey on automated dynamic malware-analysis techniques and tools". ACM Computing Surveys. 44 (2): 6:1–6:42. doi:10.1145/2089125.2089126. ISSN 0360-0300.
+https://gcc.gnu.org/wiki/DavidMalcolm/StaticAnalyzer
 
 
 
-# Software Assessment
+# Software Quality Assessment
 
-*Software Assessment* consists of several methodologies to assess an open-source software.
+*Software Quality Assessment* consists of several methodologies to evaluate the quality of different aspects and behavior of a software through an assessment model. An assessment model contains quality criteria with clear methods to assess each quality criterion. The assessment method is often a mathematical model which aggregates product metrics to quality factors [@swqualmapping].
 
-Those methodologies are grouped into two large groups: _functional requirements_ and _non-functional requirements_ 
+**TODO**: Quality model papers: https://xin-xia.github.io/publication/scis181.pdf
 
-With _functional requirements_ we consider all the requirements specific to a given application. The analysis aims to confirm that the given software respects its design specification and behaves as advertised. (TODO: Looking for a scientific paper to confirm this definition or an ISO citation)
+http://mediatum.ub.tum.de/doc/1169637/955300.pdf
 
-With _non-functional requirements_ we consider the basic aspects that are common in all software, notwithstanding their specific behavior and design. We focus in particular on *robustness* and *maintainability* criteria.
-(TODO: Look for a scientific paper to confirm this definition or an ISO citation)
+A software can be considered adequate if it satisfies its requirements.
 
-Most of the _non-functional_ aspects can be evaluated by automatic means. Tools can be used to produce reports and metrics with little to none human interaction.
+The requirements can be grouped in _functional requirements_ and _non-functional requirements_.
 
-Most of the _functional_ aspects cannot be automatically assessed and require dedicated professional insights in order to be confirmed. The approach of declaring capabilities and other form of software contract allows some automatic assessment of the intended behavior.
+With _functional requirements_ we consider all the requirements specific to a given application. 
 
-TODO: Venn diagram to explain functional and non-functional aspects as keywords. 
+With _non-functional requirements_ we consider the basic attributes that are common in all software, notwithstanding their specific behavior and design.
 
-This chapter focuses on exploring means to automate the assessment of the following aspects:
-- Software Maintainability
-- Manifest-based behavior compliance
+Most of the _non-functional_ requirements can be evaluated by automatic means. Tools can be used to produce reports and metrics with little to none human interaction.
 
-TODO: review the list.
+A good deal of _functional_ requirements cannot be automatically assessed and require dedicated professional insights in order to be confirmed. The approach of declaring capabilities and other form of software contract allows some automatic assessment of the intended behavior.
 
-## Software Maintainability
+The wp2.x focus is on providing tools to automate the software assessment in order to minimize the effort to maximize the software quality.
+
+
+
+## Functional requirements
+
+Even if assessing functional requirements is generally a manual process that often requires domain expertise, few important requirements have good automation possibility. 
+
+### Documentation
+It is not generally possible to make sure that the user documentation are in sync with the software itself without having developers and Q/A cross-checking manually.
+
+The developer documentation can have a partial automatic assessment. While human intervention is needed to make sure the documentation is in sync, it is easy to detect where the documentation is missing completely.
+
+### Behavior
+Unit and integration testing are a widespread alternative to the more formal and cumbersome design by contract. Both allows some automatic verification of the software behavior.
+
+In both cases writing the tests requires a creative effort, but running the tests and set up a proper Continuous Integration environment does not.
+
+Some platform provide means to restrict the application to use the least amount of privileges, this is a easy an practical mean to ensure that the application cannot misbehave.
+
+iOS capabilities and Android Manifest Permission are good examples, macOS Gatekeeper on the other hand is a good case study on how this restrictions may cause more problems than the ones they are supposed to solve.
+
+## Non-functional requirements
+
+The most important non-functional requirement is *maintanability*.
 
 *Software maintainability* is defined as the ease of maintaining software during the delivery of its releases. Maintainability is defined by the ISO 9126 standard as
 
 > The ability to identify and fix a fault within a software component 
-
-[@iso-9126] and by the ISO/IEC 25010:2011 standard as
+>
+> -- [@iso-9126] and by the ISO/IEC 25010:2011 standard as
 
 > degree of effectiveness and efficiency with which a product or system can be modified by the intended maintainers
-
-[@iso-25010]
+> 
+> -- [@iso-25010]
  
 Maintainability is an integrated software measure that encompasses some code characteristics, such as readability, documentation quality, simplicity, and understandability of source code [@aggarwal2002integrated]. 
 
 Maintainability is also a crucial factor in the economic success of software products. It is commonly accepted in the literature that the most considerable cost associated with any software product over its lifetime is the maintenance cost [@zhou2007predicting]. The maintenance cost is influenced by many different factors, e.g., the necessity for code fixing, code enhancements, the addition of new features, poor code quality, and subsequent need for refactoring operations [@nair2020towards].
 
-Hence, many methodologies have consolidated in software engineering research and practice to enhance this property, indeed a considerable amount of metrics have been defined to provide a quantifiable and comparable measurement for it [@004]. Many metrics measure lower-level properties of code (e.g., related to the number of lines of code and code organization) as proxies for maintainability. Several comprehensive categorizations and classifications of the maintainability metrics presented in the literature during the last decades have been provided, e.g., the one by Frantz et al. provides a categorization of 25 different software metrics under the categories of *Size*, *Coupling*, *Complexity*, and *Inheritance* [@frantz2019ranking]. 
+The aspects of maintanability we focus on are the following:
+- defect detection through code analysis.
+- testing coverage measurement and maximization through profiling.
+- understandability assessment through objective metrics
 
-From a more practical perspective, several frameworks which leverage on combinations of software code metrics either to predict or infer the maintainability of a project have been analyzed in literature [@kaur2014software; @amara2017towards; @mshelia2019can]. The most recent work in the field of metric computation is aiming at applying machine learning-based approaches to the prediction of maintainability by leveraging the measurements provided by static analysis tools [@schnappinger2019learning].
+The 3 aspects are complementar to each other:
+- maximizing the test coverage improves the results of the dynamic code analysis
+- the undestandability objective metrics computation is few orders of magnitude simpler than static code analysis. Running the latter in the subset of the codebase deemed hard to understand by the former can provide interesting results in a fraction of the time.
 
-### Code Quality
 
-#### Bug Detection
+### Static code analysis
 
-#### Code Sanitization
+Assigned to @Luni-4 
 
-#### Code Coverage
+Static code analysis is the analysis of the code of a computer software and is usually performed without actually executing the relative program, in contrast with dynamic analysis, which is analysis performed on programs while they are in execution.
+[@Wichmann; @Egele]
+
+Static analysis is mainly adopted by the industry for quality assurance purposes [@Wichmann] and it is normally used in safety-critical computer systems with the aim of locating potentially unsafe and insecure code [@Livshits].
+
+Many industries have identified the use of static code analysis as a means of improving the quality of increasingly sophisticated and complex software:
+* *Medical software*
+* *Nuclear software*
+* *Aviation software*
+* *Automotive & Machines*
+
+This analysis is usually performed by automatic tools and the produced results are then supervised through human intervention.
+
+Program analysis is strongly influenced by the semantics of a language and the strength of the analysis may well depend on subtle features of the language, so it fundamental defining a programming language in the most accurate way [@Wichmann]. Indeed, dynamic languages are more difficult to analyze than languages that include, for example, strong typing and range constraints. Hence, the nature of the input language needs to be taken into account in the specification of the static analysis to be undertaken.
+
+The information obtained from the analysis of a code can be used to just highlight errors or define formal methods to mathematically prove whether the behavior of a code matches its specification.
+
+In the sections below, we will present a series of open source and closed source solutions currently in use in academic and industrial world.
+
+#### Open source solutions
+
+Open source solutions can be useful when industries and universities need to study, modify, and improve the code of a static code analysis tool. Furthermore, knowing the source code of a tool can help detecting insecurities in its code very fast, and consequently fixing bugs as soon as possible. 
+
+Most of the time the tools which follow the open source model are licensed in such a way that contributing to them results rather regulated for external contributors. In addition, a series of items allows to access the code in an efficient way, for example through Internet hosting such as `GitHub` or `GitLab`.
+
+##### Clang Static Analyzer
+
+The *Clang Static Analyzer*, https://clang-analyzer.llvm.org/, is a source code analysis tool that finds bugs in C, C++, and Objective-C programs. Its main goal is to provide a industrial-quality static analysis framework for analyzing C, C++, and Objective-C programs which is freely available, extensible, and has a high quality of implementation. It is implemented as a C++ library such that can be used by other tools and applications.
+
+The project is a continuous work-in-progress. So using static analysis to automatically find deep program bugs is about trading CPU time for the hardening of code. Because of the deep analysis performed by state-of-the-art static analysis tools, static analysis can be much slower than compilation. In fact, some of the algorithms needed to find bugs require in the worst case exponential time. The analyzer is able to run in a reasonable amount of time by both bounding the amount of checking work it will do as well as using clever algorithms to reduce the amount of work it must do to find bugs.
+
+The analysis performed by the analyzer is not perfect, it can falsely flag bugs in a program where the code behaves correctly. Because some code checks require more analysis precision than others, the frequency of false positives can vary widely between different checks.
+
+##### GCC -fanalyze option
+
+Since GCC version 10, the compiler adds an option to perform a static analysis pass in order to diagnose various kinds of problems in C code at compile-time (e.g. double-free, use-after-free, etc).
+
+The analyzer itself is implemented as an interprocedural pass for GCC. It is off by default, and must be enabled setting up the *-fanalyzer* option.
+
+The analyzer associates state machines with data, with transitions at certain statements and edges. It finds interprocedural paths through the user's code, in which bogus state transitions happen. 
+
+##### Infer
+
+Infer is a static analysis tool developed by Facebook and written in Ocaml programming language which produces a list of potential bugs receiving some Java or C/C++/Objective-C code as input. It is thought to help prevent crashes or poor performance.
+
+It is running continuously to verify select properties of every code modification for the main Facebook apps for Android and iOS, Facebook Messenger, Instagram, and other apps. 
+
+At present Infer is tracking problems caused by null pointer dereferences and resource and memory leaks, which cause some of the more important problems on mobile.
+
+
+#### Closed source solutions
+
+Closed source solutions are usually thought for services provided *uniquely* by a single firm. So it is not possible to freely contribute to the development of those kind of software at all. If one wants to study how they work, most of the time it is required to buy them. 
+
+Since those firms provide their solution in a closed form, their software could be very expensive in some cases, so small firms or research groups may not afford to use them over long periods of time.
+
+##### PVS-Studio
+
+*PVS-Studio* is a tool for detecting bugs and security weaknesses in the source code of programs written in C, C++, C# and Java. It works under 64-bit systems in Windows, Linux and macOS environments, and can analyze source code intended for 32-bit, 64-bit and embedded ARM platforms.
+
+This tool performs static code analysis and generates a report that helps a programmer find and fix bugs. It performs a wide range of code checks, and it is also useful in finding misprints and copy-paste errors.
+
+Using *PVS-Studio* regularly helps identifying and fixing errors at the earliest stages. So the the main idea proposed by this tool is not to find one hidden bug on the day before the release, but to fix dozens of bugs day by day.
+
+The analyzer can be run at night on a server and it will warn about suspicious code fragments automatically. Ideally, these errors can be detected and fixed before getting into the version control system. *PVS-Studio* can automatically be launched immediately after the compiler for the files that have been just modified.
+
+##### Coverity Scan
+
+Coverity Scan is a closed source service offered by *Synopsys* which provides the results of analysis on open source coding projects to open source code developers that have registered their products with Coverity Scan.
+
+Synopsys, the development testing leader, is the standard for companies that need to protect their brands and bottom lines from software failures. It offers the results of the analysis on registered projects at no charge to registered open source developers.
+
+*Synopsis* is focused on finding source code defects and vulnerabilities.  Additionally, Synopsys's implementation of static analysis can follow all the possible paths of execution through source code and find defects and vulnerabilities caused by the conjunction of statements that are not errors independent of each other.
+
+##### LGTM
+: Similar analysis service, their approach on providing a query engine to find similar pattern within different codebases is fairly interesting.
+
+### Dynamic code analysis
+
+Assigned to @Luni-4 
+
+A. Tahir and R. Ahmad, “An aop-based approach for collecting software
+maintainability dynamic metrics,” in 2010 Second International Confer-
+ence on Computer Research and Development, pp. 168–172, May 2010.
+
+Analyze the code as it is executed. Either by using specifically instrumented builds or by running unmodified code through special runtimes.
+
+[Valgrind](https://www.valgrind.org/)
+: It allows running unmodified binaries. It dynamically recompiles the binary as it runs on a simulation of the host cpu.
+
+[DynamoRIO](https://github.com/DynamoRIO/dynamorio)
+: It uses an approach similar to Valgrind, but it focuses on providing building blocks instead of a toolkit.
+
+[AddressSanitizer, MemorySantitizer and related](https://github.com/google/sanitizers)
+: Introduced in [LLVM](https://clang.llvm.org/docs/AddressSanitizer.html) and ported to [GCC](https://gcc.gnu.org/onlinedocs/gcc/Instrumentation-Options.html), they are a form of instrumentation and thus bound to a specific compiler and helper libraries.
+
+
+### Code Coverage
+
+Assigned to @lucaardito
+
+Coverage test is a measure used to describe the degree to which the source code of a program is executed when a particular test suite runs. 
+A program with high test coverage, measured as a percentage, has had more of its source code executed during testing, which suggests it has a lower chance of containing undetected software bugs compared to a program with low test coverage.
+
+Basic coverage criteria
+
+* Function coverage
+* Statement coverage
+* Edge coverage
+* Branch coverage
+* Condition coverage (or predicate coverage)
+
+TODO: mention fuzzing/mutation testing as a mean to extend the code coverage.
+TODO: mention gcovr and grcov as open-source alternative (for grcov there are documents produced by Marco around) and some closed-source alternatives
 
 
 ### Code Clarity
 
-Describe the most known metrics to evaluate whether a code is understandable at the first impact.
+Assigned to @Luni-4 
+
+Code clarity refers to the understandability of a code, so the measure of complexity of its information.
 
 A list of some of the most common code clarity metrics present in scientific literature:
 
@@ -82,30 +218,34 @@ A list of some of the most common code clarity metrics present in scientific lit
  * **Halstead:** It calculates the Halstead suite. 
  * **MI:** Maintainability Index. It is a suite to measure the maintainability of a code. It is calculated both on files and functions.
 
-## Tools
+“Ieee standard glossary of software engineering terminology,” IEEE Std
+610.12-1990, pp. 1–84, Dec 1990.
 
-Different software will be evaluated with a focus on software that are open source and widely available.
+J. Ostberg and S. Wagner, “On automatically collectable metrics for
+software maintainability evaluation,” in 2014 Joint Conference of the
+International Workshop on Software Measurement and the International
+Conference on Software Process and Product Measurement, pp. 32–37,
+Oct 2014.
 
-### Code Quality
+M. Saboe, “The use of software quality metrics in the materiel release pro-
+cess experience report,” in Proceedings Second Asia-Pacific Conference
+on Quality Software, pp. 104–109, Dec 2001.
 
-#### Bug Detection
-
-Both LLVM and GCC provide static analysis capabilities to detect a number of faults in C and C++ codebases.
-
-Commercial solutions such as `coverity` and `LGTM` provide such even more advanced analysis as online services.
-
-#### Code Sanitization
-
-Multiple means to instrument the code to detect faults at runtime are provided by both LLVM and GCC.
-
-`valgrind` provides similar capabilities.
-
-#### Code Coverage
-
-Another form of instrumentation provided by both GCC and LLVM is profiling traces via `--coverage`
-
-
-### Code Clarity
+@ARTICLE {7420491,
+author = {G. J. Holzmann},
+journal = {IEEE Software},
+title = {Code Clarity},
+year = {2016},
+volume = {33},
+number = {02},
+issn = {1937-4194},
+pages = {22-25},
+keywords = {linux;standards;market research;encoding;white spaces;software reliability},
+doi = {10.1109/MS.2016.44},
+publisher = {IEEE Computer Society},
+address = {Los Alamitos, CA, USA},
+month = {mar}
+}
 
 Many tools have been presented in academic and industrial works or are commonly used by practitioners to compute code clarity metrics on source code artifacts developed in many different languages [@mshelia2017comparative]. 
 
@@ -113,59 +253,8 @@ A recent systematic literature review had led to identify fourteen *open-source*
 
 Those tools do not provide a complete coverage of the most common metrics, just a specific set of them. Other ones, instead, they provide only a certain number of metrics according to the type of the license acquired by a user. In addition, as a negative aspect, some of them appears to be unmaintained.
 
-In the following subsections, a series of tools adopted in this project, will be described.
-
-#### rust-code-analysis
-
-*rust-code-analysis* is a *Rust* library to analyze and extract information from source code written in the following programming languages: *C++*, *C#*, *CSS*, *Go*, *HTML*, *Java*, *JavaScript*, *Python*, *Rust*, *Typescript*.
-
-Mozilla developed the initial version of this library to support the *Firefox* development processes. This library is one of the elements developed to help to evaluate the inherent risk of a change and preventing the introduction of new defects [@nayrolles2018clever], especially at the uplift phase [@castelluccio2017uplift; @castelluccio2018uplift].
-
-The *rust-code-analysis* library is mainly thought for developers. 
-Indeed, through its APIs, it is possible to carry out various tasks related to code metric computation and maintenance analysis:
-
-* Print the Abstract Syntax Tree (AST) of a source code passed as input;
-* Use the information extracted from AST nodes to detect in advance possible parsing errors present in the code. For example, it is possible to catch grammar errors before a program is compiled;
-* Print a series of Source Code Metrics to evaluate the quality of source code;
-* Export metrics in different output formats.
-
-Leveraging the power of *Rust*, some of the APIs are implemented in a multi-threaded fashion, speeding up considerably the entire computation.
-
-The library is available on [GitHub](https://mozilla.github.io/rust-code-analysis/index.html), published on [Crates.io](https://crates.io/crates/rust-code-analysis) and released under the Mozilla Public License v2.0. It can run on the most common platforms (i.e., Linux, macOS, and Windows) and its dependencies can be managed and built with *Cargo*.
-
-To help users interacting with the APIs in an easy way, the library comes coupled with a command-line tool called *rust-code-analysis-cli*, which can be installed through *Cargo* as well. Through the CLI's commands, a user can visualize on the shell the output produced by the APIs or decide to print and export the metrics as different text and binary formats.
-
-All *rust-code-analysis* metrics are calculated starting from the source code of a program without executing it, indeed the library only computes *static metrics*. Static metrics allow the evaluation of software quality, discover sections of a source code that might be more difficult to maintain, and compare the difference between programming languages.
-
-The implemented metrics are divided into three main groups:
-
-* *Line* metrics detect the number of lines of a certain kind, such as the number of instructions, comments, and statements in code.
-* *Function* metrics count the number of functions and closures in a code. They can also extract further data, such as the number of arguments and exit points of a function.
-* *Global* metrics provide a series of information on the effort required to maintain and understand a codebase, including an estimate of the number of bugs or the time needed to implement software. Also, they can evaluate the complexity of a codebase by examining the control flow of a program.
-
-Metrics are computed independently for each function and then merged to determine the general quality of a program.
-
-*rust-code-analysis* guarantees metrics correctness running unit tests on code with well-known characteristics. Those tests are indeed created to satisfy two main requirements:
-
-* Verify *rust-code-analysis* correctness in typical use cases, i.e., using source codes which are representative of real cases and can usually be found in a codebase;
-* Check *rust-code-analysis* in extreme cases using unusual parameters (corner case).
+We will better describe a series of tools adopted in this project in *deliverable 2.2*.
 
 
-## Alternative approaches
 
-> [name=Luca Barbato] in this chapter we'll give a different solution. Reduce the number of bugs of a tool which computes software assessments' tasks could have by switching to a better language.
 
-The emergence of new programming languages requires new software to compute and evaluate software metrics. Each language needs indeed a dedicated parser and a semantic analyzer to compute a metric.
-
-*Rust* is a recent programming language whose focus is on developing reliable and efficient systems that exploit parallelism and concurrency. Conciseness, expressiveness, and memory safety are among the principal properties that guided the Rust development [@matsakis2014rust].
-
-Among some of the advantages provided by this language:
-
-* Fast and memory efficient
-* No runtime or garbage collector
-* Easily integrate with other programming languages
-* Guarantee memory-safety and thread-safety, eliminating many classes of bugs at compile-time
-* Useful methods to manage errors and print the relative messages in a comprehensible way
-* Good documentation
-
-In addition, it is possible to download the dependencies required by a program and compile them along the program itself through the *Rust* package manager, called *Cargo*, and distributed with the compiler. Cargo eliminates the need for manual management of large dependency graphs and simplifies building the software, unlike tools written in C/C++.
