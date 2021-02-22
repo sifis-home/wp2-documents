@@ -379,7 +379,7 @@ abstract = {Take a strategic approach to software construction-and produce super
 	Year = {2019},
 	Bdsk-Url-1 = {https://doi.org/10.1007/s11432-018-9608-3}}
     
-@inproceedings{ecsa10,
+@inproceedings{mellado10,
 author = {Mellado, Daniel and Fern\'{a}ndez-Medina, Eduardo and Piattini, Mario},
 title = {A Comparison of Software Design Security Metrics},
 year = {2010},
@@ -422,7 +422,7 @@ year = {2012},
 url = {https://doi.org/10.6028/NIST.IR.7864}
 }
 
-@article{JOT:issue_2007_01/article4,
+@article{aggarwal07,
   author = {<a href="contents/contents.php?query=Aggarwal">K.K. Aggarwal</a> and <a href="contents/contents.php?query=Singh">Yogesh Singh</a> and <a href="contents/contents.php?query=Kaur">Arvinder Kaur</a> and <a href="contents/contents.php?query=Malhotra">Ruchika Malhotra</a>},
   title = {Software Design Metrics for Object-Oriented Software},
   journal = {Journal of Object Technology},
@@ -436,7 +436,74 @@ url = {https://doi.org/10.6028/NIST.IR.7864}
   url = {http://www.jot.fm/contents/issue_2007_01/article4.html}
 }
 
+@ARTICLE{Sabelfeld06,
+  author={A. {Sabelfeld} and A. C. {Myers}},
+  journal={IEEE Journal on Selected Areas in Communications}, 
+  title={Language-based information-flow security}, 
+  year={2003},
+  volume={21},
+  number={1},
+  pages={5-19},
+  doi={10.1109/JSAC.2002.806121}}
 
 
+@inproceedings{Maruyama2007SecureR,
+  title={Secure Refactoring - Improving the Security Level of Existing Code},
+  author={K. Maruyama},
+  booktitle={ICSOFT},
+  year={2007}
+}
 
+@inproceedings{Alshammari2016DevelopingSS,
+  title={Developing secure systems: a comparative study of existing methodologies},
+  author={B. Alshammari and C. Fidge and Diane Corney},
+  year={2016}
+}
+
+@inproceedings{wang09,
+author = {Wang, Ju An and Wang, Hao and Guo, Minzhe and Xia, Min},
+title = {Security Metrics for Software Systems},
+year = {2009},
+isbn = {9781605584218},
+publisher = {Association for Computing Machinery},
+address = {New York, NY, USA},
+url = {https://doi.org/10.1145/1566445.1566509},
+doi = {10.1145/1566445.1566509},
+booktitle = {Proceedings of the 47th Annual Southeast Regional Conference},
+articleno = {47},
+numpages = {6},
+keywords = {software security, software vulnerabilities, security metrics, software quality},
+location = {Clemson, South Carolina},
+series = {ACM-SE 47}
+}
+
+@article{Alshammari2009,
+  title={Security Metrics for Object-Oriented Class Designs},
+  author={B. Alshammari and C. Fidge and Diane Corney},
+  journal={2009 Ninth International Conference on Quality Software},
+  year={2009},
+  pages={11-20}
+}
+
+@misc{ccrev5,
+title = {Common Criteria for Information Technology Security Evaluation},
+year = {2017},
+url = {https://www.commoncriteriaportal.org/cc/}
+}
+
+@article{Holzmann,
+author = {G. J. Holzmann},
+journal = {IEEE Software},
+title = {Code Clarity},
+year = {2016},
+volume = {33},
+number = {02},
+issn = {1937-4194},
+pages = {22-25},
+keywords = {linux;standards;market research;encoding;white spaces;software reliability},
+doi = {10.1109/MS.2016.44},
+publisher = {IEEE Computer Society},
+address = {Los Alamitos, CA, USA},
+month = {mar}
+}
 
