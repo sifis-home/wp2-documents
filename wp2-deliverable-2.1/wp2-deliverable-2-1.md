@@ -82,6 +82,7 @@ External parameters can be classified as follows [@codecomplete2]:
 In this work, the interest is focused on *internal parameters* since the final goal is strictly related to the developers' point of view and not to the users'. 
 
 The external parameters are strongly related to the internal parameters:
+
 - Correctness, Reliability, Accuracy, Integrity and Robustness are correlated to Testability, Maintainability and Readability.
 - Adaptability and Usability are correlated to Modularity and Portability.
 
@@ -94,6 +95,7 @@ The _IEEE Standard Glossary of Software Engineering Terminology_ defines softwar
 Furthermore, according to the ISO standard IEC 9126, _software follows the evolution of the organization_, meaning that the program must adapt to all the boundary characteristics present in its development (environment, requirements, functionality).
  
 Also, according to the ISO standard IEC 9126, the maintainability of the code has some attributes that completely allow its description:
+
 - Analysability: ability to perform diagnosis on the software and identify the causes of errors and malfunctions.
 - Changeability: ability to allow the development of changes to the original software. Implementation includes changes to code, design, and documentation. 
 - Stability: ability to avoid unwanted effects as a result of changes to the software.
@@ -121,6 +123,7 @@ There are many valid models in the literature for measuring source code maintain
 Software quality management is becoming a topic of absolute necessity as systems over the years are evolving in complexity and size. Using effective programs or tools to maintain them is critical for developers during the software lifecycle.
 
 There are several types of tools in the literature that can be used to improve software quality [@krishnan2007codetools]:
+
 - Static Analysis Tools: are useful for examining problems based on code analysis, such as the use of uninitialized variables, the possibility of memory leaks, dereferencing of null pointers.
 - UT Tools: allows performing _Unit Testing_ of the source code.
 - Memory Leak Detection Tools: detect possible memory leaks at runtime.
@@ -137,6 +140,7 @@ SIFIS-Home will provide developers with software verification and evaluation too
 Through these mechanisms, the SIFIS-Home project pushes developers to implement applications according to their best security and quality criteria, so building over time a reputation score aimed at winning end-user trust.
 
 This document is organized as follows: 
+
 - Section 2 provides detailed information about the software quality assessment techniques and models to evaluate the quality of an IoT software;
 - Section 3 describes security and privacy metrics that can be used for assessing the IoT software developed by third-party developers;
 - Section 4 discusses privacy and security assessment techniques;
