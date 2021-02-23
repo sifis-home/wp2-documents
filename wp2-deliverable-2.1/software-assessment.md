@@ -115,13 +115,13 @@ The information obtained from the analysis of a code can be used to just highlig
 
 In the sections below, we will present a series of open source and closed source solutions currently in use in academic and industrial world.
 
-#### Open source solutions
+#### Open source solutions 
 
 Open source solutions can be useful when industries and universities need to study, modify, and improve the code of a static code analysis tool. Furthermore, knowing the source code of a tool can help detecting insecurities in its code very fast, and consequently fixing bugs as soon as possible. 
 
 Most of the time the tools which follow the open source model are licensed in such a way that contributing to them results rather regulated for external contributors. In addition, a series of items allows to access the code in an efficient way, for example through Internet hosting such as `GitHub` or `GitLab`.
 
-##### Clang Static Analyzer
+##### Clang Static Analyzer 
 
 The *Clang Static Analyzer*, https://clang-analyzer.llvm.org/, is a source code analysis tool that finds bugs in C, C++, and Objective-C programs. Its main goal is to provide a industrial-quality static analysis framework for analyzing C, C++, and Objective-C programs which is freely available, extensible, and has a high quality of implementation. It is implemented as a C++ library such that can be used by other tools and applications.
 
@@ -129,7 +129,7 @@ The project is a continuous work-in-progress. So using static analysis to automa
 
 The analysis performed by the analyzer is not perfect, it can falsely flag bugs in a program where the code behaves correctly. Because some code checks require more analysis precision than others, the frequency of false positives can vary widely between different checks.
 
-##### GCC -fanalyze option
+##### GCC -fanalyze option 
 
 Since GCC version 10, the compiler adds an option to perform a static analysis pass in order to diagnose various kinds of problems in C code at compile-time (e.g. double-free, use-after-free, etc).
 
@@ -137,7 +137,7 @@ The analyzer itself is implemented as an interprocedural pass for GCC. It is off
 
 The analyzer associates state machines with data, with transitions at certain statements and edges. It finds interprocedural paths through the user's code, in which bogus state transitions happen. 
 
-##### Infer
+##### Infer 
 
 Infer is a static analysis tool developed by Facebook and written in Ocaml programming language which produces a list of potential bugs receiving some Java or C/C++/Objective-C code as input. It is thought to help prevent crashes or poor performance.
 
@@ -152,7 +152,7 @@ Closed source solutions are usually thought for services provided *uniquely* by 
 
 Since those firms provide their solution in a closed form, their software could be very expensive in some cases, so small firms or research groups may not afford to use them over long periods of time.
 
-##### PVS-Studio
+##### PVS-Studio 
 
 *PVS-Studio* is a tool for detecting bugs and security weaknesses in the source code of programs written in C, C++, C# and Java. It works under 64-bit systems in Windows, Linux and macOS environments, and can analyze source code intended for 32-bit, 64-bit and embedded ARM platforms.
 
@@ -162,7 +162,7 @@ Using *PVS-Studio* regularly helps identifying and fixing errors at the earliest
 
 The analyzer can be run at night on a server and it will warn about suspicious code fragments automatically. Ideally, these errors can be detected and fixed before getting into the version control system. *PVS-Studio* can automatically be launched immediately after the compiler for the files that have been just modified.
 
-##### Coverity Scan
+##### Coverity Scan 
 
 Coverity Scan is a closed source service offered by *Synopsys* which provides the results of analysis on open source coding projects to open source code developers that have registered their products with Coverity Scan.
 
@@ -170,7 +170,7 @@ Synopsys, the development testing leader, is the standard for companies that nee
 
 *Synopsis* is focused on finding source code defects and vulnerabilities.  Additionally, Synopsys's implementation of static analysis can follow all the possible paths of execution through source code and find defects and vulnerabilities caused by the conjunction of statements that are not errors independent of each other.
 
-##### LGTM
+##### LGTM 
 
 *LGTM* is a code analysis platform for finding and preventing critical vulnerabilities. It prevents bugs by using automated reviews that introduce alerts into a project through notifications when a code changes. *LGTM* supports both *GitHub* and *Bitbucket* as Internet hosting.
 
@@ -246,7 +246,7 @@ For what concerns measures instead, three have been created to evaluate the clar
 
 With the exception of the *Command-query separation*, the other ones require an object-oriented language to be used. We are going to explore in the following deliverables whether those kind of measures can also be applied to trait-based languages like Rust.
 
-#### Command-query separation
+#### Command-query separation 
 
 *Command-query separation* provides a basis of safeguarding a code against unintended side effects when functions are called. Functions can be *commands*, which perform an action, and *queries*, which answer a question. A function should *not* be both of them simultaneously. 
 
@@ -254,7 +254,7 @@ Thus a function which answers a question, it should return a value, and not alte
 
 This kind of separation can clarify intent and prevent errors. As functions and code bases become larger, separation becomes much more important, as hunting for the function definition to find out what it does is not an efficient use of time.
 
-#### Loose coupling
+#### Loose coupling 
 
 *Coupling* is a measure of how much one program unit relies on others. Too much coupling (or tight coupling) is rigid and should be avoided, so a code needs to be flexible enough to cover a wide variety of use cases. 
 
@@ -268,7 +268,7 @@ But tight coupling can also be present when a determined class needs to be modif
 
 So a good code should be built as a series of independent block, easily connectable one to each other, and not as a series of intertwined pieces.
 
-#### High cohesion
+#### High cohesion 
 
 *Cohesion* is a measure of how much the various different program units belong together. A high level of cohesion is good and adds clarity to code blocks, instead a low level of cohesion is bad and leads to much confusion. Functions and methods in a code block should make sense together, in practice having a high level of cohesion.
 
