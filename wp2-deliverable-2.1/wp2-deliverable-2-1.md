@@ -16,11 +16,13 @@ The document is intended to provide a baseline for the definition of secure codi
 A subset of these metrics will also be used for the mechanisms to evaluate the quality and security of SIFIS-Home applications provided by third-party developers through the tools defined in D2.4.
 
 
-> Look at the already published deliverables here: 
+> **TODO**: Look at the already published deliverables here: 
 > 
 > https://drive.google.com/drive/folders/1RRwJT16m60ocWaPavfinL4kRQQAjjlB6
 
 # Table of contents
+
+> **TODO**: Fix ToC whenever the sections and subsections of each chapter are deemed stable
 
 [Executive Summary](#executive-summary)
 
@@ -61,7 +63,7 @@ In the literature, parameters have been established against which software quali
 Internal parameters can be classified as follows:
 
 - Testability: a software is defined as testable if its correctness and reliability properties are easily verifiable, i.e., if it effortlessly reveals its failures. 
--  Maintainability: the ability of a program to be modified. These modifications include corrections or adaptations of the system to changes in requirements, environments, and specifications. It includes the properties of Repairability: ease of eliminating defects and _Evolvability_, ease of modifying the program to adapt it to a new environment or improve its quality.
+- Maintainability: the ability of a program to be modified. These modifications include corrections or adaptations of the system to changes in requirements, environments, and specifications. It includes the properties of Repairability: ease of eliminating defects and _Evolvability_, ease of modifying the program to adapt it to a new environment or improve its quality.
 - Reusability: the ability to reuse a piece of software in creating another program, in the case of minor modifications.
 - Portability: the ability of the system to run on different hardware and software platforms. This parameter is facilitated by modular design.
 - Readability: a software is defined as readable if there is an ease in understanding the reading of the code and its organization and implementation.
@@ -77,7 +79,13 @@ External parameters can be classified as follows [@codecomplete2]:
 - Accuracy: The degree to which a system, as built, is free from error, especially with respect to quantitative outputs. Accuracy differs from correctness; it is a determination of how well a system does the job it’s built for rather than whether it was built correctly.
 - Robustness: The degree to which a system continues to function in the presence of invalid inputs or stressful environmental conditions.
 
-In this work, the interest is focused on *internal parameters* since the final goal is strictly related to the developers' point of view and not to the users'.
+In this work, the interest is focused on *internal parameters* since the final goal is strictly related to the developers' point of view and not to the users'. 
+
+The external parameters are strongly related to the internal parameters:
+- Correctness, Reliability, Accuracy, Integrity and Robustness are correlated to Testability, Maintainability and Readability.
+- Adaptability and Usability are correlated to Modularity and Portability.
+
+![parameters](00_parameters.svg)
 
 One of first the factors that can compromise a program comprehension is code readability. When a source code is hard to read, it is not easy to understand its flow and side effects. Poorly written code leads developers to introduce new bugs while trying to fix old bugs or add new features. Readability measures the effort of the developer to access the information contained in the code, while understandability measures the complexity of such information [@readability]. However, code maintainability is the most critical part of software development. Being highly maintainable is the key to reducing approximately 75% of most systems' life cycle costs.
 
@@ -124,7 +132,7 @@ Software Quality is an aspect that has fundamental importance within the SIFIS-H
 
 SIFIS-Home will provide developers with software verification and evaluation tools to assess and communicate the overall quality of source code and produced applications to end-users in a user-friendly way. 
 
-**[>>>>>> TODO -> pointer su security and privacy metrics <<<<<<<]**
+> **TODO** -> pointer on security and privacy metrics
 
 Through these mechanisms, the SIFIS-Home project pushes developers to implement applications according to their best security and quality criteria, so building over time a reputation score aimed at winning end-user trust.
 
