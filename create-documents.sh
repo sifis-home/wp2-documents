@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Stops at the first error
+set -e
+
 pushd wp2-deliverable-2.1
 ./deliverable.sh
 popd
