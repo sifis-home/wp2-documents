@@ -29,6 +29,15 @@ jobs:
       - name: Install pandoc-citeproc
         run: sudo apt-get install pandoc-citeproc
 
+      - name: Install Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+          architecture: 'x64'
+
+      - name: Install python-docx
+        run: pip install python-docx
+
       - name: Create deliverables and documents
         run: ./create-documents.sh
 
