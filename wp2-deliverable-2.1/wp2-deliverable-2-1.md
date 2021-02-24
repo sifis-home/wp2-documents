@@ -4,6 +4,8 @@ title: Report on Security and Privacy
 author: WP2 Team
 date: March 31, 2021
 geometry: "left=3cm,right=3cm,top=2cm,bottom=2cm"
+mainfont: Times New Roman
+fontsize: 11pt
 bibliography: wp2-deliverable-2-1-citations.bib
 csl: transactions-on-computational-logic.csl
 ---
