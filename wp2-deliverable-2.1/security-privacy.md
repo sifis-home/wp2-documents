@@ -13,7 +13,7 @@ As anticipated, a quite large number of software quality attributes have been st
 
 ### Stall Ratio
 
-The Stall Ratio [@chowdury08] it is defined as the number of non-progressing code statements present in a block of code (e.g. in a loop statement), divided by the whole number of lines of code in that block of code. The rationale behind the definition of this metric is to avoid attacks aimed at stalling a system in doing a long set of unnecessary operations, which might result, to a certain extent to a Denial Of Service attack. Producing high numbers of logs or continuously asking to issue a connection to an external server, they are both examples of non-progressive operations, which might result in a DoS, either for the device running the code, or an external device. 
+The Stall Ratio [@chowdhury08] it is defined as the number of non-progressing code statements present in a block of code (e.g. in a loop statement), divided by the whole number of lines of code in that block of code. The rationale behind the definition of this metric is to avoid attacks aimed at stalling a system in doing a long set of unnecessary operations, which might result, to a certain extent to a Denial Of Service attack. Producing high numbers of logs or continuously asking to issue a connection to an external server, they are both examples of non-progressive operations, which might result in a DoS, either for the device running the code, or an external device. 
 
 ### Coupling corruption propagation
 
