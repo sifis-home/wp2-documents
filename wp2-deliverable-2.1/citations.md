@@ -423,7 +423,7 @@ url = {https://doi.org/10.6028/NIST.IR.7864}
 }
 
 @article{aggarwal07,
-  author = {<a href="contents/contents.php?query=Aggarwal">K.K. Aggarwal</a> and <a href="contents/contents.php?query=Singh">Yogesh Singh</a> and <a href="contents/contents.php?query=Kaur">Arvinder Kaur</a> and <a href="contents/contents.php?query=Malhotra">Ruchika Malhotra</a>},
+  author = {K.K. Aggarwal and Yogesh Singh and Arvinder Kaur and Ruchika Malhotra},
   title = {Software Design Metrics for Object-Oriented Software},
   journal = {Journal of Object Technology},
   volume = {6},
