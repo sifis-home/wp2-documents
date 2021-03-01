@@ -21,37 +21,7 @@ The document is intended to provide a baseline for the definition of secure codi
 A subset of these metrics will also be used for the mechanisms to evaluate the quality and security of SIFIS-Home applications provided by third-party developers through the tools defined in D2.4.
 
 
-
-# Table of contents
-
-
-
-[Executive Summary](#executive-summary)
-
-1. [Introduction](#introduction)
-2. [Software Quality Assessment](#software-assessment)
-    1. [Software Maintainabilty](#software-maintainability)
-        1. [Code Quality](#code-quality)
-            1. [Bug Detection](#bug-detection)
-            2. [Code Sanitization](#code-sanitization)
-            3. [Code Coverage](#code-coverage)
-        2. [Code Clarity](#code-clarity)
-    2. [Tools](#tools)
-        1. [Code Quality](#code-quality)
-            1. [Bug Detection](#bug-detection)
-            2. [Code Sanitization](#code-sanitization)
-            3. [Code Coverage](#code-coverage)
-        2. [Code Clarity](#code-clarity)
-    3. [Alternative Approaches](#alternative-approaches)
-3. [Security and Privacy Metrics](#security-and-privacy-metrics)
-4. [Privacy and Security Assessment Techniques](#privacy-and-security-assessment-techniques)
-6. [Conclusion](#conclusion)
-7. [Annex A: Glossary](#annex-a-glossary)
-8. [Annex B: Links](#annex-b-links)
-
-
 # Introduction
-
 
 Software Engineering has always been devoted to the issue of program quality, which, by definition, is seen as the extent to which a product meets a certain number of expectations concerning both its operation and its internal structure.
 
