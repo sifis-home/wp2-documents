@@ -3,19 +3,11 @@ tags: wp2.1, wp2, deliverable
 title: 2.software-assessment
 ---
 
-https://gcc.gnu.org/wiki/DavidMalcolm/StaticAnalyzer
-
-
-
 # Software Quality Assessment
 
-Assigned to @lucaardito 
+*Software Quality Assessment* consists of several methodologies to evaluate the quality of different aspects and behavior of a software through an assessment model. An assessment model contains quality criteria with clear methods to assess each quality criterion. The assessment method is often a mathematical model which aggregates product metrics to quality factors [@mapping].
 
-*Software Quality Assessment* consists of several methodologies to evaluate the quality of different aspects and behavior of a software through an assessment model. An assessment model contains quality criteria with clear methods to assess each quality criterion. The assessment method is often a mathematical model which aggregates product metrics to quality factors [@swqualmapping].
-
-**TODO**: Quality model papers: https://xin-xia.github.io/publication/scis181.pdf
-
-http://mediatum.ub.tum.de/doc/1169637/955300.pdf
+Deissenboeck et all in [@quamoco] presented a tool chain for supporting, creating and editing quality models as well as for conducting automated quality assessments.
 
 A software can be considered adequate if it satisfies its requirements.
 
@@ -29,53 +21,39 @@ Most of the _non-functional_ requirements can be evaluated by automatic means. T
 
 A good deal of _functional_ requirements cannot be automatically assessed and require dedicated professional insights in order to be confirmed. The approach of declaring capabilities and other form of software contract allows some automatic assessment of the intended behavior.
 
-> **TODO**: define a diagram to better show the separation among functional and non-functional requirements
-
 The wp2.x focus is on providing tools to automate the software assessment in order to minimize the effort to maximize the software quality.
 
 We will better describe a series of tools adopted in this project in *deliverable 2.2*.
 
 ## Functional requirements
 
-> Assigned to @60pElkHvRuOJcPgiD0CZIQ 
-
-Even if assessing functional requirements is generally a manual process that often requires domain expertise, few important requirements have good automation possibility. 
+Even if assessing functional requirements is generally a manual process that often requires domain expertise, there are few automation chance. 
 
 ### Documentation
 
-> Assigned to @60pElkHvRuOJcPgiD0CZIQ 
+It is not generally possible to make sure that the user documentation are in sync with the software itself without having developers and Quality Assurance experts cross-checking manually.
 
-It is not generally possible to make sure that the user documentation are in sync with the software itself without having developers and Q/A cross-checking manually.
-
-The developer documentation can have a partial automatic assessment. While human intervention is needed to make sure the documentation is in sync, it is easy to detect where the documentation is missing completely.
+The developer documentation, though, can have a partial automatic assessment. While human intervention is needed to make sure the documentation is in sync, it is easy to detect where the documentation is missing completely and make so that new code with no documentation is not accepted.
 
 ### Behavior
 
-> Assigned to @60pElkHvRuOJcPgiD0CZIQ
-
+#### Testing
 Unit and integration testing are a widespread alternative to the more formal and cumbersome design by contract. Both allows some automatic verification of the software behavior.
 
-In both cases writing the tests requires a creative effort, but running the tests and set up a proper Continuous Integration environment does not.
+In both cases writing the tests requires a creative effort, but running the tests in a proper Continuous Integration environment does not require further human effort.
 
+#### Sandboxing
 Some platform provide means to restrict the application to use the least amount of privileges, this is a easy an practical mean to ensure that the application cannot misbehave.
 
-iOS capabilities and Android Manifest Permission are good examples, macOS Gatekeeper on the other hand is a good case study on how this restrictions may cause more problems than the ones they are supposed to solve.
+iOS capabilities and Android Manifest Permission are good examples, macOS Gatekeeper on the other hand is a good case study on how badly set restrictions may cause more problems than the ones they are supposed to solve.
 
 ## Non-functional requirements
-
-> Assigned to @60pElkHvRuOJcPgiD0CZIQ
 
 The most important non-functional requirement is *maintanability*.
 
 *Software maintainability* is defined as the ease of maintaining software during the delivery of its releases. Maintainability is defined by the ISO 9126 standard as
 
-> The ability to identify and fix a fault within a software component 
->
-> -- [@iso-9126] and by the ISO/IEC 25010:2011 standard as
-
-> degree of effectiveness and efficiency with which a product or system can be modified by the intended maintainers
-> 
-> -- [@iso-25010]
+_The ability to identify and fix a fault within a software component_ [@iso-9126] and by the ISO/IEC 25010:2011 standard as _degree of effectiveness and efficiency with which a product or system can be modified by the intended maintainers_ [@iso-25010].
  
 Maintainability is an integrated software measure that encompasses some code characteristics, such as readability, documentation quality, simplicity, and understandability of source code [@aggarwal2002integrated]. 
 
@@ -87,7 +65,7 @@ The aspects of maintanability we focus on are the following:
 - testing coverage measurement and maximization through profiling.
 - understandability assessment through objective metrics
 
-The 3 aspects are complementar to each other:
+The 3 aspects are complementary to each other:
 
 - maximizing the test coverage improves the results of the dynamic code analysis
 - the undestandability objective metrics computation is few orders of magnitude simpler than static code analysis. Running the latter in the subset of the codebase deemed hard to understand by the former can provide interesting results in a fraction of the time.
@@ -107,7 +85,7 @@ Many industries have identified the use of static code analysis as a means of im
 * *Aviation software*
 * *Automotive & Machines*
 
-This analysis is usually performed by automatic tools and the produced results are then supervised through human intervention.
+This analysis is usually performed by automatic tools and the produced results are then supervised through human intervention since the analysis may find false positives.
 
 Program analysis is strongly influenced by the semantics of a language and the strength of the analysis may well depend on subtle features of the language, so it fundamental defining a programming language in the most accurate way [@Wichmann]. Indeed, dynamic languages are more difficult to analyze than languages that include, for example, strong typing and range constraints. Hence, the nature of the input language needs to be taken into account in the specification of the static analysis to be undertaken.
 
@@ -117,92 +95,72 @@ In the sections below, we will present a series of open source and closed source
 
 #### Open source solutions 
 
-Open source solutions can be useful when industries and universities need to study, modify, and improve the code of a static code analysis tool. Furthermore, knowing the source code of a tool can help detecting insecurities in its code very fast, and consequently fixing bugs as soon as possible. 
+Open source solutions can be particularly useful since they can be extended to support new platforms without the involvement of the original authors and they are not tied to a specific vendor.
 
-Most of the time the tools which follow the open source model are licensed in such a way that contributing to them results rather regulated for external contributors. In addition, a series of items allows to access the code in an efficient way, for example through Internet hosting such as `GitHub` or `GitLab`.
+They may have a quite varying level of maturity.
 
-##### Clang Static Analyzer 
+[Clang Static Analyzer](https://clang.llvm.org/docs/ClangStaticAnalyzer.html)
+: It leverages the clang parsers to perform static analysis over the languages supported by clang itself. It provides a detailed html report or provides the report within the IDE.
 
-The *Clang Static Analyzer*, https://clang-analyzer.llvm.org/, is a source code analysis tool that finds bugs in C, C++, and Objective-C programs. Its main goal is to provide a industrial-quality static analysis framework for analyzing C, C++, and Objective-C programs which is freely available, extensible, and has a high quality of implementation. It is implemented as a C++ library such that can be used by other tools and applications.
+[GCC -fanalyze](https://gcc.gnu.org/onlinedocs/gcc-10.1.0/gcc/Static-Analyzer-Options.html)
+: It produces extended diagnostic messages and some GraphViz-compatible diagrams. As per GCC 10 it is its infancy and under heavy development. Only C is currently supported.
 
-The project is a continuous work-in-progress. So using static analysis to automatically find deep program bugs is about trading CPU time for the hardening of code. Because of the deep analysis performed by state-of-the-art static analysis tools, static analysis can be much slower than compilation. In fact, some of the algorithms needed to find bugs require in the worst case exponential time. The analyzer is able to run in a reasonable amount of time by both bounding the amount of checking work it will do as well as using clever algorithms to reduce the amount of work it must do to find bugs.
-
-The analysis performed by the analyzer is not perfect, it can falsely flag bugs in a program where the code behaves correctly. Because some code checks require more analysis precision than others, the frequency of false positives can vary widely between different checks.
-
-##### GCC -fanalyze option 
-
-Since GCC version 10, the compiler adds an option to perform a static analysis pass in order to diagnose various kinds of problems in C code at compile-time (e.g. double-free, use-after-free, etc).
-
-The analyzer itself is implemented as an interprocedural pass for GCC. It is off by default, and must be enabled setting up the *-fanalyzer* option.
-
-The analyzer associates state machines with data, with transitions at certain statements and edges. It finds interprocedural paths through the user's code, in which bogus state transitions happen. 
-
-##### Infer 
-
-Infer is a static analysis tool developed by Facebook and written in Ocaml programming language which produces a list of potential bugs receiving some Java or C/C++/Objective-C code as input. It is thought to help prevent crashes or poor performance.
-
-It is running continuously to verify select properties of every code modification for the main Facebook apps for Android and iOS, Facebook Messenger, Instagram, and other apps. 
-
-At present Infer is tracking problems caused by null pointer dereferences and resource and memory leaks, which cause some of the more important problems on mobile.
-
+[Infer](http://fbinfer.com/) 
+: Infer is a static analysis tool developed by Facebook and written in the Ocaml programming language. It supports C, C++, objC and Java. It offers integration with build-systems and provides reports in textual/diagnostic form, html and json.
 
 #### Closed source solutions
 
-Closed source solutions are usually thought for services provided *uniquely* by a single firm. So it is not possible to freely contribute to the development of those kind of software at all. If one wants to study how they work, most of the time it is required to buy them. 
+Closed source solutions tend to be more feature-rich and more polished and they offer extended support to its customers.
 
-Since those firms provide their solution in a closed form, their software could be very expensive in some cases, so small firms or research groups may not afford to use them over long periods of time.
+It may be difficult to have them adapted and extended for specific needs.
 
-##### PVS-Studio 
+[PVS-Studio](https://www.viva64.com/en/pvs-studio/)
+: It is a set of tools to run on-premise static analysis. It has integrations for build-systems, IDEs and Continuous Integration systems.
 
-*PVS-Studio* is a tool for detecting bugs and security weaknesses in the source code of programs written in C, C++, C# and Java. It works under 64-bit systems in Windows, Linux and macOS environments, and can analyze source code intended for 32-bit, 64-bit and embedded ARM platforms.
+[Coverity Scan](https://scan.coverity.com/)
+: It is an analysis *as-service* platform. It requires to run a local scanner tool and then upload its payload to run the analysis on the remote platform. It supports out of box GitHub and Travis-CI. 
 
-This tool performs static code analysis and generates a report that helps a programmer find and fix bugs. It performs a wide range of code checks, and it is also useful in finding misprints and copy-paste errors.
-
-Using *PVS-Studio* regularly helps identifying and fixing errors at the earliest stages. So the the main idea proposed by this tool is not to find one hidden bug on the day before the release, but to fix dozens of bugs day by day.
-
-The analyzer can be run at night on a server and it will warn about suspicious code fragments automatically. Ideally, these errors can be detected and fixed before getting into the version control system. *PVS-Studio* can automatically be launched immediately after the compiler for the files that have been just modified.
-
-##### Coverity Scan 
-
-Coverity Scan is a closed source service offered by *Synopsys* which provides the results of analysis on open source coding projects to open source code developers that have registered their products with Coverity Scan.
-
-Synopsys, the development testing leader, is the standard for companies that need to protect their brands and bottom lines from software failures. It offers the results of the analysis on registered projects at no charge to registered open source developers.
-
-*Synopsis* is focused on finding source code defects and vulnerabilities.  Additionally, Synopsys's implementation of static analysis can follow all the possible paths of execution through source code and find defects and vulnerabilities caused by the conjunction of statements that are not errors independent of each other.
-
-##### LGTM 
-
-*LGTM* is a code analysis platform for finding and preventing critical vulnerabilities. It prevents bugs by using automated reviews that introduce alerts into a project through notifications when a code changes. *LGTM* supports both *GitHub* and *Bitbucket* as Internet hosting.
-
-*LGTM* tries to reduce the false positive rate of standard queries as much as possible, in order not to have a torrent of uninteresting alerts every time someone submits code.
-
-This tool analyzes the entire history of a project, so it is possible to visualize how the alerts have changed over time, and which specific events or commits had the biggest impact on code quality.
-
-It is also possible to use *LGTM* to see how a project compares to the rest of the world, and show off the alert counts and grades of the projects by embedding a shield in the README files of repositories.
+[LGTM](https://lgtm.com/) 
+: it is a code analysis platform similar to Coverity Scan. It has better integrations with source hosting platforms such as GitHub and offers a specific query language to dig deeper in the codebases and find structural similarities.
 
 ### Dynamic code analysis
 
-Assigned to @Luni-4 
+A *Dynamic* code analysis evaluates the code whereas it is being executed, either by using specifically instrumented builds or by running unmodified code through special runtimes parameters.
 
-A. Tahir and R. Ahmad, “An aop-based approach for collecting software
-maintainability dynamic metrics,” in 2010 Second International Confer-
-ence on Computer Research and Development, pp. 168–172, May 2010.
+Differently from a static analysis which is more focused on the structural aspects of a software system, a dynamic analysis is more interested in detecting the behavioral aspects of a system.
 
-Analyze the code as it is executed. Either by using specifically instrumented builds or by running unmodified code through special runtimes.
+Furthermore, a dynamic analysis provides more precisely measures of the internal attributes of a software, such as coupling, complexity etc., on the basis of the data collected during actual execution of the system, which have direct impact on quality factors of a software such as reliability, testability, maintainability, performance, and error-rates.
+
+Below we present a simple comparative comparison table to illustrate the differences between the metrics produced by a static and a dynamic analysis [@Kumar].
+
+
+| Static Metrics                                                                                                        | Dynamic Metrics                                                                     |
+|-----------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
+| Simpler to collect                                                                                                    | Difficult to obtain                                                                 |
+| Available at the early stages of software development                                                                 | Accessible very late in software development lifecycle                              |
+| Less accurate than dynamic metrics in measuring qualitative attributes of software                                    | Suitable for measuring quantitative as well as qualitative attributes of software |
+| Deal with the structural aspects of the software system                                                               | Deal with the behavioral aspects of the system also                                 |
+| Inefficient to deal with object-oriented features such as inheritance, polymorphism and dynamic binding | Dynamic metrics are capable to deal with all object-oriented features |
+| Less precise than dynamic metrics for the real-life systems                                                           | More precise than static metrics for the real-life systems                          |
+
+Below we present a series of tools which can be used to obtain some dynamic metrics about a software.
 
 [Valgrind](https://www.valgrind.org/)
-: It allows running unmodified binaries. It dynamically recompiles the binary as it runs on a simulation of the host cpu.
+: It allows running unmodified binaries. It dynamically recompiles the binary as it runs on a simulation of the host cpu. The process tends to be slower than the instrumentation approach and requires platform-specific support, making it supporting new processors and operating systems more involving.
 
 [DynamoRIO](https://github.com/DynamoRIO/dynamorio)
-: It uses an approach similar to Valgrind, but it focuses on providing building blocks instead of a toolkit.
+: It uses an approach similar to Valgrind, but it focuses on providing building blocks instead of a toolkit of ready-to-use tools.
 
-[AddressSanitizer, MemorySantitizer and related](https://github.com/google/sanitizers)
-: Introduced in [LLVM](https://clang.llvm.org/docs/AddressSanitizer.html) and ported to [GCC](https://gcc.gnu.org/onlinedocs/gcc/Instrumentation-Options.html), they are a form of instrumentation and thus bound to a specific compiler and helper libraries.
+[AddressSanitizer and MemorySantitizer](https://github.com/google/sanitizers)
+: Introduced in [LLVM](https://clang.llvm.org/docs/AddressSanitizer.html) and ported to [GCC](https://gcc.gnu.org/onlinedocs/gcc/Instrumentation-Options.html), they are a form of instrumentation and thus bound to a specific compiler and a set of helper libraries.
+They offer better execution speed and their integration with debuggers such as [GDB](https://www.gnu.org/software/gdb/) or [RR](https://rr-project.org/) makes them a good alternative to Valgrind.
+
+[miri](https://github.com/rust-lang/miri/)
+: Miri is a specific tool to instrument and analyze the middle-level intermediate language currently used by Rust.
+It instruments the code and runs it on a generic platform abstraction. 
 
 
 ### Code Coverage
-
-Assigned to @lucaardito
 
 Coverage test is a measure used to describe the degree to which the source code of a program is executed when a particular test suite runs. 
 A program with high test coverage, measured as a percentage, has had more of its source code executed during testing, which suggests it has a lower chance of containing undetected software bugs compared to a program with low test coverage.
@@ -215,13 +173,40 @@ Basic coverage criteria
 * Branch coverage
 * Condition coverage (or predicate coverage)
 
-> TODO: mention fuzzing/mutation testing as a mean to extend the code coverage.
 
-> TODO: mention gcovr and grcov as open-source alternative (for grcov there are documents produced by Marco around) and some closed-source alternatives
+Mutation and Fuzz Testing can be used for improving the effectiveness of software test cases, and the coverage.
+
+In Mutation Testing some statements of the source code are changed (mutated) to check if the test cases are able to find errors in source code. The goal of Mutation Testing is ensuring the quality of test cases in terms of robustness that it should fail the mutated source code. In Parveen et al [@parveen] presented an automated framework to evaluate taint flow analysis tools in the domain of IoT (Internet of things) apps.
+
+Fuzz Testing is a software testing technique of putting invalid or random data (called FUZZ) into software system to discover coding errors and security loopholes. The purpose of fuzz testing is inserting data using automated or semi-automated techniques and testing the system for various exceptions like system crashing or failure of built-in code.
+As described by Kumar et al in [@kumar] fuzzy techniques aims to reduce the number of test cases so that it is possible to achieve more efficient and accurate results. Fuzzy clustering is a class of algorithms for cluster analysis in which the allocation of similar test cases is done to clusters that would help in finding out redundancy incorporated by test cases.
+
+Code coverage tools popularity and usage strictly depend on the language they support. Most code-coverage approach rely on specific instrumentation of the running code, few rely on the normal debug information and runtime capabilities.
+
+Here we present some examples of the most common ones.
+
+[JACOCO](https://www.jacoco.org/)
+: JaCoCo provides technology for code coverage analysis in Java VM based environments. The focus is providing a library for integration with various build and development tools.
+
+[Coverage](https://coverage.readthedocs.io/en/coverage-5.5/)
+: Coverage is a tool for measuring code coverage of Python programs. It monitors a python program showing which parts of the code have been executed, then analyzes the source to identify code that could have been executed but was not.
+
+[gcov](https://gcc.gnu.org/onlinedocs/gcc/Gcov.html) and [llvm-cov](https://llvm.org/docs/CommandGuide/llvm-cov.html)
+: Compiler-specific tool to extract coverage information from binaries compiled with the profiling harness (e.g. `-fprofile-arcs -ftest-coverage`)
+
+[lcov](https://github.com/linux-test-project/lcov)
+: Aggregates the coverage information generated by the `gcov` family of tools and produces reports in machine-parsable and human-readable formats.
+
+[kcov](https://github.com/SimonKagstrom/kcov)
+: Relies on the DWARF debugging information and the platform-specific debug capabilities (e.g. ptrace) in order to extract coverage information from non-instrumented binaries.
+
+[GCOVR](https://gcovr.com/en/stable/) and [GRCOV](https://github.com/mozilla/grcov)
+: They collect and aggregate the coverage information provided by other tools. Both tools retain compatibility with `lcov` but support additional input and output formats.
+
 
 ### Code Clarity
 
-> *Code Clarity* is clearness or lucidity as to perception or understanding of a code, freedom from indistinctness or ambiguity. [^Oliver]
+_*Code Clarity* is clearness or lucidity as to perception or understanding of a code, freedom from indistinctness or ambiguity._[^Oliver]
 
 The main goal consists of maximizing the amount of understanding conveyed in the way a code is written which needs to be easy to read, understand, and modify. Achieving clarity is about so much more than proper indentation, it requires code to be organized well, with careful planning and proper separation.
 
@@ -287,32 +272,118 @@ High cohesion helps to alleviate tight coupling, and tight coupling is a sign th
 
 ### Code Maintainability
 
-Assigned to @Luni-4 
+*Code maintainability* comprehends a series of different metrics to evaluate many aspects related to the maintainability of a code.
 
-A list of some of the most common code maintainability metrics present in scientific literature:
+One of them is the *verbosity* and it is usually considered in terms of the number of code lines in a source file.
 
-* **SLOC**: Source Lines of Code. It returns the total number of lines in a file.
-* **PLOC**: Physical Lines of Code. It returns the number of instructions and comment lines in a file.
-* **LLOC:** Logical Lines of Code. It returns the number of logical lines (statements) in a file.
- * **CLOC:** Comment Lines of Code. It returns the number of comment lines in a file.
- * **BLANK:** Blank Lines of Code. It returns the number of blank lines in a file.
- * **NOM:** Number of Methods. It counts the number of methods in a file.
- * **NARGS**: Number of Arguments. It counts the number of arguments of each method in a file.
- * **NEXITS**: Number of Exit Points. It counts the number of exit points of each method in a file.
- * **CC:** McCabe's Cyclomatic Complexity. It calculates the code complexity examining the control flow of a program.
- * **COGNITIVE**: Cognitive Complexity. It is a measure of how difficult a unit of code is to intuitively understand. 
- * **Halstead:** It calculates the Halstead suite. 
- * **MI:** Maintainability Index. It is a suite to measure the maintainability of a code. It is calculated both on files and functions.
+SLOC
+: Source Lines of Code. It returns the total number of lines in a file.
 
-> J. Ostberg and S. Wagner, “On automatically collectable metrics for
-software maintainability evaluation,” in 2014 Joint Conference of the
-International Workshop on Software Measurement and the International
-Conference on Software Process and Product Measurement, pp. 32–37,
-Oct 2014.
+PLOC
+: Physical Lines of Code. It returns the number of instructions and comment lines in a file.
 
-> M. Saboe, “The use of software quality metrics in the materiel release pro-cess experience report,” in Proceedings Second Asia-Pacific Conference
-on Quality Software, pp. 104–109, Dec 2001.
+LLOC
+: Logical Lines of Code. It returns the number of logical lines (statements) in a file.
 
+CLOC
+: Comment Lines of Code. It returns the number of comment lines in a file.
+
+BLANK
+: Blank Lines of Code. It returns the number of blank lines in a file.
+
+The rationale behind using multiple measurements for the lines of code can be motivated by the need for measuring different facets of the size of code artifacts and of the relevance and content of the lines of code. 
+
+The measurement of physical lines of code (*PLOC*) does not take into consideration blank lines or comments, however, the count depends on the physical format of the statements and programming style since multiple *PLOC* can concur to form a single logical statement of the source code. *PLOC* are sensitive to logically irrelevant formatting and style conventions, while *LLOC* are less sensitive to these aspects [@nguyen2007sloc]. 
+
+In addition to that, the *CLOC* and *BLANK* measurements allow a finer analysis of the amount of documentation (in terms of used APIs and explanation of complex parts of algorithms) and formatting of a source file.
+
+Another aspect is how a code is *structured*, so how the structure of a source code is analyzed in terms of the properties and functions that compose the source files. To that end, three metrics have been adopted:
+
+NOM
+: Number of Methods. It counts the number of methods in a file.
+
+NARGS
+: Number of Arguments. It counts the number of arguments of each method in a file.
+
+NEXITS
+: Number of Exit Points. It counts the number of exit points of each method in a file.
+
+*Nargs* and *Nexits* are intuitively linked with the easiness in reading and interpreting a source code: a function with a high number of arguments can be more complex to analyze because of a higher number of possible paths, while a function with many exits may include higher complexity in reading the code for performing maintenance efforts.
+
+To evaluate the *complexity* of a code, we have identified the following metrics:
+
+CC
+: McCabe's Cyclomatic Complexity. It calculates the code complexity examining the control flow of a program.
+
+COGNITIVE
+: Cognitive Complexity. It is a measure of how difficult a unit of code is to intuitively understand. 
+
+Halstead
+: It calculates the Halstead suite. 
+
+The Halstead Suite, a set of quantitative complexity measures originally defined by Maurice Halstead, is one of the most popular static code metrics available in the literature [@hariprasad2017software]. 
+
+The details about the computation of all operands and operators are described in the table below:
+
+|   Symbol  |                Description               |
+|:---------:|:----------------------------------------:|
+| $$\eta1$$ |       Number of distinct operators       |
+| $$\eta2$$ |        Number of distinct operands       |
+|   $$N1$$  | Total number of occurrences of operators |
+|   $$N2$$  |  Total number of occurrences of operands |
+
+<br>
+
+While this other table contains all the remaining metrics of the Halstead Suite computed from the operators and operands presented above:
+
+
+|                Measure                |  Symbol  |                     Formula                     |
+|:-------------------------------------:|:--------:|:-----------------------------------------------:|
+|             Program length            |   $$N$$  |                 $$N = N1 + N2$$                 |
+|           Program vocabulary          | $$\eta$$ |             $$\eta = \eta1 + \eta2$$            |
+|                 Volume                |   $$V$$  |              $$$V = N*log_2(\eta)$$             |
+|               Difficulty              |   $$D$$  |            $$D = \eta1/2 * N2/\eta2$$           |
+|             Program Level             |   $$L$$  |                   $$L = 1/D$$                   |
+|                 Effort                |   $$E$$  |                   $$E = D*V$$                   |
+|        Estimated Program Length       |   $$H$$  | $$H = \eta1*log_2(\eta1) + \eta2*log_2(\eta2)$$ |
+| Time required to program (in seconds) |   $$T$$  |                   $$T = E/18$$                  |
+|        Number of delivered bugs       |   $$B$$  |              $$ B = E^{2/3}/3000$$              |
+|              Purity Ratio             |  $$PR$$  |                   $$PR = H/N$$                  |
+
+<br>
+
+At last, we present a composite metric to provide a single index of maintainability for software [@oman1992metrics], called *Maintainability Index*. 
+
+MI
+: Maintainability Index. It is a suite to measure the maintainability of a code. It is calculated both on files and functions.
+
+Three different variants of this metric are considered. The original formula, created by Oman et al.., then the one defined by the Software Engineering Institute (*SEI*) and promoted in the C4 Software Technology Reference Guide [@bray1997c4], and finally the variant implemented for the Visual Studio IDE [@mi-vs]. 
+
+The *SEI* formula adds to the original formula a specific treatment for the comments in the source code (i.e., the *CLOC* metric), and it is deemed by research as more appropriate, given that the comments present in a source code can be considered correct and appropriate [@welker2001software]. 
+
+The last formula, instead, resettles the MI value in the 0-100 range, without considering the distinction between *CLOC* and *SLOC* operated by the SEI formula [@molnar2017discovering].
+
+The respective formulas are reported in the table below. 
+
+|   Variant  |                                                Formula                                               |
+|:----------:|:----------------------------------------------------------------------------------------------------:|
+| *Original* |                         $$171.0 - 5.2 * ln(V) - 0.23 * CC - 16.2 * ln(SLOC)$$                        |
+|    *SEI*   | $$171.0 - 5.2 * log_2(V) - 0.23 * CC - 16.2 * log_2(SLOC) + 50.0 * sin(\sqrt{2.4 * (CLOC / SLOC)})$$ |
+|    *VS*    |                $$\max(0,(171 - 5.2 * ln(V) - 0.23 * CC - 16.2 * ln(SLOC))*100 / 171)$$               |
+
+<br>
+
+The interpretation of the measured MI varies according to the adopted formula to compute it, below the ranges for each of them. 
+
+|   Variant  | Low Maintainability | Medium Maintainability | High Maintainability |
+|:----------:|:-------------------:|:----------------------:|:--------------------:|
+| *Original* |     $$MI < 65$$     |    $$65 < MI < 85$$    |      $$MI > 85$$     |
+|    *SEI*   |     $$MI < 65$$     |    $$65 < MI < 85$$    |      $$MI > 85$$     |
+|    *VS*    |     $$MI < 10$$     |    $$10 < MI < 20$$    |      $$MI > 20$$     |
+
+<br>
+
+For the original and the *SEI* formulas of the *MI*, a value over 85 indicates an easily maintainable code, a value between 65 and 85 indicates average maintainability for the analyzed code, while a value under 65 indicates hardly maintainable code. The original and *SEI* formulas can also assume negative values. With the Visual Studio formula, the thresholds for medium and high maintainability are moved respectively to 10 and 20. 
 
 [^Oliver]: https://gorails.com/blog/why-you-should-focus-on-writing-code-with-clarity Last visited 22/01/2021
 
