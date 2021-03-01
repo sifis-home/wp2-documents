@@ -21,13 +21,10 @@ The document is intended to provide a baseline for the definition of secure codi
 A subset of these metrics will also be used for the mechanisms to evaluate the quality and security of SIFIS-Home applications provided by third-party developers through the tools defined in D2.4.
 
 
-> **TODO**: Look at the already published deliverables here: 
-> 
-> https://drive.google.com/drive/folders/1RRwJT16m60ocWaPavfinL4kRQQAjjlB6
 
 # Table of contents
 
-> **TODO**: Fix ToC whenever the sections and subsections of each chapter are deemed stable
+
 
 [Executive Summary](#executive-summary)
 
@@ -58,7 +55,6 @@ A subset of these metrics will also be used for the mechanisms to evaluate the q
 
 Software Engineering has always been devoted to the issue of program quality, which, by definition, is seen as the extent to which a product meets a certain number of expectations concerning both its operation and its internal structure.
 
-
 A more precise definition of code quality has been illustrated by [@kothapalli2011codeq]: the source code's ability to meet the stated and implied requirements for a given software project.
 
 Software measurement is a process that assesses the manifestation of the size, quantity, amount, or dimension of particular attributes of a software product.
@@ -72,16 +68,17 @@ Internal parameters can be classified as follows:
 - Reusability: the ability to reuse a piece of software in creating another program, in the case of minor modifications.
 - Portability: the ability of the system to run on different hardware and software platforms. This parameter is facilitated by modular design.
 - Readability: a software is defined as readable if there is an ease in understanding the reading of the code and its organization and implementation.
-- Modularity: useful to measure how many modules a software is composed of. Modules are portions of source code containing instructions written to be reused multiple times in the same program.
+- Modularity: useful to measure how many modules that compose a software artifact. Modules are portions of source code containing instructions written to be reused multiple times in the same program.
 
 External parameters can be classified as follows [@codecomplete2]:
 
 - Correctness: The degree to which a system is free from faults in its specification, design, and implementation.
-- Usability: The ease with which users can learn and use a system. Efficiency Minimal use of system resources, including memory and execution time.
-- Reliability: The ability of a system to perform its required functions under stated conditions whenever required—having a long mean time between failures.
-- Integrity: The degree to which a system prevents unauthorized or improper access to its programs and its data. The idea of integrity includes restricting unauthorized user accesses as well as ensuring that data is accessed properly—that is, that tables with parallel data are modified in parallel, that date fields contain only valid dates, and so on.
+- Usability: The ease with which users can learn and use a system.
+- Efficiency Minimal use of system resources, including memory and execution time.
+- Reliability: A system's ability to perform its required functions under stated conditions whenever required having a long mean time between failures.
+- Integrity: The degree to which a system prevents unauthorized or improper access to its programs and data. The idea of integrity includes restricting unauthorized user accesses and ensuring that data is accessed properly—that is, that tables with parallel data are modified in parallel, that date fields contain only valid dates, and so on.
 - Adaptability: The extent to which a system can be used, without modification, in applications or environments other than those for which it was specifically designed.
-- Accuracy: The degree to which a system, as built, is free from error, especially with respect to quantitative outputs. Accuracy differs from correctness; it is a determination of how well a system does the job it’s built for rather than whether it was built correctly.
+- Accuracy: The degree to which a system, as built, is free from error, especially with respect to quantitative outputs. Accuracy differs from correctness; it is a determination of how well a system does the job it's built for rather than whether it was built correctly.
 - Robustness: The degree to which a system continues to function in the presence of invalid inputs or stressful environmental conditions.
 
 In this work, the interest is focused on *internal parameters* since the final goal is strictly related to the developers' point of view and not to the users'. 
@@ -93,13 +90,13 @@ The external parameters are strongly related to the internal parameters:
 
 ![Software Parameters](./resources/00_parameters.png)
 
-One of first the factors that can compromise a program comprehension is code readability. When a source code is hard to read, it is not easy to understand its flow and side effects. Poorly written code leads developers to introduce new bugs while trying to fix old bugs or add new features. Readability measures the effort of the developer to access the information contained in the code, while understandability measures the complexity of such information [@readability]. However, code maintainability is the most critical part of software development. Being highly maintainable is the key to reducing approximately 75% of most systems' life cycle costs.
+One of first the factors that can compromise a program comprehension is code readability. When a source code is hard to read, it is not easy to understand its flow and side effects. Poorly written code leads developers to introduce new bugs while fixing old bugs or adding new features. Readability measures the effort of the developer to access the information contained in the code. In contrast, understandability measures the complexity of such information [@readability]. However, code maintainability is the most critical part of software development. Being highly maintainable is the key to reducing approximately 75% of most systems' life cycle costs.
 
 The _IEEE Standard Glossary of Software Engineering Terminology_ defines software maintainability as the ease with which a software system or component can be modified to correct errors, improve performance or other attributes, or adapt to a changing environment.
  
 Furthermore, according to the ISO standard IEC 9126, _software follows the evolution of the organization_, meaning that the program must adapt to all the boundary characteristics present in its development (environment, requirements, functionality).
  
-Also, according to the ISO standard IEC 9126, the maintainability of the code has some attributes that completely allow its description:
+Also, according to the ISO standard IEC 9126, the maintainability of the code has some attributes that allow its description entirely:
 
 - Analysability: ability to perform diagnosis on the software and identify the causes of errors and malfunctions.
 - Changeability: ability to allow the development of changes to the original software. Implementation includes changes to code, design, and documentation. 
@@ -140,14 +137,8 @@ Software Quality is an aspect that has fundamental importance within the SIFIS-H
 
 SIFIS-Home will provide developers with software verification and evaluation tools to assess and communicate the overall quality of source code and produced applications to end-users in a user-friendly way. 
 
-> **TODO** -> pointer on security and privacy metrics
+SIFIS-Home developer must also consider software-based security metrics that aim to detect programming practices that might introduce, either by mistake or maliciously, dangerous behaviors or exploitable vulnerabilities.
 
-Through these mechanisms, the SIFIS-Home project pushes developers to implement applications according to their best security and quality criteria, so building over time a reputation score aimed at winning end-user trust.
+In addition to that, a SIFIS-Home developer needs to evaluate a set of regulations and related measures to analyze privacy implications based on data management strategies.
 
-This document is organized as follows: 
-
-- Section 2 provides detailed information about the software quality assessment techniques and models to evaluate the quality of an IoT software;
-- Section 3 describes security and privacy metrics that can be used for assessing the IoT software developed by third-party developers;
-- Section 4 discusses privacy and security assessment techniques;
-- Section 5 concludes the deliverable and lists the prosecution of this work within the SIFIS-Home project.
-
+Through these mechanisms, the SIFIS-Home project pushes developers to implement applications according to their best security and quality criteria, building over time a reputation score aimed at winning end-user trust.
