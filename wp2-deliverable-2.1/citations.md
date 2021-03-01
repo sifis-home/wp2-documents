@@ -359,26 +359,7 @@ publisher = {Microsoft Press},
 address = {USA},
 abstract = {Take a strategic approach to software construction-and produce superior products-with this fully updated edition of Steve McConnell's critically praised and award-winning guide to software development best practices.}
 }
-
-
-@article{swqualmapping,
-	Author = {Yan, Meng and Xia, Xin and Zhang, Xiaohong and Xu, Ling and Yang, Dan and Li, Shanping},
-	Da = {2019/07/26},
-	Date-Added = {2021-02-16 18:09:22 +0100},
-	Date-Modified = {2021-02-16 18:09:22 +0100},
-	Doi = {10.1007/s11432-018-9608-3},
-	Id = {Yan2019},
-	Isbn = {1869-1919},
-	Journal = {Science China Information Sciences},
-	Number = {9},
-	Pages = {191101},
-	Title = {Software quality assessment model: a systematic mapping study},
-	Ty = {JOUR},
-	Url = {https://doi.org/10.1007/s11432-018-9608-3},
-	Volume = {62},
-	Year = {2019},
-	Bdsk-Url-1 = {https://doi.org/10.1007/s11432-018-9608-3}}
-    
+  
 @inproceedings{mellado10,
 author = {Mellado, Daniel and Fern\'{a}ndez-Medina, Eduardo and Piattini, Mario},
 title = {A Comparison of Software Design Security Metrics},
@@ -507,3 +488,179 @@ address = {Los Alamitos, CA, USA},
 month = {mar}
 }
 
+@article{Kumar,
+author = {Kumar Chhabra, J., Gupta, V.},
+title = {A Survey of Dynamic Software Metrics},
+publisher = {J. Comput. Sci. Technol. 25},
+year = {2010},
+pages = {1016–1029}, 
+doi = {10.1007/s11390-010-9384-3}
+}
+
+@misc{decode,
+author = {Shehar Bano, Eleonora Bassi, Marco Ciurcina, Ana Freire, Sara Hajian, Jaap-Henk Hoepman}, 
+title = {Privacy Design Strategies for the DECODE Architecture},
+year = {2017},
+url = {https://decodeproject.eu/publications/privacy-design-strategies-decode-architecture}
+}
+
+@misc{CNIL_methodology,
+title = {Privacy Impact Assessment (PIA). Methodology},
+publisher = {CNIL}, 
+year = {2018},
+url = {https://www.cnil.fr/sites/default/files/atoms/files/cnil-pia-1-en-methodology.pdf }
+}
+
+
+@misc{CNIL_templates,
+title = {Privacy Impact Assessment (PIA). Templates},
+publisher = {CNIL}, 
+year = {2018},
+url = {https://www.cnil.fr/sites/default/files/atoms/files/cnil-pia-2-en-templates.pdf}
+}
+
+@misc{CNIL_kb,
+title = {Privacy Impact Assessment (PIA). Knowledge bases},
+publisher = {CNIL}, 
+year = {2018},
+url = {https://www.cnil.fr/sites/default/files/atoms/files/cnil-pia-3-en-knowledgebases.pdf}
+}
+
+@misc{CNIL_IoT,
+title = {Privacy Impact Assessment (PIA). Application to IoT devices},
+publisher = {CNIL}, 
+year = {2018},
+url = {https://www.cnil.fr/sites/default/files/atoms/files/cnil-pia-piaf-connectedobjects-en.pdf}
+}
+
+@article{match,
+author = {Papamartzivanos, D.; Menesidou, S.A.; Gouvas, P.; Giannetsos, T.}, 
+title = {A Perfect Match: Converging and Automating Privacy & Security Impact Assessment On-the-Fly},
+publisher = {MDPI}, 
+journal={ Future Internet},
+year = {2021},
+volume = {13},
+number = {30},
+doi = {https://doi.org/10.3390/fi13020030},
+url = {https://www.mdpi.com/1999-5903/13/2/30}
+}
+
+
+@article{mapping,
+	Author = {Yan, Meng and Xia, Xin and Zhang, Xiaohong and Xu, Ling and Yang, Dan and Li, Shanping},
+	Da = {2019/07/26},
+	Date-Added = {2021-03-01 09:31:53 +0100},
+	Date-Modified = {2021-03-01 09:31:53 +0100},
+	Doi = {10.1007/s11432-018-9608-3},
+	Id = {Yan2019},
+	Isbn = {1869-1919},
+	Journal = {Science China Information Sciences},
+	Number = {9},
+	Pages = {191101},
+	Title = {Software quality assessment model: a systematic mapping study},
+	Ty = {JOUR},
+	Url = {https://doi.org/10.1007/s11432-018-9608-3},
+	Volume = {62},
+	Year = {2019},
+	Bdsk-Url-1 = {https://doi.org/10.1007/s11432-018-9608-3}}
+    
+    
+@INPROCEEDINGS{quamoco,
+  author={F. {Deissenboeck} and L. {Heinemann} and M. {Herrmannsdoerfer} and K. {Lochmann} and S. {Wagner}},
+  booktitle={2011 33rd International Conference on Software Engineering (ICSE)}, 
+  title={The quamoco tool chain for quality modeling and assessment}, 
+  year={2011},
+  volume={},
+  number={},
+  pages={1007-1009},
+  doi={10.1145/1985793.1985977}}
+  
+ @INPROCEEDINGS{parveen,
+  author={S. {Parveen} and M. H. {Alalfi}},
+  booktitle={2020 IEEE 27th International Conference on Software Analysis, Evolution and Reengineering (SANER)}, 
+  title={A Mutation Framework for Evaluating Security Analysis Tools in IoT Applications}, 
+  year={2020},
+  volume={},
+  number={},
+  pages={587-591},
+  doi={10.1109/SANER48275.2020.9054853}}
+
+
+@article{kumar,
+	Author = {Kumar, Gaurav and Bhatia, Pradeep Kumar},
+	Da = {2013/09/01},
+	Date-Added = {2021-03-01 09:56:51 +0100},
+	Date-Modified = {2021-03-01 09:56:51 +0100},
+	Doi = {10.1007/s40012-013-0023-3},
+	Id = {Kumar2013},
+	Isbn = {2277-9086},
+	Journal = {CSI Transactions on ICT},
+	Number = {3},
+	Pages = {253--260},
+	Title = {Software testing optimization through test suite reduction using fuzzy clustering},
+	Ty = {JOUR},
+	Url = {https://doi.org/10.1007/s40012-013-0023-3},
+	Volume = {1},
+	Year = {2013},
+	Bdsk-Url-1 = {https://doi.org/10.1007/s40012-013-0023-3}}
+    
+@inproceedings{nguyen2007sloc,
+  title={A SLOC counting standard},
+  author={Nguyen, Vu and Deeds-Rubin, Sophia and Tan, Thomas and Boehm, Barry},
+  booktitle={Cocomo ii forum},
+  volume={2007},
+  pages={1--16},
+  year={2007},
+  organization={Citeseer}
+}
+
+@inproceedings{hariprasad2017software,
+  title={Software complexity analysis using halstead metrics},
+  author={Hariprasad, T and Vidhyagaran, G and Seenu, K and Thirumalai, Chandrasegar},
+  booktitle={2017 International Conference on Trends in Electronics and Informatics (ICEI)},
+  pages={1109--1113},
+  year={2017},
+  organization={IEEE}
+}
+
+@inproceedings{oman1992metrics,
+  title={Metrics for assessing a software system's maintainability},
+  author={Oman, Paul and Hagemeister, Jack},
+  booktitle={Proceedings Conference on Software Maintenance 1992},
+  pages={337--338},
+  year={1992},
+  organization={IEEE Computer Society}
+}
+
+@techreport{bray1997c4,
+  title={C4 Software Technology Reference Guide-A Prototype.},
+  author={Bray, Michael and Brune, Kimberly and Fisher, David A and Foreman, John and Gerken, Mark},
+  year={1997},
+  institution={Carnegie-Mellon Univ Pittsburgh Pa Software Engineering Inst}
+}
+
+@misc{mi-vs,
+    author = "{Microsoft}",
+    title = {{Code Metrics – Maintainability Index}},
+    howpublished = {\url{https://docs.microsoft.com/en-gb/archive/blogs/zainnab/code-metrics-maintainability-index}},
+    note = {Online; accessed 08/12/2020},
+    year = 2011,
+}
+
+@article{welker2001software,
+  title={The software maintainability index revisited},
+  author={Welker, Kurt D},
+  journal={CrossTalk},
+  volume={14},
+  pages={18--21},
+  year={2001},
+  publisher={Citeseer}
+}
+
+@inproceedings{molnar2017discovering,
+  title={Discovering maintainability changes in large software systems},
+  author={Molnar, Arthur and Motogna, Simona},
+  booktitle={Proceedings of the 27th International Workshop on Software Measurement and 12th International Conference on Software Process and Product Measurement},
+  pages={88--93},
+  year={2017}
+}
