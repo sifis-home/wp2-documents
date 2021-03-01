@@ -341,13 +341,13 @@ While this other table contains all the remaining metrics of the Halstead Suite 
 |:-------------------------------------:|:--------:|:-----------------------------------------------:|
 |             Program length            |   $$N$$  |                 $$N = N1 + N2$$                 |
 |           Program vocabulary          | $$\eta$$ |             $$\eta = \eta1 + \eta2$$            |
-|                 Volume                |   $$V$$  |              $$$V = N*log_2(\eta)$$             |
+|                 Volume                |   $$V$$  |              $$V = N*log_2(\eta)$$             |
 |               Difficulty              |   $$D$$  |            $$D = \eta1/2 * N2/\eta2$$           |
 |             Program Level             |   $$L$$  |                   $$L = 1/D$$                   |
 |                 Effort                |   $$E$$  |                   $$E = D*V$$                   |
 |        Estimated Program Length       |   $$H$$  | $$H = \eta1*log_2(\eta1) + \eta2*log_2(\eta2)$$ |
 | Time required to program (in seconds) |   $$T$$  |                   $$T = E/18$$                  |
-|        Number of delivered bugs       |   $$B$$  |              $$ B = E^{2/3}/3000$$              |
+|        Number of delivered bugs       |   $$B$$  |              $$B = E^{2/3}/3000$$              |
 |              Purity Ratio             |  $$PR$$  |                   $$PR = H/N$$                  |
 
 <br>
