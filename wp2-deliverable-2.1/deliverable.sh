@@ -12,7 +12,7 @@ OUTPUT_DIR=../output/$OUTPUT_FILENAME
 
 # Function to run pandoc command
 function run-pandoc () {
-    pandoc -F pandoc-crossref -F pandoc-citeproc --standalone \
+    pandoc -F pandoc-crossref --citeproc --standalone \
            --csl transactions-on-computational-logic.csl \
            --bibliography $CITATIONS_FILENAME.bib \
            -o $OUTPUT_DIR/$OUTPUT_FILENAME.$1 \

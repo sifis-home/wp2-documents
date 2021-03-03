@@ -8,7 +8,7 @@ on:
 jobs:
   deploy:
 
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
 
     steps:
       - name: Checkout the repository
@@ -24,19 +24,24 @@ jobs:
         run: sudo apt-get install texlive-latex-extra
 
       - name: Install pandoc
-        run: sudo apt-get install pandoc
+        env:
+          LINK: https://github.com/jgm/pandoc/releases/download
+          PANDOC_VERSION: 2.11.4
+          BINARY_FILE: pandoc-2.11.4-1-amd64.deb
+        run: |
+          curl -LO "$LINK/$PANDOC_VERSION/$BINARY_FILE"
+          sudo dpkg -i $BINARY_FILE
 
       - name: Install pandoc-crossref
         env:
           LINK: https://github.com/lierdakil/pandoc-crossref/releases/download
-          PANDOC_CROSSREF_VERSION: 0.3.6.4
-          BINARY_FILE: pandoc-crossref-Linux-2.9.2.1.tar.xz
+          PANDOC_CROSSREF_VERSION: 0.3.9.1
+          BINARY_FILE: pandoc-crossref-Linux.tar.xz
         run: |
-          curl -L "$LINK/v$PANDOC_CROSSREF_VERSION/$BINARY_FILE" |
-          tar xz -C /usr/local/bin
-
-      - name: Install pandoc-citeproc
-        run: sudo apt-get install pandoc-citeproc
+          mkdir -p $HOME/.local/bin
+          curl -LO "$LINK/v$PANDOC_CROSSREF_VERSION/$BINARY_FILE"
+          tar -xf $BINARY_FILE -C $HOME/.local/bin
+          echo "$HOME/.local/bin" >> $GITHUB_PATH
 
       - name: Install Python 3.9
         uses: actions/setup-python@v2
