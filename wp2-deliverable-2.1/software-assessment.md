@@ -325,12 +325,14 @@ The Halstead Suite, a set of quantitative complexity measures originally defined
 
 The details about the computation of all operands and operators are described in the table below:
 
-|   Symbol  |                Description               |
+|  Symbol   |               Description                |
 |:---------:|:----------------------------------------:|
 | $$\eta1$$ |       Number of distinct operators       |
-| $$\eta2$$ |        Number of distinct operands       |
-|   $$N1$$  | Total number of occurrences of operators |
-|   $$N2$$  |  Total number of occurrences of operands |
+| $$\eta2$$ |       Number of distinct operands        |
+|  $$N1$$   | Total number of occurrences of operators |
+|  $$N2$$   | Total number of occurrences of operands  |
+
+Table: Halstead operators and operands {#tbl:halstead_ops}
 
 <br>
 
@@ -339,16 +341,18 @@ While this other table contains all the remaining metrics of the Halstead Suite 
 
 |                Measure                |  Symbol  |                     Formula                     |
 |:-------------------------------------:|:--------:|:-----------------------------------------------:|
-|             Program length            |   $$N$$  |                 $$N = N1 + N2$$                 |
-|           Program vocabulary          | $$\eta$$ |             $$\eta = \eta1 + \eta2$$            |
-|                 Volume                |   $$V$$  |              $$V = N*log_2(\eta)$$             |
-|               Difficulty              |   $$D$$  |            $$D = \eta1/2 * N2/\eta2$$           |
-|             Program Level             |   $$L$$  |                   $$L = 1/D$$                   |
-|                 Effort                |   $$E$$  |                   $$E = D*V$$                   |
-|        Estimated Program Length       |   $$H$$  | $$H = \eta1*log_2(\eta1) + \eta2*log_2(\eta2)$$ |
-| Time required to program (in seconds) |   $$T$$  |                   $$T = E/18$$                  |
-|        Number of delivered bugs       |   $$B$$  |              $$B = E^{2/3}/3000$$              |
-|              Purity Ratio             |  $$PR$$  |                   $$PR = H/N$$                  |
+|            Program length             |  $$N$$   |                 $$N = N1 + N2$$                 |
+|          Program vocabulary           | $$\eta$$ |            $$\eta = \eta1 + \eta2$$             |
+|                Volume                 |  $$V$$   |              $$V = N*log_2(\eta)$$              |
+|              Difficulty               |  $$D$$   |           $$D = \eta1/2 * N2/\eta2$$            |
+|             Program Level             |  $$L$$   |                   $$L = 1/D$$                   |
+|                Effort                 |  $$E$$   |                   $$E = D*V$$                   |
+|       Estimated Program Length        |  $$H$$   | $$H = \eta1*log_2(\eta1) + \eta2*log_2(\eta2)$$ |
+| Time required to program (in seconds) |  $$T$$   |                  $$T = E/18$$                   |
+|       Number of delivered bugs        |  $$B$$   |              $$B = E^{2/3}/3000$$               |
+|             Purity Ratio              |  $$PR$$  |                  $$PR = H/N$$                   |
+
+Table: Halstead formulas {#tbl:halstead_formulas}
 
 <br>
 
@@ -365,21 +369,25 @@ Instead, the last formula resettles the MI value in the 0-100 range, without con
 
 The respective formulas are reported in the table below. 
 
-|   Variant  |                                                Formula                                               |
+|  Variant   |                                               Formula                                                |
 |:----------:|:----------------------------------------------------------------------------------------------------:|
-| *Original* |                         $$171.0 - 5.2 * ln(V) - 0.23 * CC - 16.2 * ln(SLOC)$$                        |
-|    *SEI*   | $$171.0 - 5.2 * log_2(V) - 0.23 * CC - 16.2 * log_2(SLOC) + 50.0 * sin(\sqrt{2.4 * (CLOC / SLOC)})$$ |
-|    *VS*    |                $$\max(0,(171 - 5.2 * ln(V) - 0.23 * CC - 16.2 * ln(SLOC))*100 / 171)$$               |
+| *Original* |                        $$171.0 - 5.2 * ln(V) - 0.23 * CC - 16.2 * ln(SLOC)$$                         |
+|   *SEI*    | $$171.0 - 5.2 * log_2(V) - 0.23 * CC - 16.2 * log_2(SLOC) + 50.0 * sin(\sqrt{2.4 * (CLOC / SLOC)})$$ |
+|    *VS*    |               $$\max(0,(171 - 5.2 * ln(V) - 0.23 * CC - 16.2 * ln(SLOC))*100 / 171)$$                |
+
+Table: MI formulas {#tbl:MI_formulas}
 
 <br>
 
 The measured MI interpretation varies according to the adopted formula to compute it, below the ranges for each of them. 
 
-|   Variant  | Low Maintainability | Medium Maintainability | High Maintainability |
+|  Variant   | Low Maintainability | Medium Maintainability | High Maintainability |
 |:----------:|:-------------------:|:----------------------:|:--------------------:|
-| *Original* |     $$MI < 65$$     |    $$65 < MI < 85$$    |      $$MI > 85$$     |
-|    *SEI*   |     $$MI < 65$$     |    $$65 < MI < 85$$    |      $$MI > 85$$     |
-|    *VS*    |     $$MI < 10$$     |    $$10 < MI < 20$$    |      $$MI > 20$$     |
+| *Original* |     $$MI < 65$$     |    $$65 < MI < 85$$    |     $$MI > 85$$      |
+|   *SEI*    |     $$MI < 65$$     |    $$65 < MI < 85$$    |     $$MI > 85$$      |
+|    *VS*    |     $$MI < 10$$     |    $$10 < MI < 20$$    |     $$MI > 20$$      |
+
+Table: MI interpretations {#tbl:MI_interpretations}
 
 <br>
 
