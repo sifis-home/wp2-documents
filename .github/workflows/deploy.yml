@@ -26,6 +26,15 @@ jobs:
       - name: Install pandoc
         run: sudo apt-get install pandoc
 
+      - name: Install pandoc-crossref
+        env:
+          LINK: https://github.com/lierdakil/pandoc-crossref/releases/download
+          PANDOC_CROSSREF_VERSION: 0.3.6.4
+          BINARY_FILE: pandoc-crossref-Linux-2.9.2.1.tar.xz
+        run: |
+          curl -L "$LINK/v$PANDOC_CROSSREF_VERSION/$BINARY_FILE" |
+          tar xz -C /usr/local/bin
+
       - name: Install pandoc-citeproc
         run: sudo apt-get install pandoc-citeproc
 
