@@ -29,12 +29,13 @@ def main() -> None:
 
     # Iterate over each paragraph
     for paragraph in paragraphs:
-        # Check whether a paragraph is a title, author name/s, date, and
+        # Check whether a paragraph is a title, author name/s, date, figure, and
         # image or table caption
         if paragraph.style.name in [
             "Title",
             "Author",
             "Date",
+            "Captioned Figure",
             "Table Caption",
             "Image Caption",
         ]:
