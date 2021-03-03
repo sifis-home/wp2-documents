@@ -32,8 +32,8 @@ jobs:
           PANDOC_CROSSREF_VERSION: 0.3.6.4
           BINARY_FILE: pandoc-crossref-Linux-2.9.2.1.tar.xz
         run: |
-          curl -L "$LINK/v$PANDOC_CROSSREF_VERSION/$BINARY_FILE" |
-          tar xz -C /usr/local/bin
+          curl -LO "$LINK/v$PANDOC_CROSSREF_VERSION/$BINARY_FILE"
+          tar -xf $BINARY_FILE -C $HOME
 
       - name: Install pandoc-citeproc
         run: sudo apt-get install pandoc-citeproc
