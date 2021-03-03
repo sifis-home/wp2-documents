@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 
 """docx-indent
-This script indents docx paragraphs according to a determined alignment style
+This script indents docx paragraphs and tables according to a determined
+alignment style
 
 Usage:
 
@@ -11,6 +12,7 @@ Usage:
 import sys
 
 from docx import Document
+from docx.enum.table import WD_TABLE_ALIGNMENT
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 from docx.oxml import OxmlElement
 from docx.oxml.ns import qn
@@ -34,6 +36,8 @@ def main() -> None:
 
     # Iterate over each table
     for table in document.tables:
+        # Center-align a table
+        table.alignment = WD_TABLE_ALIGNMENT.CENTER
         # Allow autofit
         table.allow_autofit = True
         # Autofit the table
