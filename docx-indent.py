@@ -29,8 +29,8 @@ def main() -> None:
 
     # Iterate over each paragraph
     for paragraph in paragraphs:
-        # Check whether a paragraph is the caption of a table
-        if paragraph.style.name == "Table Caption":
+        # Check whether a paragraph is a image or table caption
+        if paragraph.style.name in ["Table Caption", "Image Caption"]:
             # Center the caption
             paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
         else:
