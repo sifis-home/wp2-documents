@@ -29,10 +29,13 @@ def main() -> None:
 
     # Iterate over each paragraph
     for paragraph in paragraphs:
-        # Get the format of a paragraph
-        paragraph_format = paragraph.paragraph_format
-        # Justify the paragraph
-        paragraph.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+        # Check whether a paragraph is the caption of a table
+        if paragraph.style.name == "Table Caption":
+            # Center the caption
+            paragraph.alignment = WD_ALIGN_PARAGRAPH.CENTER
+        else:
+            # Fully justify the paragraph
+            paragraph.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
 
     # Iterate over each table
     for table in document.tables:
