@@ -58,7 +58,7 @@ The external parameters are strongly related to the internal parameters:
 - Correctness, Reliability, Accuracy, Integrity and Robustness are correlated to Testability, Maintainability and Readability.
 - Adaptability and Usability are correlated to Modularity and Portability.
 
-![Software Parameters](./resources/00_parameters.png)
+![Software Parameters](./resources/00_parameters.png){#fig:software_params}
 
 One of first the factors that can compromise a program comprehension is code readability. When a source code is hard to read, it is not easy to understand its flow and side effects. Poorly written code leads developers to introduce new bugs while fixing old bugs or adding new features. Readability measures the effort of the developer to access the information contained in the code. In contrast, understandability measures the complexity of such information [@readability]. However, code maintainability is the most critical part of software development. Being highly maintainable is the key to reducing approximately 75% of most systems' life cycle costs.
 
