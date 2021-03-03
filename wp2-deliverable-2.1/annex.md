@@ -5,6 +5,8 @@ title: annex
 
 # Annex A: Glossary
 
+<br>
+
 | Acronym |                                        Definition                                        |
 |:-------:|:----------------------------------------------------------------------------------------:|
 |  CMSS   |                               Common Misuse Scoring System                               |
@@ -23,3 +25,5 @@ title: annex
 |   UT    |                                       Unit Testing                                       |
 |   VM    |                                     Virtual Machine                                      |
 |   VS    |                                      Visual Studio                                       |
+
+<br><br>
