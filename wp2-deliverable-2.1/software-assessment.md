@@ -134,14 +134,16 @@ Furthermore, a dynamic analysis provides more precise measures of the internal a
 Below we present a simple comparative comparison table to illustrate the differences between the metrics produced by a static and a dynamic analysis [@Kumar].
 
 
-| Static Metrics                                                                                                        | Dynamic Metrics                                                                     |
-|-----------------------------------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------|
-| Simpler to collect                                                                                                    | Difficult to obtain                                                                 |
-| Available at the early stages of software development                                                                 | Accessible very late in software development lifecycle                              |
-| Less accurate than dynamic metrics in measuring qualitative attributes of software                                    | Suitable for measuring quantitative as well as qualitative attributes of software |
-| Deal with the structural aspects of the software system                                                               | Deal with the behavioral aspects of the system also                                 |
-| Inefficient to deal with object-oriented features such as inheritance, polymorphism, and dynamic binding | Dynamic metrics are capable of dealing with all object-oriented features |
-| Less precise than dynamic metrics for the real-life systems                                                           | More precise than static metrics for the real-life systems                          |
+| Static Metrics                                                                                           | Dynamic Metrics                                                                   |
+| -------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
+| Simpler to collect                                                                                       | Difficult to obtain                                                               |
+| Available at the early stages of software development                                                    | Accessible very late in software development lifecycle                            |
+| Less accurate than dynamic metrics in measuring qualitative attributes of software                       | Suitable for measuring quantitative as well as qualitative attributes of software |
+| Deal with the structural aspects of the software system                                                  | Deal with the behavioral aspects of the system also                               |
+| Inefficient to deal with object-oriented features such as inheritance, polymorphism, and dynamic binding | Dynamic metrics are capable of dealing with all object-oriented features          |
+| Less precise than dynamic metrics for the real-life systems                                              | More precise than static metrics for the real-life systems                        |
+
+Table: Static and dynamic metrics comparison {#tbl:static_dynamic_metrics_comparison}
 
 Below we present a series of tools that can be used to obtain some dynamic metrics about software.
 
