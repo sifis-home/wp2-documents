@@ -31,6 +31,8 @@ Software measurement is a process that assesses the manifestation of the size, q
 
 In the literature, parameters have been established against which software quality can be measured or defined. These are divided into two broad categories: _external_ parameters, which refer to how end-users perceive the program, and _internal_ parameters, which refer to how developers perceive software quality.
 
+![Software Parameters](./resources/00_parameters.png){#fig:software_params}
+
 Internal parameters can be classified as follows:
 
 - Testability: a software is defined as testable if its correctness and reliability properties are easily verifiable, i.e., if it effortlessly reveals its failures. 
@@ -57,8 +59,6 @@ The external parameters are strongly related to the internal parameters:
 
 - Correctness, Reliability, Accuracy, Integrity and Robustness are correlated to Testability, Maintainability and Readability.
 - Adaptability and Usability are correlated to Modularity and Portability.
-
-![Software Parameters](./resources/00_parameters.png){#fig:software_params}
 
 One of first the factors that can compromise a program comprehension is code readability. When a source code is hard to read, it is not easy to understand its flow and side effects. Poorly written code leads developers to introduce new bugs while fixing old bugs or adding new features. Readability measures the effort of the developer to access the information contained in the code. In contrast, understandability measures the complexity of such information [@readability]. However, code maintainability is the most critical part of software development. Being highly maintainable is the key to reducing approximately 75% of most systems' life cycle costs.
 
