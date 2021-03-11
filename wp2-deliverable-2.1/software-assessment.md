@@ -21,19 +21,19 @@ Most of the _non-functional_ requirements can be evaluated by automatic means. T
 
 A good deal of _functional_ requirements cannot be automatically assessed and require dedicated professional insights to be confirmed. The approach of declaring capabilities and another form of software contract allows some automatic assessment of the intended behavior.
 
-The wp2.x focus is on providing tools to automate the software assessment to minimize the effort to maximize the software quality.
+The focus of the project WP2 is providing tools to automate the software assessment in order to minimize the effort of maximizing the software quality.
 
-We will better describe a series of tools adopted in this project in *deliverable 2.2*.
+We will better describe a series of tools adopted in this project in *deliverable D2.3 and D2.5*.
 
 ## Functional requirements
 
-Even if assessing functional requirements is generally a manual process that often requires domain expertise, there are few automation chances. 
+Even if assessing functional requirements is generally a manual process that often requires domain expertise, there are few opportunities for automation.
 
 ### Documentation
 
 It is not generally possible to ensure that the user documentation is in sync with the software itself without having developers and Quality Assurance experts cross-checking manually.
 
-The developer documentation, though, can have a partial automatic assessment. While human intervention is needed to make sure the documentation is in sync, it is easy to detect where the documentation is missing completely and make so that new code with no documentation is not accepted.
+The developer documentation, though, can have a partial automatic assessment. While human intervention is needed to confirm that the documentation is in sync, it is easy to detect where the documentation is missing completely and make so that new code with no documentation is not accepted.
 
 ### Behavior
 
@@ -92,7 +92,7 @@ Many industries have identified the use of static code analysis as a means of im
 
 Automatic tools usually perform this analysis, and the produced results are then supervised through human intervention since the analysis may find false positives.
 
-The semantics of a language strongly influences program analysis. The strength of the analysis may well depend on subtle features of the language, so it fundamental to define a programming language in the most accurate way [@Wichmann]. Indeed, dynamic languages are more challenging to analyze than languages that include, for example, strong typing and range constraints. Hence, the nature of the input language needs to be taken into account in the static analysis specification to be undertaken.
+The semantics of a language strongly influences program analysis. The strength of the analysis may well depend on subtle features of the language, so it is fundamental to define a programming language in the most accurate way [@Wichmann]. Indeed, dynamic languages are more challenging to analyze than languages that include, for example, strong typing and range constraints. Hence, the nature of the input language needs to be taken into account in the static analysis specification to be undertaken.
 
 The information obtained from the analysis of a code can be used just to highlight errors or define formal methods to mathematically prove whether the behavior of a code matches its specification.
 
@@ -136,7 +136,7 @@ Differently, from a static analysis that is more focused on a software system's 
 
 Furthermore, a dynamic analysis provides more precise measures of the internal attributes of software, such as coupling, complexity, etc., based on the data collected during actual execution of the system, which have direct impact on quality factors of a software such as reliability, testability, maintainability, performance, and error-rates.
 
-Below we present a simple comparative comparison table to illustrate the differences between the metrics produced by a static and a dynamic analysis [@Kumar].
+Below we present a simple comparison table to illustrate the differences between the metrics produced by static and dynamic analysis [@Kumar].
 
 
 | Static Metrics                                                                                           | Dynamic Metrics                                                                   |
@@ -217,7 +217,7 @@ _*Code Clarity* is clearness or lucidity as to perception or understanding of a 
 
 The main goal consists of maximizing the amount of understanding conveyed in how a code is written, which needs to be easy to read, understand, and modify. Achieving clarity is about so much more than proper indentation. It requires code to be organized well, with careful planning and proper separation.
 
-This concept impacts *code maintainability* also. Indeed, a poorly written code can mean months of development later, while a written code can also mean merely minutes or hours of maintenance in the future.
+This concept impacts *code maintainability* also. Indeed, poorly written code can mean months of development later, while well written code can mean merely minutes or hours of maintenance in the future.
 
 Code clarity can be evaluated through different standards and measures. 
 As standards, we can consider the rules related to naming conventions and those that attempt to regulate the use of white spaces, so where comments, spaces, and braces *should* be put within a code. 
