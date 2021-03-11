@@ -35,7 +35,7 @@ It is not generally possible to ensure that the user documentation is in sync wi
 
 The developer documentation, though, can have a partial automatic assessment. While human intervention is needed to make sure the documentation is in sync, it is easy to detect where the documentation is missing completely and make so that new code with no documentation is not accepted.
 
-### behavior
+### Behavior
 
 #### Testing
 Unit and integration testing are a widespread alternative to the more formal and cumbersome design by contract. Both allow some automatic verification of the software behavior.
@@ -61,14 +61,19 @@ Maintainability is also a crucial factor in the economic success of software pro
 
 The aspects of maintainability we focus on are the following:
 
-- defect detection through code analysis.
-- testing coverage measurement and maximization through profiling.
-- understandability assessment through objective metrics
+Code analysis
+: defect detection through static and dynamic code analysis.
+
+Code coverage
+: test coverage measurement and maximization through profiling.
+
+Code understandability
+: assessed through objective metrics
 
 The three aspects are complementary to each other:
 
-- maximizing the test coverage improves the results of the dynamic code analysis
-- the understandability objective metrics computation is few orders of magnitude simpler than static code analysis. Running the latter in the subset of the codebase deemed hard to understand by the former can provide interesting results in a fraction of the time.
+- maximizing the *test coverage* improves the results of the dynamic *code analysis*
+- the computation of most of the *understandability objective metrics* is few orders of magnitude simpler than most of the **static code analysis** algorithms used to detect defects. Running the latter in the subset of the codebase deemed hard to understand by the former can provide useful results in a fraction of the time required to run the analysis over the full codebase corpus.
 
 
 ### Static code analysis
@@ -125,7 +130,7 @@ It may be challenging to have them adopted and extended for specific needs.
 
 ### Dynamic code analysis
 
-A *Dynamic* code analysis evaluates the code. In contrast, it is being executed, either by using specifically instrumented builds or by running unmodified code through special runtimes parameters.
+A *Dynamic* code analysis evaluates the code. In contrast, it is being executed, either by using specifically instrumented builds or by running unmodified code through special runtimes.
 
 Differently, from a static analysis that is more focused on a software system's structural aspects, a dynamic analysis is more interested in detecting the behavioral aspects of a system.
 
@@ -148,7 +153,7 @@ Table: Static and dynamic metrics comparison {#tbl:static_dynamic_metrics_compar
 Below we present a series of tools that can be used to obtain some dynamic metrics about software.
 
 [Valgrind](https://www.valgrind.org/)
-: It allows running unmodified binaries. It dynamically recompiles the binary as it runs on a simulation of the host CPU. The process tends to be slower than the instrumentation approach. It requires platform-specific support, making it supporting new processors and operating systems more involving.
+: It allows running unmodified binaries. It dynamically recompiles the binary as it runs on a simulation of the host CPU. The process tends to be slower than executing a custom binary with the instrumentation logic built-in. It requires platform-specific support, making it supporting new processors and operating systems more involving.
 
 [DynamoRIO](https://github.com/DynamoRIO/dynamorio)
 : It uses an approach similar to Valgrind, but it focuses on providing building blocks instead of a toolkit of ready-to-use tools.
@@ -159,7 +164,7 @@ They offer better execution speed, and their integration with debuggers such as 
 
 [miri](https://github.com/rust-lang/miri/)
 : Miri is a specific tool to instrument and analyze the middle-level intermediate language currently used by Rust.
-It instruments the code and runs it on a generic platform abstraction. 
+It instruments the code and runs it on a generic platform abstraction.
 
 
 ### Code Coverage
