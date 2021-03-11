@@ -26,8 +26,8 @@ jobs:
       - name: Install pandoc
         env:
           LINK: https://github.com/jgm/pandoc/releases/download
-          PANDOC_VERSION: 2.11.4
-          BINARY_FILE: pandoc-2.11.4-1-amd64.deb
+          PANDOC_VERSION: 2.12
+          BINARY_FILE: pandoc-2.21-1-amd64.deb
         run: |
           curl -LO "$LINK/$PANDOC_VERSION/$BINARY_FILE"
           sudo dpkg -i $BINARY_FILE
