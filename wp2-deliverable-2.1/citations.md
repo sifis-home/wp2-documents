@@ -664,3 +664,10 @@ url = {https://www.mdpi.com/1999-5903/13/2/30}
   pages={88--93},
   year={2017}
 }
+
+@article{campbell,
+  title={Cognitive Complexity. A new way of measuring understandability},
+  author={Campbell G. A},
+  year={2018},
+  institution={SonarSource SA}
+}
