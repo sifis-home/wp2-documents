@@ -647,7 +647,7 @@ url = {https://www.mdpi.com/1999-5903/13/2/30}
     year = 2011,
 }
 
-@article{welker2001software,
+@article{mt75perc,
   title={The software maintainability index revisited},
   author={Welker, Kurt D},
   journal={CrossTalk},
@@ -671,3 +671,13 @@ url = {https://www.mdpi.com/1999-5903/13/2/30}
   year={2018},
   institution={SonarSource SA}
 }
+
+@INPROCEEDINGS{7965364,
+  author={C. {Chen} and R. {Alfayez} and K. {Srisopha} and B. {Boehm} and L. {Shi}},
+  booktitle={2017 IEEE/ACM 39th International Conference on Software Engineering Companion (ICSE-C)}, 
+  title={Why Is It Important to Measure Maintainability and What Are the Best Ways to Do It?}, 
+  year={2017},
+  volume={},
+  number={},
+  pages={377-378},
+  doi={10.1109/ICSE-C.2017.75}}
