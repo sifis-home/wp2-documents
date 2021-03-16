@@ -16,9 +16,9 @@ headers-include: |
 # Executive Summary
 This document reports the theoretical and practical aspects of measuring the quality and security of source code produced in the SIFIS-Home project or by third-party developers developing apps expected to run on the SIFIS-Home framework. 
 
-The document is intended to provide a baseline for the definition of secure coding guidelines, which will be reported in D2.3. We will review here the main techniques and formalisms to evaluate the quality and reliability for general software, discussing how these measures are relevant for applications developed for the SIFIS-Home framework, presenting at first general quality metrics and then focusing on security and privacy-related indexes, as they are defined in the literature.
+The document is intended to provide a baseline for the definition of secure coding guidelines, which will be reported in D2.2 and D2.4. We will review here the main techniques and formalisms to evaluate the quality and reliability for general software, discussing how these measures are relevant for applications developed for the SIFIS-Home framework, presenting at first general quality metrics and then focusing on security and privacy-related indexes, as they are defined in the literature.
 
-A subset of these metrics will also be used for the mechanisms to evaluate the quality and security of SIFIS-Home applications provided by third-party developers through the tools defined in D2.4.
+A subset of these metrics will also be used by the mechanisms to evaluate the quality and security of SIFIS-Home applications provided by third-party developers through the tools for evaluating the software defined in D2.3 and D2.5.
 
 
 # Introduction
@@ -36,7 +36,11 @@ In the literature, parameters have been established against which software quali
 Internal parameters can be classified as follows:
 
 - Testability: a software is defined as testable if its correctness and reliability properties are easily verifiable, i.e., if it effortlessly reveals its failures. 
-- Maintainability: the ability of a program to be modified. These modifications include corrections or adaptations of the system to changes in requirements, environments, and specifications. It includes the properties of Repairability: ease of eliminating defects and _Evolvability_, ease of modifying the program to adapt it to a new environment or improve its quality.
+- Maintainability: the ability of a program to be modified. These modifications include corrections or adaptations of the system to changes in requirements, environments, and specifications. It includes the properties of: 
+
+    * Repairability: ease of eliminating defects and 
+    * _Evolvability_, ease of modifying the program to adapt it to a new environment or improve its quality.
+    
 - Reusability: the ability to reuse a piece of software in creating another program, in the case of minor modifications.
 - Portability: the ability of the system to run on different hardware and software platforms. This parameter is facilitated by modular design.
 - Readability: a software is defined as readable if there is an ease in understanding the reading of the code and its organization and implementation.
@@ -60,7 +64,7 @@ The external parameters are strongly related to the internal parameters:
 - Correctness, Reliability, Accuracy, Integrity and Robustness are correlated to Testability, Maintainability and Readability.
 - Adaptability and Usability are correlated to Modularity and Portability.
 
-One of first the factors that can compromise a program comprehension is code readability. When a source code is hard to read, it is not easy to understand its flow and side effects. Poorly written code leads developers to introduce new bugs while fixing old bugs or adding new features. Readability measures the effort of the developer to access the information contained in the code. In contrast, understandability measures the complexity of such information [@readability]. However, code maintainability is the most critical part of software development. Being highly maintainable is the key to reducing approximately 75% of most systems' life cycle costs.
+One of first the factors that can compromise a program comprehension is code readability. When a source code is hard to read, it is not easy to understand its flow and side effects. Poorly written code leads developers to introduce new bugs when fixing old bugs or adding new features. Readability measures the effort of the developer to access the information contained in the code. In contrast, understandability measures the complexity of such information [@readability]. However, code maintainability is the most critical part of software development. Being highly maintainable is the key to reducing approximately 75% of most systems' life cycle costs [@mt75perc].
 
 The _IEEE Standard Glossary of Software Engineering Terminology_ defines software maintainability as the ease with which a software system or component can be modified to correct errors, improve performance or other attributes, or adapt to a changing environment.
  
@@ -75,22 +79,10 @@ Also, according to the ISO standard IEC 9126, the maintainability of the code ha
 - Maintainability compliance: ability to adhere to standards and conventions related to maintainability.
 
 
-Software Engineering has dealt extensively with finding applicable models to be able to measure the maintainability of software source code. The purpose of these models is to make this measurement based on changes in the code in different versions of the program to improve the quality of the program.
+Software Engineering has dealt extensively with finding applicable models to measure the maintainability of software source code during its lifecycle. Through these models, it is possible to measure the source code's maintainability after any change to the code, checking whether the maintainability improves or worsens.
 
 Over the years, it has been shown that measuring and improving code maintainability is very useful for managing _technical debt_; a definition used to describe all the complications that arise during the development of a software project [@cunningham1992tech]. Besides, another more recent study has shown that analysis and measurement of source code maintainability are still the main methods used for
 the management of _technical debt_ [@ernst2015measure]. 
-
-There are many valid models in the literature for measuring source code maintainability:
-
-- The authors of [@aggarwall2002measure] proposed a model based on three main characteristics: code readability (RSC), documentation quality (DOQ), and software understandability (UOS). The measures that are computed are transformed into _fuzzy_ values, which will be processed and retransformed by domain experts.
-- [@antonellis2007measure] started from the characteristics of the ISO/IEC 9126 standard to propose a model for mapping _object-oriented_ metrics in order to evaluate and measure the maintainability of a software system. This method has been applied to an OSS-type software, demonstrating the possibility to measure code maintainability through a systematic process.
-- SIG Maintainability Model (SIG-MM): this model involves linking system-level maintainability characteristics with code-level measures in two steps. In the first pass, system-level characteristics are mapped to source code-level properties. In the second, one or more source code measures are determined for each property [@heitlager2007sigmm].
-- A probabilistic approach was adopted by [@bakota2011prob] for high-level computing features by integrating expert knowledge while addressing ambiguity. The value of code maintainability is viewed as a probability distribution.
-- SQUALE: this method is based on _Indices_, representing costs for evaluating various aspects of source code quality. There are two different models in the method: the _Quality Model_ used to formulate and organize the non-functional requirements related to code quality, and the _Analysis Model_ which contains both the rules that are used to normalize the measures and violations related to the code and the rules for aggregating the normalized values [@letouzey2012sqale].
-- QUAMOCO: This approach involves the development of a meta-model for software quality that starts from structuring quality-related concepts to defining the operational methods for assessing its fulfillment in a specific environment. Also, an evaluation method is provided to integrate with the previous meta-model. This approach is used for integrating the abstract quality definitions provided in the quality taxonomies with concrete software quality assessment and measurement techniques [@wagner2012quamoco].
-- [@bauer2012framework] proposed an alternative approach to the others analyzed so far, which involves using a framework that fits the needs of incremental quality and maintainability checks on the source code. This allows the incremental and distributed computation of quality metrics useful for software quality assessment and measurement, including both local and global metrics in the calculations.
-- Delta Maintainability Model (DMM): this model measures the maintainability of a code change as a ratio of low-risk code to overall modified code. It also identifies source code risk factors by reusing software metrics and risk profiles from the SIG-MM, applying new aggregation and scoring for software delta metrics at the level of fine-grained code changes, such as commits or pull requests, instead of aggregating at the system level [@dibiase2019dmm].
-
 
 Software quality management is becoming a topic of absolute necessity as systems over the years are evolving in complexity and size. Using effective programs or tools to maintain them is critical for developers during the software lifecycle.
 
@@ -104,6 +96,8 @@ There are several types of tools in the literature that can be used to improve s
 - Coverage Tools: highlight which test cases cover parts of the code run to ensure test quality.
 
 Software Quality is an aspect that has fundamental importance within the SIFIS-Home project together with Security and Privacy. 
+
+The purpose of this document is providing the theoretical and practical aspects of measuring the quality and security of source code produced in the SIFIS-Home project or by third-party developers developing apps expected to run on the SIFIS-Home framework.
 
 SIFIS-Home will provide developers with software verification and evaluation tools to assess and communicate the overall quality of source code and produced applications to end-users in a user-friendly way. 
 
