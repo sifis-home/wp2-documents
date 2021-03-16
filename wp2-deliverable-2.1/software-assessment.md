@@ -19,7 +19,7 @@ With _non-functional requirements_ we consider the primary attributes common in 
 
 Most of the _non-functional_ requirements can be evaluated by automatic means. Tools can be used to produce reports and metrics with little to no human interaction.
 
-A good deal of _functional_ requirements cannot be automatically assessed and require dedicated professional insights to be confirmed. The approach of declaring capabilities and another form of software contract allows some automatic assessment of the intended behavior.
+A good deal of _functional_ requirements cannot be automatically assessed and requires dedicated professional insights to be confirmed. The approach of declaring capabilities and another form of software contract allows some automatic assessment of the intended behavior.
 
 The focus of the project WP2 is providing tools to automate the software assessment in order to minimize the effort of maximizing the software quality.
 
@@ -75,6 +75,16 @@ The three aspects are complementary to each other:
 - maximizing the *test coverage* improves the results of the dynamic *code analysis*
 - the computation of most of the *understandability objective metrics* is few orders of magnitude simpler than most of the **static code analysis** algorithms used to detect defects. Running the latter in the subset of the codebase deemed hard to understand by the former can provide useful results in a fraction of the time required to run the analysis over the full codebase corpus.
 
+There are many valid models in the literature for measuring source code maintainability:
+
+- The authors of [@aggarwall2002measure] proposed a model based on three main characteristics: code readability (RSC), documentation quality (DOQ), and software understandability (UOS). The measures that are computed are transformed into _fuzzy_ values, which will be processed and retransformed by domain experts.
+- [@antonellis2007measure] started from the characteristics of the ISO/IEC 9126 standard to propose a model for mapping _object-oriented_ metrics in order to evaluate and measure the maintainability of a software system. This method has been applied to an OSS-type software, demonstrating the possibility to measure code maintainability through a systematic process.
+- SIG Maintainability Model (SIG-MM): this model involves linking system-level maintainability characteristics with code-level measures in two steps. In the first pass, system-level characteristics are mapped to source code-level properties. In the second, one or more source code measures are determined for each property [@heitlager2007sigmm].
+- A probabilistic approach was adopted by [@bakota2011prob] for high-level computing features by integrating expert knowledge while addressing ambiguity. The value of code maintainability is viewed as a probability distribution.
+- SQUALE: this method is based on _Indices_, representing costs for evaluating various aspects of source code quality. There are two different models in the method: the _Quality Model_ used to formulate and organize the non-functional requirements related to code quality, and the _Analysis Model_ which contains both the rules that are used to normalize the measures and violations related to the code and the rules for aggregating the normalized values [@letouzey2012sqale].
+- QUAMOCO: This approach involves the development of a meta-model for software quality that starts from structuring quality-related concepts to defining the operational methods for assessing its fulfillment in a specific environment. Also, an evaluation method is provided to integrate with the previous meta-model. This approach is used for integrating the abstract quality definitions provided in the quality taxonomies with concrete software quality assessment and measurement techniques [@wagner2012quamoco].
+- [@bauer2012framework] proposed an alternative approach to the others analyzed so far, which involves using a framework that fits the needs of incremental quality and maintainability checks on the source code. This allows the incremental and distributed computation of quality metrics useful for software quality assessment and measurement, including both local and global metrics in the calculations.
+- Delta Maintainability Model (DMM): this model measures the maintainability of a code change as a ratio of low-risk code to overall modified code. It also identifies source code risk factors by reusing software metrics and risk profiles from the SIG-MM, applying new aggregation and scoring for software delta metrics at the level of fine-grained code changes, such as commits or pull requests, instead of aggregating at the system level [@dibiase2019dmm].
 
 ### Static code analysis
 
@@ -183,7 +193,7 @@ Basic coverage criteria
 
 Mutation and Fuzz Testing can be used for improving the effectiveness of software test cases and the coverage.
 
-In Mutation Testing, some source code statements are changed (mutated) to check if the test cases can find errors in the source code. The goal of Mutation Testing is to ensure the quality of test cases in terms of robustness that it should fail the mutated source code. Parveen et al. [@parveen] presented an automated framework to evaluate taint flow analysis tools in the domain of IoT (Internet of things) apps.
+In Mutation Testing, some source code statements are changed (mutated) to check if the test cases can find errors in the source code. Mutation Testing aims to ensure the quality of test cases in terms of robustness that it should fail the mutated source code. Mutation Testing can be applied to many domains, including IoT. Parveen et al. [@parveen] presented an automated framework that applies the mutation testing paradigm in the domain of IoT (Internet of things) apps.
 
 Fuzz Testing is a software testing technique of putting invalid or random data (called FUZZ) into a software system to discover coding errors and security loopholes. The purpose of fuzz testing is inserting data using automated or semi-automated techniques and testing the system for various exceptions like system crashing or failure of built-in code.
 As described by Kumar et al. in [@kumar] fuzzy techniques aim to reduce the number of test cases so that it is possible to achieve more efficient and accurate results. Fuzzy clustering is a class of algorithms for cluster analysis. The allocation of similar test cases is done to clusters that would help find out redundancy incorporated by test cases.
