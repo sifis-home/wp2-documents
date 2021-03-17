@@ -28,23 +28,52 @@ Critical element ratio measures the number of critical elements that are present
 ## Object-Oriented Specific Security Metrics
 
 ### Information Flow and Data Accessibility
+Security accessibility metrics statically measure the potential flow of information from an accessibility perspective for an individual object-oriented class [@Alshammari2009]. These metrics only consider attributes and methods declared as classified since they are the ones that need to be kept secret. The following measures, intended for object oriented languages, are thus used to evaluate the data accessibility given by the availability to developers of methods to access private class data, which if not handled correctly might imply vulnerabilities and program misbehavior.
 
-[@Alshammari2009]
-Security accessibility metrics statically measure the potential flow of information from an accessibility perspective for an individual object-oriented class. These metrics only consider attributes and methods declared as classified since they are the ones that need to be kept secret. We divide these metrics for individual classes into three kinds of accessibility:
-instance attributes; class attributes; and methods
+#### Classified Instances Data Accessibility (CIDA)
+This metric measures the direct accessibility of classified instance attributes of a particular class. It helps to protect the classified internal representations of a class, i.e. instance attributes, from direct access. It is defined as “The ratio of the number of classified instance public attributes to the number of classified attributes in a class”. Therefore, it is calculated by dividing the number of public classified instance attributes in a class to its total number of classified
+attributes. This gives us the ratio of classified instance attributes which have direct access from outside the class. Higher values indicate higher accessibility to these classified attributes and hence a larger ‘attack surface’. This means a higher possibility for confidential data to be exposed to unauthorized parties.
+Aiming for lower values of this metric adheres to the security principle of *reducing the attack surface*.
+
+#### Classified Class Data Accessibilty (CCDA)
+This metric measures the direct accessibility of classified class attributes of a particular class. This metric aims to protect the classified internal representations of a class. i.e. class attributes, from direct access. It is defined as follows: “The ratio of the number of classified class public attributes to the number of classified attributes in a class”. This metric is calculated by dividing the number of public classified class attributes of a given class by its total number of classified attributes. The result shows the ratio of classified class attributes which are directly accessible from outside its class.
+Higher values mean that confidential data of that class has a higher chance of being exposed to unauthorized parties. This metric contributes towards measuring the attack surface size of a given program’s classified class attributes. Thus, lower values of this metric enforce the security principle of *reducing the attack surface*.
+
+#### Classified Operation Accessibility (COA)
+This metric is the ratio of the accessibility of public classified methods of a particular class. It is defined as: “The ratio of the number of classified public methods to the number of classified methods in a class”. It is calculated by dividing the number of classified methods which are declared as public in a given class by its total number of classified methods.
+This value also indicates the size of the attack surface of a given class. It aims to protect the internal operations of a class which interact with classified attributes from direct access. Lower values of this metric would reduce potential information flow of classified data which could be caused by calling public methods. This metric measures the potential attack
+surface size exposed by classified methods.
+
+#### Classified Mutator Attribute Interactions (CMAI)
+This metric measures  the interactions  of mutators (constructor, setters, getters) with  classified  attributes  in  a  class.  We  define  this metric as: “The ratio of the number of mutators which may interact with classified attributes to the possible maximum  number  of mutators  which  could  interact with classified attributes”. To calculate this metric, it is at first 
+needed to find out in how many places in the design/program classified attributes could be mutated. Then, this number is divided by the total number of possible  ways of mutating these classified attributes. The result is a ratio which can be used to indicate the potential interactions between mutators and classified attributes. Higher interaction means stronger cohesion between  mutators and  classified  attributes  within  a given  class,  and  consequently  more  privileges are given to mutators on classified attributes. Conversely, lower  values  indicate  weaker  cohesion between mutators and classified attributes which means a lower chance of classified information flow from mutators.
+With regard to the security principles, a lower value allows fewer privileges over confidential data and therefore adheres to the least privilege principle
+
+#### Classified Accessor Attribute Interactions (CAAI)
+This metric measures the interactions of accessors with classified attributes in a class. We define this metric as: “The ratio of the number of accessors which may interact with classified attributes to the possible maximum number of accessors which could have access to classified attributes”. This metric is calculated in a similar way to the CMAI metric by first finding out in how many parts of the design/program classified attributes could be accessed. Then, this number is divided by the total number of possible ways of accessing these classified attributes. This results in a ratio which directly shows the potential interactions between accessors and classified attributes. Higher interaction means stronger cohesion between accessors
+and classified attributes within a given class. Similar to mutators, weak cohesion is desirable to reduce any potential flow of classified data caused by accessors. Weak cohesion also indicates fewer privileges are given to accessors over classified attributes. This would reduce the chance of potential flow of classified data to adversaries. Moreover, lowering the value of
+this metric would lower privileges of accessors over classified attributes and thus satisfy the security principle of least privilege.
+
+#### Classified Attributes Interaction Weight (CAIW)
+This metric is defined to measure the interactions with classified attributes by all methods of a given class. The metric is defined as: “The ratio of the number of all methods which may interact with classified attributes to the total number of all methods which could have access to all attributes”. This metric is calculated by finding the number of methods of a given class which may interact with classified attributes, and dividing this number by the total number of potential interactions with all attributes in that class. The importance of this metric is that it shows how many potential class interactions are dependent on classified attributes. This is another metric which measures the privileges of class methods over classified data. However, this metric differs from the previous ones as it shows the overall privileges by a class’ methods over classified attributes. The higher the value of this metric for a given class the more privileges are given to this class’ methods over classified attributes, and therefore the less that class adheres to the security *principle of least privilege*.
+
+#### Classified Methods Weight (CMW)
+This metric is defined to measure the weight of methods in a class which potentially interact with any classified attributes in a particular class. We define this metric as: “The ratio of the number of classified methods to the total number of methods in a given class”. From this definition, we can calculate this metric by initially summing the number of methods which may interact in any form with classified attributes in a class. Then, this number is divided by the total number of methods in that class. This metric can directly measure the attack surface size of a given class based on its operations over confidential data. This differs from the previous attack surface metrics as it doesn’t focus on accessibility but instead it focuses on the interaction weight of classified methods. Higher values of this metric indicates that more classified operations are offered by the given class. This leads to a higher chance of information flow of classified data by calling the class’s methods and violations of the security principle of reducing the attack surface.
+
 
 ### Unhandled exceptions
 
 Programs fail mainly for two reasons: logic errors in the code and exception failures.
-Exception failures occur when a program is prevented by unexpected circumstances from providing its specified service [@aggarwal07]. The following measures have thsu been defined to measure the quality of exception handling in a specific class:
+Exception failures occur when a program is prevented by unexpected circumstances from providing its specified service [@aggarwal07]. The following measures have thus been defined to measure the quality of exception handling in a specific class:
+
 * The Number of Catch Blocks per Class (NCBS) is defined as the ratio of catch blocks in a class to the total number of possible catch blocks in a class. This ratio measures thus the percentage of handled exception on the total number of possible exceptions for a catch block. A low value of this index generally implies a poor work related to exception handling, where many conditions have not been considered and might thus represent an exploitable vulnerability.
 * The Exception Handling Factor (EHF) is formally defined as the ratio of number of exception classes to the total number of possible *exception classes* in software, where the number of exception classes is the count of exceptions covered in a system. The exception class is passed as an argument to the catch construct as type of argument arg. This type of argument specifies types of exception classes.
 
-This two metrics are semantically similar to the critical element ratio described in the previous subsection, representing the lack of error handling in object oriented languages using exceptions as a construct. 
+These two metrics are semantically similar to the critical element ratio described in the previous subsection, representing the lack of error handling in object oriented languages using exceptions as a construct. 
 
 ## Vulnerability Assessment
 
-In the following, we report a list of measures and indexes to assess the potential threat brought by software, based on 
+In the following, we report a list of measures and indexes to assess the potential threat brought by software, based on the presence of known vulnerabilities, due to usage of deprecated libraries or insecure software. 
 
 ### Common Weakness Enumeration (CWE)
 
@@ -80,8 +109,15 @@ According to art. 24 of the General Data Protection Regulation (EU) 2016/679 (he
 
 Moreover, articles 25 (Data protection by design and by default), 32 (Security of processing), and 35 (Data protection impact assessment) provide for assessment obligation on the data controller; art. 32 provides for assessment obligation on the processor (who processes personal data on behalf of the controller)[^IoT_vendor].
 
-From these rules, a common path to be followed in assessing compliance arises: the controller must take into account state of the art, the cost of implementation and the nature, scope, context, and purposes of the processing, as well as the risks of varying likelihood and severity for rights and freedoms of natural persons posed by the processing.
-This clarifies that GDPR compliance for IoT devices and the software installed on them implies a qualitative self-assessment to be performed by the controllers (and the processors).
+From these rules, a common path to be followed arises. In assessing compliance the controller must take into account:
+1. the state of the art of technical and organizational measures,
+2. the cost of implementation of technical and organizational measures,
+3. the nature of the processing,
+4. the scope of the processing,
+5. the context of the processing,
+6. the purposes of the processing,
+7. the risks of varying likelihood and severity for rights and freedoms of natural persons posed by the processing.
+This list clarifies that GDPR compliance for IoT devices and the software installed on them implies a qualitative self-assessment to be performed by the controllers (and the processors).
 
 Different methodologies to perform such assessments have been, and continue to be, proposed.
 
@@ -95,11 +131,11 @@ As a way of example, the DECODE project[^decode] adopted a series of privacy des
 7. Enforce
 8. Demonstrate.
 
-The obligation to perform the data protection impact assessment (PIA) provided by art. 35 of GDPR implies a more accurate assessment than the assessment to be performed, according to artt. 25 and 32 of the GDPR, and also it is provided only in special cases.
+The obligation to perform the data protection impact assessment (PIA) provided by art. 35 of GDPR implies a more accurate assessment than the assessment to be performed, according to art. 25 and 32 of the GDPR, and also it is provided only in special cases.
 
 For example, CNIL (the French Privacy Supervising Authority) published[^CNIL], a method available in 3 documents to allow compliance with the obligation to perform the PIA.
 
-The PIA methodology of CNIL, described in the first document[@CNIL_methodology], allows to:
+The PIA methodology of CNIL, described in the first document [@CNIL_methodology], allows to:
 1. define and describe the context of the processing of personal data under consideration;
 2. analyze the controls guaranteeing compliance with the fundamental principles: the proportionality and necessity of processing, and the protection of data subjects' rights;
 3. assess privacy risks associated with data security and ensure they are properly treated;
@@ -107,16 +143,16 @@ The PIA methodology of CNIL, described in the first document[@CNIL_methodology],
 
 A document with templates to perform the Privacy Impact Assessments is also available on CNIL's official website [@CNIL_templates]. 
 
-Finally, a document with a knowledge base is made available[@CNIL_kb].
+Finally, a document with a knowledge base is also available [@CNIL_kb].
 
-CNIL also published a specific version of its PIA method applied to IoT devices[@CNIL_IoT].
+CNIL also published a specific version of its PIA method applied to IoT devices [@CNIL_IoT].
 CNIL also made available free software to perform the PIA2.
 
 Performing GDPR privacy assessments can be supported by quantitative measures, including security measures.
 
-Some approaches to complement security impact assessment and PIA in order to achieve an iterative and unified risk assessment process on-the-fly considering the interdependence of cybersecurity and privacy are starting to be proposed in the literature[@match].
+Some approaches to complement security impact assessment and PIA in order to achieve an iterative and unified risk assessment process on-the-fly considering the interdependence of cybersecurity and privacy are starting to be proposed in the literature [@match].
 
-It is, therefore, reasonable to expect that some of the security metrics to be produced by the SIFIS-HOME system could be useful for the PIA and other privacy assessments to be performed by the controllers and the processors. 
+It is, therefore, reasonable to expect that some of the security metrics to be produced by the SIFIS-Home project could be useful for the PIA and other privacy assessments to be performed by the controllers and the processors. 
 
 
 
