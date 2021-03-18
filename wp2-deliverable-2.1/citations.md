@@ -647,7 +647,7 @@ url = {https://www.mdpi.com/1999-5903/13/2/30}
     year = 2011,
 }
 
-@article{mt75perc,
+@article{welker2001software,
   title={The software maintainability index revisited},
   author={Welker, Kurt D},
   journal={CrossTalk},
