@@ -3,17 +3,6 @@ tags: wp2.1, wp2, deliverable
 title: annex
 ---
 
-<!-- PLEASE DO NOT REMOVE THE FOLLOWING LINE -->
-\newpage
-
-# References
-
-<!-- PLEASE DO NOT REMOVE THE FOLLOWING LINE -->
-<div id="refs"></div>
-
-<!-- PLEASE DO NOT REMOVE THE FOLLOWING LINE -->
-\newpage
-
 # Annex A: Glossary {.unnumbered}
 
 | Acronym |                                        Definition                                        |
