@@ -3,9 +3,18 @@ tags: wp2.1, wp2, deliverable
 title: annex
 ---
 
-# Annex A: Glossary
+<!-- PLEASE DO NOT REMOVE THE FOLLOWING LINE -->
+\newpage
 
-<br>
+# References
+
+<!-- PLEASE DO NOT REMOVE THE FOLLOWING LINE -->
+<div id="refs"></div>
+
+<!-- PLEASE DO NOT REMOVE THE FOLLOWING LINE -->
+\newpage
+
+# Annex A: Glossary {.unnumbered}
 
 | Acronym |                                        Definition                                        |
 |:-------:|:----------------------------------------------------------------------------------------:|
@@ -25,7 +34,3 @@ title: annex
 |   UT    |                                       Unit Testing                                       |
 |   VM    |                                     Virtual Machine                                      |
 |   VS    |                                      Visual Studio                                       |
-
-# References
-
-<br>
