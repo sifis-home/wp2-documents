@@ -5,8 +5,7 @@ set -e
 
 # The order is important here!
 MD_FILES="executive-summary.md introduction.md software-assessment.md \
-          security-privacy.md privacy-and-security-assessment-techniques.md \
-          conclusion.md annex.md"
+          security-privacy.md conclusion.md annex.md"
 CITATIONS_FILENAME=citations
 OUTPUT_FILENAME=wp2-deliverable-2.1
 OUTPUT_DIR=../output/$OUTPUT_FILENAME
