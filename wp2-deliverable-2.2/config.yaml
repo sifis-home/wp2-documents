@@ -1,0 +1,31 @@
+---
+geometry: "left=3cm,right=3cm,top=2cm,bottom=2cm"
+mainfont: Times New Roman
+fontsize: 12pt
+bibliography: wp2-deliverable-2-2-citations.bib
+csl: wp2.csl
+numbersections: true
+header-includes: |
+    \usepackage{ragged2e} <!-- Improve text layout (hypenation) -->
+    \justifying <!-- Justify text -->
+
+    \usepackage{tocloft} <!-- Handle ToC items -->
+    \cftsetpnumwidth{0.8em} <!-- Set the space between dots and page numbers in ToC -->
+    \setlength\cftbeforesecskip{0pt} <!-- Remove vertical space among a section and the following one -->
+    \addtocontents{toc}{\vspace{20pt}} <!-- Set the space between the ToC's title and its first item -->
+    \renewcommand{\contentsname}{\hfill \underline{Table of contents}\hfill} <!-- Change ToC's title and underline it -->
+    \renewcommand{\cftsecdotsep}{\cftdotsep} <!-- Rename commands to set distance between ToC's dots -->
+    \renewcommand{\cftsecleader}{\normalfont\cftdotfill{\cftsecdotsep}} <!-- Add dots to section items -->
+    \renewcommand{\cftdotsep}{0.5} <!-- Set the distance between ToC's dots -->
+    \renewcommand\cftsecfont{\mdseries} <!-- Do not make the text of a section bold in ToC -->
+    \renewcommand\cftsecpagefont{\mdseries} <!-- Do not make the page of a section bold in ToC -->
+
+    \usepackage{fancyhdr} <!-- Format the header and the footer of a page -->
+    \renewcommand{\headrulewidth}{0pt} <!-- Remove the header line of a page -->
+    \pagestyle{fancy} <!-- Set header and footer style -->
+    \fancyhead[L]{\fontsize{9}{11} H2020-SU-ICT-02-2020-SIFIS-HOME –\#952652} <!-- Set left header -->
+    \fancyhead[R]{\fontsize{9}{11} Deliverable D<number>} <!-- Set right header -->
+    \fancyfoot{} <!-- Do not set a footer -->
+
+    \usepackage{lastpage} <!-- Retrieve the number of pages in a document -->
+---
