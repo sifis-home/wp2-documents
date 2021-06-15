@@ -52,6 +52,9 @@ cat ToC.txt >> developer-guidelines.md
 # Compute pdf file
 run-pandoc pdf
 
+# Compute docx file
+run-pandoc docx
+
 # Get back original files from tmp
 for MD_FILE in $MD_FILES
 do
