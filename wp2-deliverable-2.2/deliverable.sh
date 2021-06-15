@@ -4,8 +4,8 @@
 set -e
 
 # The order is important here!
-MD_FILES="executive-summary.md introduction.md software-assessment.md \
-          security-privacy.md conclusion.md references.md annex.md"
+MD_FILES="developer-guidelines.md software-quality-guidelines.md apis-labels.md \
+          legal-guidelines.md conclusion.md references.md annex.md"
 CITATIONS_FILENAME=citations
 OUTPUT_FILENAME=wp2-deliverable-2.2
 OUTPUT_DIR=../output/$OUTPUT_FILENAME
@@ -27,10 +27,10 @@ mkdir -p $OUTPUT_DIR
 cp $CITATIONS_FILENAME.md $CITATIONS_FILENAME.bib
 
 # Get deliverable number from tags
-NUMBER=`head -2 executive-summary.md | tail -1 | cut -f2 -d ":" | cut -f1 -d "," | sed "s/[^0-9\.]*//g"`
+NUMBER=`head -2 developer-guidelines.md | tail -1 | cut -f2 -d ":" | cut -f1 -d "," | sed "s/[^0-9\.]*//g"`
 
 # Get deliverable version from tags
-VERSION=`head -2 executive-summary.md | tail -1 | cut -f2 -d ":" | cut -f2 -d "," | sed "s/[^0-9\.]*//g"`
+VERSION=`head -2 developer-guidelines.md | tail -1 | cut -f2 -d ":" | cut -f2 -d "," | sed "s/[^0-9\.]*//g"`
 
 # Remove first 5 lines of HackMD metadata
 for MD_FILE in $MD_FILES
@@ -47,7 +47,7 @@ sed -i "s/<number>/$NUMBER/g" config.yaml
 sed -i "s/<version>/$VERSION/g" ToC.txt
 
 # Add ToC after the executive summary
-cat ToC.txt >> executive-summary.md
+cat ToC.txt >> developer-guidelines.md
 
 # Compute pdf file
 run-pandoc pdf
