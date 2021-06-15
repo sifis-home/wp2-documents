@@ -15,7 +15,7 @@ pushd draft
 ./draft.sh
 popd
 
-DOCX_FILES=`find . ! -path ./data -prune -false -type f -name "*.docx"`
+DOCX_FILES=`find ./output -type f -name "*.docx"`
 for DOCX_FILE in $DOCX_FILES
 do
     ./docx-indent.py $DOCX_FILE
