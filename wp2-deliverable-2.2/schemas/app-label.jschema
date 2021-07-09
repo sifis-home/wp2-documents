@@ -1,6 +1,6 @@
 {
    "$schema":"http://json-schema.org/draft-07/schema#",
-   "$id":"https://github.com/sifis-home/wp2-documents/tree/master/wp2-deliverable-2.2/schemas/app-label",
+   "$id":"https://github.com/sifis-home/wp2-documents/blob/16b2fccf048d0fb4218e1198c90c9ad4971165e9/wp2-deliverable-2.2/schemas/app-label",
    "title":"SIFIS-Home app label schema.",
    "description":"JSON schema defining the app label structure within the SIFIS-Home framework.",
    "type":"object",
