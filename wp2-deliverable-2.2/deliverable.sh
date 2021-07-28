@@ -50,7 +50,7 @@ sed -i "s/<version>/$VERSION/g" ToC.txt
 cat ToC.txt >> developer-guidelines.md
 
 # Compute pdf file
-run-pandoc pdf
+#run-pandoc pdf
 
 # Compute docx file
 run-pandoc docx
