@@ -3,7 +3,7 @@ tags: wp2.2, wp2, deliverable
 title: 3.APIs and Labels
 ---
 
-# Introduction
+<!-- # Introduction -->
 
 A [study](https://iotsecurityprivacy.org) conducted by researchers at the Carnegie Mellon University pointed out that security and privacy practices adopted by smart devices companies are rarely available to consumers before purchase.
 Following on from this, they came up with the idea of providing IoT devices with an explanatory label, which conveys information about security mechanisms, data practices, and other details about the device, e.g., manufacturer country, device compatibility, etc.
@@ -13,12 +13,12 @@ It is up to vendors whether to adopt this new standard or not, but for sure, giv
 
 Similar to this mechanism, but at a different level, we want to provide SIFIS-Home-aware applications with labels describing security risks deriving from app's code execution.
 To this aim, we start at a fine grain by giving labels to APIs that developers use when writing their applications.
-Eventually, the label of the application will be composed of all the labels of the APIs within the code.
+Eventually, a label will be provided for the application as a whole, and it will be composed of all the labels of the APIs within the code.
 
-Our proposal is analogous to the [Permissions mechanism](https://developer.android.com/guide/topics/permissions/overview) on Android operating system, and our label could resemble their Manifest file, but actually it differs in some crucial aspects.
+Our proposal is analogous to the [Permissions mechanism](https://developer.android.com/guide/topics/permissions/overview) of Android operating system, and our label could resemble their Manifest file, but it actually differs in some crucial aspects.
 In SIFIS-Home, the user (or a maintainer on user's behalf) defines policies to be enforced within his smart home.
 Policies definition is a simple and intuitive process which allows the user to declare which actions and operations can be performed by applications in his smart home environment and which cannot.
-This process is eased by novel mechanisms which make use of artificial intelligence and natural language, and described in WP4.
+In SIFIS-Home, this process is eased by novel mechanisms which make use of artificial intelligence and natural language, and described in WP4.
 Our label is shown to the user during app installation with an informative purpose, and it highlights if some of the risks go against the user-defined policies.
 If no risk contradicts user's policies, the app is installed straightaway.
 Otherwise, the user can decide whether to edit his policies, finalise app installation, or not to finalise it.
@@ -77,7 +77,7 @@ This certifier will also have the task of periodically reviewing those APIs whic
 # Labelling Mechanism
 
 The SIFIS-Home framework defines APIs and makes them available for SIFIS-Home-aware apps developers.
-A generic API implements functionalities of a device and possibly operates on data.
+A generic API implements functionalities of either a service or a device and possibly operates on data.
 However, the execution of an API may imply obvious, as well as subtle, risks.
 We identified three categories of possible risks: *safety*, *privacy*, and *financial risks*.
 
@@ -94,7 +94,7 @@ Also APIs that collect auxiliary data, such as logs, fall in this category.
 
 Financial risks are related to operations that produce an expense.
 This kind of risk characterises APIs that lead to a monetary expense, either directly or indirectly. 
-APIs that access user's "wallet" to place an order, e.g., to order food, or to pay a subscription fee, e.g., periodic renewal of pay-per-view services are examples of *direct financial risks*. 
+APIs that access user's "wallet" to place an order, e.g., to order food, or to pay a subscription fee, e.g., periodic renewal of pay-per-view services, are examples of *direct financial risks*. 
 On the contrary, with the term *indirect financial risks* we refer to those operations that generate an indirect monetary cost for the user. 
 In other terms, APIs that affect energy consumption (electricity, gas, water, etc.) bring an indirect financial risk.
 Of course, the extent of the risk differs from API to API and, more in general, from device to device.
@@ -102,16 +102,16 @@ Of course, the extent of the risk differs from API to API and, more in general, 
 In SIFIS-Home, we associate every API with a *security label* that describes possible risks deriving from its execution.
 The security label consists of a list of *tags*, each one identifying a risk.
 A tag contains (i) the risk name, (ii) a description, and, optionally, (iii) the *risk score*, a decimal value in the range [0,1] which indicates the gravity of the risk.
-To make some practical examples, an API that allows to turn the oven on performs an operation that consumes a high instantaneous power and could potentially set the house on fire, so its label will include, among others, the tag "FIRE_HAZARD" and the tag "POWER_OUTAGE" with a risk score of 0.8.
+To make some practical examples, an API which has the effect of turning the oven on performs an operation that consumes a high instantaneous power and could potentially set the house on fire, so its label will include, among others, the tag "FIRE_HAZARD" and the tag "ELECTRIC_ENERGY_CONSUMPTION" with a risk score of 0.8.
 Another example is an API that acquires video signal from a video camera and stores it locally; this API may store frames containing children, which could represent a privacy concern for the end user; the tag "CHILDREN_RECORDING" will be embedded in the API label.
-Again, an API that authorise the payment of an asset will have a label embedding the tag "SPEND_MONEY". 
+Again, an API that authorises the payment of an asset will have a label embedding the tag "SPEND_MONEY". 
 
 Developers use our set of APIs to build SIFIS-Home-aware apps. 
 When an app is ready for deployment, it is packaged in an *app bundle*.
 The app bundle contains the *application*, i.e., the executable, and the *app contract*, which consists of the *app label* and *code quality metadata*.
 The app label is automatically generated during the packaging phase and is populated with all the labels belonging to the APIs used within the app code.
 
-When a user wishes to install an app from our marketplace, he/she can read the app label beforehand to be informed about possible risks deriving from the installation and usage of such an app.
+When a user wishes to install an app from our marketplace, he can read the app label beforehand to be informed about possible risks deriving from the installation and usage of such an app.
 For each risk listed in the app label, a user-friendly description and a risk score, when applicable, are provided.
 A short and simple description of the risks is required to promote the reading and comprehension by every class of end users.
 Moreover, the risk score, which is a decimal value, could be mapped to keywords like "low", "medium", and "high" when shown to the user.
@@ -119,7 +119,7 @@ This allows a more straightforward perception.
 
 Besides informing the end user about app's behaviour and possible risks, the app label seamlessly integrates with user-defined policies.
 This means that if the label of a given API would violate the rules defined by the user, its execution is automatically denied.
-For example, if a user defined a policy which reads as "No device that may cause fire can be turned on remotely", and the app label contains the `turnOnOven` API, the app is installed, but the execution of that API is prohibited at runtime.
+For example, if a user defined a policy which reads as "No device that may cause fire can be turned on remotely", and the app label contains the `turnOnOven` API, the app can be installed, but the execution of that API is forbidden at runtime.
 
 
 # Tags List
@@ -139,14 +139,14 @@ If present, the symbol **⚠** denotes that a risk score is associated with the 
 | SPOILED_FOOD   <br />*The execution may lead to rotten food.*
 |
 | **Privacy** | 
-| AUDIO_VIDEO_STREAMING       <br />*The execution authorises the app to obtain a video stream with audio.* |
-| AUDIO_VIDEO_RECORDING_AND_STORING    <br />*The execution authorises the app to record and save a video with audio on persistent storage.* |
+| AUDIO_VIDEO_STREAM       <br />*The execution authorises the app to obtain a video stream with audio.* |
+| AUDIO_VIDEO_RECORD_AND_STORE    <br />*The execution authorises the app to record and save a video with audio on persistent storage.* |
 | LOGGING_USAGE_TIME          <br />*The execution authorises the app to get and save information about app's duration of use.* |
-| LOGGING_ENERGY_CONSUMPTION  <br />*The execution authorises the app to get and save information about app's energy impact on the  device the app runs on.* |
-| RECORDING_USER_PREFERENCES  <br />*The execution authorises the app to get and save information about user's preferences.* |
-| RECORDING_ISSUED_COMMANDS  <br />*The execution authorises the app to get and save user inputs.* |
-| TAKING_PICTURES             <br />*The execution authorises the app to use a camera and take photos.* |
-| TAKING_DEVICE_SCREENSHOTS   <br />*The execution authorises the app to read the display output and take screenshots of it.* |
+| LOG_ENERGY_CONSUMPTION  <br />*The execution authorises the app to get and save information about app's energy impact on the  device the app runs on.* |
+| RECORD_USER_PREFERENCES  <br />*The execution authorises the app to get and save information about user's preferences.* |
+| RECORD_ISSUED_COMMANDS  <br />*The execution authorises the app to get and save user inputs.* |
+| TAKE_PICTURES             <br />*The execution authorises the app to use a camera and take photos.* |
+| TAKE_DEVICE_SCREENSHOTS   <br />*The execution authorises the app to read the display output and take screenshots of it.* |
 |
 | **Financial** | 
 | SPEND_MONEY                 <br />*The execution authorises the app to use payment information and make a payment transaction.* |
@@ -165,8 +165,8 @@ In the following, we report a short list of sample APIs and their own labels.
 
 | API                       | Label     |
 | --------                  | --------  | 
-| `turnOnOven`               | <ul><li>FIRE_HAZARD</li><li>POWER_OUTAGE (risk score: 0.8)</li> <li>LOGGING_ENERGY_CONSUMPTION</li> <li>ELECTRIC_ENERGY_CONSUMPTION (risk score: 0.8)</li></ul>  |
-| `recordVideo`               | <ul><li>AUDIO_VIDEO_RECORDING_AND_STORING</li></ul> | %Tenants recording, Children recording
+| `turnOnOven`               | <ul><li>FIRE_HAZARD</li><li>POWER_OUTAGE (risk score: 0.8)</li> <li>LOG_ENERGY_CONSUMPTION</li> <li>ELECTRIC_ENERGY_CONSUMPTION (risk score: 0.8)</li></ul>  |
+| `recordVideo`               | <ul><li>AUDIO_VIDEO_RECORD_AND_STORE</li></ul> | %Tenants recording, Children recording
 | `lowerFridgeTemperature`    | <ul><li>POWER_OUTAGE (risk score: 0.5)</li> <li> ELECTRIC_ENERGY_CONSUMPTION (risk score: 0.5)</li></ul>                    |
 | `raiseFridgeTemperature`    | <ul><li>SPOILED_FOOD</li></ul>                          |
 | `orderFood`                 | <ul><li>SPEND_MONEY</li></ul>                        | > da includere nella lista?
@@ -174,7 +174,7 @@ In the following, we report a short list of sample APIs and their own labels.
 | `turnOnVacuumCleaner`       | <ul><li>POWER_OUTAGE (risk score: 0.8)</li> <li>LONG_LASTING_RESOURCE_LOCK</li> <li>ELECTRIC_ENERGY_CONSUMPTION (risk score: 0.8)</li></ul>  | % da includere nella lista?
 | `disarmAlarm`               | <ul><li>UNAUTHORISED_PHYSICAL_ACCESS</li></ul>          |
 | `openShutters`              | <ul><li>UNAUTHORISED_PHYSICAL_ACCESS</li></ul>          |
-| `streamMicAudio`            | <ul><li>TENANTS_VOICE_STREAMING</li> <li>CHILDREN_VOICE_STREAMING</li></ul> | > da includere nella lista?
+| `streamMicAudio`            | <ul><li>TENANTS_VOICE_STREAM</li> <li>CHILDREN_VOICE_STREAM</li></ul> | > da includere nella lista?
 | `unlockDoor`                | <ul><li>UNAUTHORISED_PHYSICAL_ACCESS</li></ul>          |
 | `renewSubscription`         | <ul><li>PAY_SUBSCRIPTION_FEE</li></ul> |
 
@@ -214,7 +214,7 @@ In the example, the `safety` property is an array of size two containing the tag
     ],
     "privacy": [
       {
-        "name": "LOGGING_ENERGY_CONSUMPTION",
+        "name": "LOG_ENERGY_CONSUMPTION",
         "description": "The execution allows the app to register information about energy consumption."
       }
     ],
@@ -238,9 +238,9 @@ The tag subschema defines the `tag` object, which is used by all the risk catego
 The `tag` object contains two required properties: (i) `name`, which must match one of the tags defined in the tags list, and (ii) `description`, which gives a brief explanation of the risk.
 Additionally, the `tag` may contain the `risk_score` property, indicating the gravity of the risk and defined as a number in the range [0,1] with a step size of 0.1.
 
->[name=marco-rasori]
+<!-- >[name=marco-rasori]
 The `tag` object declares the properties `name` and `description` as required, and the property `risk_score` as optional.
-The latter is defined as a number in the range $[0,1]$, with a step size of $0.1$.
+The latter is defined as a number in the range $[0,1]$, with a step size of $0.1$. -->
 
 ```
 {
