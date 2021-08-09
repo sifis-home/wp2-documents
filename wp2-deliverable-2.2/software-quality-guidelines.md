@@ -96,7 +96,14 @@ It is possible to use the code complexity/quality map together with the code cov
 
 If a new feature is introduced without enough tests covering it this phase would be able tell.
 
-#### Dynamic fault analysis
+#### Static probable fault analysis
+Static analysis tools can detect code paths that might lead to a fault. 
+
+Those tools generally augment the compiler with additional costly diagnostics that require a large amount of memory and cpu to complete.
+
+Their results may lead to few false-positives.
+
+#### Dynamic fault detection
 The tools available to dynamically detect faults in the code can be split in two groups:
 - Those that require custom build and instrumentation
 - Those that rely on the non-intrusive profiling features provided by the platform
@@ -104,6 +111,8 @@ The tools available to dynamically detect faults in the code can be split in two
 This class of tools tend to execute between two times and tenfold times slower than a normal debug build.
 
 They may be coupled with fuzzing technologies to detect faults and expand the code coverage, this activity should not happen on a per-pull request basis since it is extremely onerous.
+
+The tools in this class tend to not have false positive, usually caused by a miscompilation or due limitations in their cpu/memory models.
 
 #### Packaging checks
 
@@ -150,18 +159,54 @@ A good style linter for C, among the others, is `clang-format`.
 
 
 #### Code Quality Metrics
-[rust-code-analysis](https://crates.io/crates/rust-code-analysis) provides a report good report
+[rust-code-analysis](https://crates.io/crates/rust-code-analysis) provides a good report, but it is not integrated directly with meson. Calling the `rust-code-analysis-cli` passing the source root directory is enough to get the information.
+
+The metrics provided can guide the developer so objectively more complex code can be tested thoroughly. 
+
+Depending on the project, it is possible to consider blocking a patch introducing too much complexity automatically.
+
+During T2.2 better integration with the build system and the code-coverage evaluation will be explored.
 
 #### Coverage
-- Are we testing enough?
+Meson integrates with [gcovr](https://gcovr.com/en/stable/). As [explained](https://mesonbuild.com/howtox.html#producing-a-coverage-report) in the manual `-Db_coverage=true` is a shorthand to instrument the build and then
 
-Tools: grcov, codecov
+```
+$ meson compile
+$ meson test
+$ meson compile coverage # or coverage-text, coverage-xml
+```
+
+The generated xml file can be parsed to implement CI blockers if the code coverage is not adequate.
+
+Having good code-coverage report is paramount and setting a patch blocker that prevents reducing the test coverage ensures that all the analysis on the test corpus stays meaningful.
 
 ### Probable Fault Analysis
-- Static Fault Analysis (coverity, clang-analyzer)
-- Dynamic Analysis (valgrind, miri, Asan, Msan, Tsan)
+It is possible to detect probable faults in the code by automatic means thanks to static and dynamic analysis tools.
 
-@lu-zero Spiegazione Miri https://www.ralfj.de/blog/2020/12/14/provenance.html
+Running the tests under those tool takes between 2x and 10x the normal execution of a debug build.
+
+#### Static Analysis
+meson [integrates](https://mesonbuild.com/howtox.html#use-clang-static-analyzer) with [clang-analyzer](https://clang-analyzer.llvm.org/) `scan-build` and some partial support for [clang-tidy](https://clang.llvm.org/extra/clang-tidy/). 
+
+Any tool that can consume the [compile_commands.json](https://clang.llvm.org/docs/JSONCompilationDatabase.html) can be executed with success.
+
+#### Dynamic Analysis
+The analysis tools that work on non-instrumented binaries can use the `--wrap` option for the test runner:
+```
+$ meson test --wrap=valgrind testname
+```
+
+meson support the sanitize family of tooling available with GCC and Clang out of box through the `-Db_sanitize=` option, e.g. to use [AddressSanitizer](https://clang.llvm.org/docs/AddressSanitizer.html)
+```
+$ meson <other options> -Db_sanitize=address
+$ meson test <other options> <testname>
+```
+
+### Packaging
+
+Meson has a minimal [built-in support](https://mesonbuild.com/RPM-module.html) to generate [RPM specfiles](https://rpm-packaging-guide.github.io/), but no built-ins for other common targets.
+
+During T2.2 we will evaluate strategies to automate package creation for common distributions.
 
 
 ## Software Quality
@@ -333,17 +378,9 @@ More complex code statistically may hide more logic issues, the developers **sho
 
 At last, we provide a series of notes that a developer **may** consider to further improve the quality of a software and reduce any possible effort related to its own maintainability.
 
-### Rust as Advice
+### Rust
 
-@lu-zero Decide to add part of https://people.mpi-sws.org/~jung/phd/thesis-screen.pdf that formally proves that Rust is safety
-
-Once the content and the structure of a project have been defined, the next step usually consists of choosing a programming language that allows to implement the software according to the requirements established for the project.
-
-@lu-zero Aggiungi le motivazioni contenute nei tuoi link nel paragrafo sotto
-
-https://queue.acm.org/detail.cfm?id=3468263
-
-A valid programming language should contain a set of features that, on one hand, notably simplify the job of a developer, while on the other hand, maintain a good balance among optimization and security concerns. An innovative language that satisfies those requests is the *Rust* language.
+We advise to consider Rust as your main language for new projects.
 
 *Rust* is a recent programming language whose focus is on developing reliable and efficient systems that exploit parallelism and concurrency. Conciseness, expressiveness, and memory safety are among the principal properties that guided the Rust development [@matsakis2014rust].
 
@@ -368,25 +405,22 @@ Along with the *rustc* compiler, *Rust* also provides a package manager called *
 2. Call *rustc* to compile the dependencies. Each dependency is compiled in an independent way from the other ones.
 3. Call the linker to link together all the produced objects in order to obtain the final artifact. 
 
-Every building option can be either passed as an input parameter to the *Cargo* CLI or defined in a *toml* file called `Cargo.toml`. The output artifact produced by *Cargo* is called *crate*.
+A Rust project can easily integrate in a codebase through a C API/ABI, making easy to use the language for creating new stand-alone components or rewrite old ones: 
+- [system-deps](https://crates.io/crates/system-deps) streamlines linking to external libraries.
+- [bindgen](https://crates.io/crates/bindgen) can consume C headers to automatically generate low-level bindings.
+- [cargo-c](https://crates.io/crates/cargo-c) provides a simple way to build rust code into a library that any C-ABI consumer can use.
 
-A Rust *crate* is either a library or an executable program, referred to as either a *library crate* or a *binary crate*, respectively. Loosely, the term crate may refer to either the source code for a determined target or to the compiled artifact that the target produces. It may also refer to a compressed package fetched from a registry, thus a dependency.
-A crate can be published on a hosting site called *crates.io* in order to be used as dependency by other *Rust* projects.
+There is ongoing work with [autocxx](https://crates.io/crates/autocxx) makes easy to consume strictly idiomatic `C++` libraries and [uniffi](https://crates.io/crates/uniffi) aims to provide automatic bindings for Swift and Kotlin, targeting the mobile app developers.
 
-*Cargo* also allows to subdivide the source code for a given crate into modules, logical units which provide isolated namespaces within the code. This is usually done to organize the code into areas of related functionality or to control the visible scope (public/private) of symbols within the source, improving the modularity of a project in an easy way, without having to struggle with build systems that make use of dynamic and static libraries. So, from a simple perspective, Cargo eliminates the need for manual management of large dependency graphs and simplifies building the software, unlike tools written in C/C++. 
+The additional guarantees provided by the languages, and the work to [formally prove](https://people.mpi-sws.org/~jung/phd/thesis-screen.pdf) them can provide a great starting point to build safe and trustworthy application with less effort to be spent on testing.
 
-In addition, *Cargo* can automatically build the documentation of a software, as a series of different *html* and *css* files, running a subcommand called `doc`. The resulting documentation can subsequently be seen through the use of a browser or directly online if the crate is going to be published on *crates.io*. In the latter case, the documentation associated with each public API of a crate is accessible from a site called *docs.rs*.
+During T2.2 we will actively compare similar codebases and provide automations to reduce even further the setup of workflows based around the Rust ecosystem.
+
 
 ### Distribution Strategies
 
-Il bollino automatico prodotto:
+To better distribute a software to third-parties, it **may** be useful to explain the mechanism, wherever possible, that has been adopted to obtain the results provided by a developer. In this way, any other developer will be able to *reproduce* the outcome at any time. Practically, if some additional step, outside the ones described in the workflow, has been done, it **may** be a good sign of quality describing them.  This explanation should be as much as possible independent from the local development environment.
 
-A me sviluppatore è importante per confermare il livello di qualità a cui vai a tendere. 
+So, if the project is an open-source one, for example, a developer **might** present and comment out the various CI checks and scripts, the CI configuration, plus the scripts and programs used to benchmark the software.
 
-È nel tuo interesse, all'atto di distribuire a terze parti il tuo software, fare in modo che sia il più facile riprodurre i risultati indipendentemente dall'ambiente di sviluppo locale, oppure usare un servizio di certificazione del software che produca un bollino.
-
-For an open-source project, it would be another sign of quality providing the scripts in addition to the detailed procedure that has been used to obtain the values for all the computed metrics. In this way, any other developer will be able to *reproduce* the outcome at any time.
-
-For example, a developer might present and comment out the various CI checks and scripts, the CI configuration, plus the scripts and programs used to benchmark the software.
-
-About a closed-source project instead, a developer **should** at least describe the parameters and the configurations of the tools that had been run on the final binary in order to obtain the first and second certification level. This procedure needs to be done always to allow the reproducibility of the outcomes.
+In case of an closed-source project instead, a developer **might** at least describe the parameters and the configurations of the tools that had been run on the final binary.
