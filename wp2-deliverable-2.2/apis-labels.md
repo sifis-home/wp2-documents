@@ -150,7 +150,7 @@ If present, the symbol **⚠** denotes that a risk score is associated with the 
 | **Privacy** | 
 | AUDIO_VIDEO_STREAM\
   *The execution authorises the app to obtain a video stream with audio.* |
-| AUDIO_VIDEO_RECORD_AND_STORE\ 
+| AUDIO_VIDEO_RECORD_AND_STORE\
   *The execution authorises the app to record and save a video with audio on persistent storage.* |
 | LOGGING_USAGE_TIME\
   *The execution authorises the app to get and save information about app's duration of use.* |
