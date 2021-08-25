@@ -3,7 +3,6 @@ tags: wp2.2, wp2, deliverable
 title: 4.Legal Guidelines
 ---
 
-
 # Legal guidelines (licensing and privacy)
 
 Different subjects may be obliged – or at least strongly interested – to comply with privacy laws and therefore to adopt certain standards.
@@ -12,7 +11,7 @@ While following the privacy rules is not mandatory for the software developer (o
 For this reason, we propose some insight on following the best practices in order to ship software that is not only privacy-compliant, but also based on the state of the art approaches to data protection and self-evaluation. 
 This chapters deals with a second goal that derives from the reuse and distribution of  Free and Open Source software: compliance with legal obligation arising from Free and Open Source software. 
 
-## 4.1 - Privacy
+## Privacy
 
 Different rules provided by the GDPR are to be followed by software developers and publishers. In particular, the Saas provider has to satisfy accountability requirements, and must perform a quantitative risk assessment analysis. The main requirements are found in:
 - **Article 13/14 GDPR**[^13_14_GDPR], that impose a series of informations to be provided to the data subject. These informations are to be given also when not collecting personal data:
@@ -31,13 +30,13 @@ Different rules provided by the GDPR are to be followed by software developers a
 - **Article 35**[^35_GDPR], that mandates the controller to carry out a Privacy Impact Assessment when the processing is likely to result in a high risk to the rights and freedoms of natural persons, or if processing is carried out automatically or on a large scale.
 Of these requirements, the most complicated is probably that found in Article 35. To aid Data Controllers in building and demonstrating compliance to the GDPR, the French CNIL[^CNIL] created a useful tool[^CNIL_PIA] that has quickly become reference standard. Using this tool can help the developer to understand the security and privacy risks posed by his software and may give him the chance to solve them before shipping his product to the public. It is therefore highly recommendable to use this tool to ensure a software’s compliance to GDPR rules.
 
-## 4.2 - Licensing
+## Licensing
 The goal of complying with legal obligations arising from reuse and distribution of  Free and Open Source software stands at the base of both the OpenChain[^OpenChain] and the ClearlyDefined[^ClearlyDefined] projects. These initiatives aim at helping free and open source software to become more standardised and well defined, clearing doubts regarding legal compliance and providing an eventual subsequent developer with a clear and comprehensive information that will inform him of the limits and obligations that the various Free and Open Source licenses impose on the use or modification of the original software.
 More specifically, the OpenChain project wants to “establish requirements to achieve effective management of free/open source software for software supply chain participants, such that the requirements and associated collateral are developed collaboratively and openly by representatives  from the software supply chain, open source community, and academia”. OpenChain has become an international standard (ISO 5230) that allows software developers to obtain compliance regarding open source licenses. After following its guidelines, a software developer can send to the OpenChain organisation a document affirming that his software satisfies all the requirements of the specification and is therefore compliant to the OpenChain standard[^OpenChain_Certification]. It is important to notice that an OpenChain compliance badge can only be obtained if all the requirements are satisfied, and not just some of them. Following the OpenChain specification, the software developer creates, and therefore can make available, the compliance artifacts, that is “a collection of artifacts that represent the output of a compliance program and accompany the supplied software..”  that “..may include (but is not limited to) one or more of the following: attribution notices, source code, build and install scripts, copy of licenses, copyright notices, modification notifications, written offers, open source component bill of materials, and SPDX documents”.
 The ClearlyDefined project, on the other hand, is still on its early days, but already offers some suggestions on how to distribute a clearly defined open source software, so that users and other developers alike are precisely informed on important things such as the type of open source license used, or where to find the components used for bug fixing or new versions (such as a GitHub page), and how these are made. It also offers a security forum so that developers can ask questions and receive answers in the matter of security and vulnerabilities that may be present in their software[^ClearlyDefined_Checklist].
 Following both the OpenChain and the ClearlyDefined practices gives the software important certification that can aid in its diffusion.
 
-## 4.3 Conclusion
+## Conclusion
 To try to summarise the privacy and licensing legal requirements and taking into account the usefulness of following some standard practices, we propose this “traffic light system” to assess whether one’s software is compliant with the concepts exposed in the previous paragraphs.
 
 ### Green Light:
