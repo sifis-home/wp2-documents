@@ -128,32 +128,54 @@ If present, the symbol **⚠** denotes that a risk score is associated with the 
 
 | **Safety**| 
 | -------- | 
-| FIRE_HAZARD    <br />*The execution may cause fire.* |
-| AIR_POISONING  <br />*The execution may release toxic gasses.* |
-| BURST          <br />*The execution may cause an explosion.* |
-| ASPHYXIA       <br />*The execution may cause oxygen deficiency by gaseous substances.* |
-| WATER_FLOODING <br />*The execution allows water usage which may lead to flood.* |
-| POWER_OUTAGE --- **⚠**  <br />*The execution may cause an interruption in the supply of electricity.* |
-| POWER_SURGE    <br />*The execution may expose to high voltage.* |
-| UNAUTHORISED_PHYSICAL_ACCESS   <br />*The execution disables a protection mechanism and unaccredited individuals may physically enter home.* |
-| SPOILED_FOOD   <br />*The execution may lead to rotten food.* |
+| FIRE_HAZARD\
+  *The execution may cause fire.* |
+| AIR_POISONING\
+  *The execution may release toxic gasses.* |
+| BURST\ 
+  *The execution may cause an explosion.* |
+| ASPHYXIA\
+  *The execution may cause oxygen deficiency by gaseous substances.* |
+| WATER_FLOODING\
+  *The execution allows water usage which may lead to flood.* |
+| POWER_OUTAGE --- **⚠**\
+  *The execution may cause an interruption in the supply of electricity.* |
+| POWER_SURGE\ 
+  *The execution may expose to high voltage.* |
+| UNAUTHORISED_PHYSICAL_ACCESS\ 
+  *The execution disables a protection mechanism and unaccredited individuals may physically enter home.* |
+| SPOILED_FOOD\
+  *The execution may lead to rotten food.* |
 |
 | **Privacy** | 
-| AUDIO_VIDEO_STREAM       <br />*The execution authorises the app to obtain a video stream with audio.* |
-| AUDIO_VIDEO_RECORD_AND_STORE    <br />*The execution authorises the app to record and save a video with audio on persistent storage.* |
-| LOGGING_USAGE_TIME          <br />*The execution authorises the app to get and save information about app's duration of use.* |
-| LOG_ENERGY_CONSUMPTION  <br />*The execution authorises the app to get and save information about app's energy impact on the  device the app runs on.* |
-| RECORD_USER_PREFERENCES  <br />*The execution authorises the app to get and save information about user's preferences.* |
-| RECORD_ISSUED_COMMANDS  <br />*The execution authorises the app to get and save user inputs.* |
-| TAKE_PICTURES             <br />*The execution authorises the app to use a camera and take photos.* |
-| TAKE_DEVICE_SCREENSHOTS   <br />*The execution authorises the app to read the display output and take screenshots of it.* |
+| AUDIO_VIDEO_STREAM\
+  *The execution authorises the app to obtain a video stream with audio.* |
+| AUDIO_VIDEO_RECORD_AND_STORE\ 
+  *The execution authorises the app to record and save a video with audio on persistent storage.* |
+| LOGGING_USAGE_TIME\
+  *The execution authorises the app to get and save information about app's duration of use.* |
+| LOG_ENERGY_CONSUMPTION\
+  *The execution authorises the app to get and save information about app's energy impact on the  device the app runs on.* |
+| RECORD_USER_PREFERENCES\
+  *The execution authorises the app to get and save information about user's preferences.* |
+| RECORD_ISSUED_COMMANDS\ 
+  *The execution authorises the app to get and save user inputs.* |
+| TAKE_PICTURES\ 
+  *The execution authorises the app to use a camera and take photos.* |
+| TAKE_DEVICE_SCREENSHOTS\
+  *The execution authorises the app to read the display output and take screenshots of it.* |
 |
 | **Financial** | 
-| SPEND_MONEY                 <br />*The execution authorises the app to use payment information and make a payment transaction.* |
-| PAY_SUBSCRIPTION_FEE        <br />*The execution authorises the app to use payment information and make a periodic payment.* |
-| ELECTRIC_ENERGY_CONSUMPTION --- **⚠**<br />*The execution enables a device that consumes electricity.* |
-| GAS_CONSUMPTION --- **⚠**   <br />*The execution enables a device that consumes gas.* |
-| WATER_CONSUMPTION --- **⚠** <br />*The execution enables a device that consumes water.* |
+| SPEND_MONEY\
+  *The execution authorises the app to use payment information and make a payment transaction.* |
+| PAY_SUBSCRIPTION_FEE\
+  *The execution authorises the app to use payment information and make a periodic payment.* |
+| ELECTRIC_ENERGY_CONSUMPTION --- **⚠**\
+  *The execution enables a device that consumes electricity.* |
+| GAS_CONSUMPTION --- **⚠**\
+  *The execution enables a device that consumes gas.* |
+| WATER_CONSUMPTION --- **⚠**\ 
+  *The execution enables a device that consumes water.* |
 
 > [name=marco-rasori] | Hypothermia / Freeze hazard   <br />*The execution may freeze either food or living being.*
 
