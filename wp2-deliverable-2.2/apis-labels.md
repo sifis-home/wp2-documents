@@ -38,7 +38,7 @@ However, this approach is not convenient in our scenario because it requires use
 <!--
 [Schema on Miro.com](https://miro.com/app/board/o9J_l_s2-0k=/)
 -->
-![](https://i.imgur.com/IJIJaCc.png =300x)
+![Architecture](./resources/labels.png){#fig:architecture}
 
 
 As shown in Figure, the SIFIS-Home Developer APIs are designed to extend and improve service level APIs such as those offered by WebThings or Yggio.
