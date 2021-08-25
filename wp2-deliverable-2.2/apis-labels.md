@@ -33,7 +33,7 @@ However, this approach is not convenient in our scenario because it requires use
 > In SIFIS, potremmo anche pensare di generare nuove policy durante l'installazione se l'utente vuole concedere all'app determinati "permessi" (cioè, se l'utente si fida e vuole correre determinati rischi con quell'app).
 -->
 
-# The SIFIS-Home Developer APIs
+## The SIFIS-Home Developer APIs
 
 <!--
 [Schema on Miro.com](https://miro.com/app/board/o9J_l_s2-0k=/)
@@ -74,7 +74,7 @@ This certifier will also have the task of periodically reviewing those APIs whic
 
 
 
-# Labelling Mechanism
+## Labelling Mechanism
 
 The SIFIS-Home framework defines APIs and makes them available for SIFIS-Home-aware apps developers.
 A generic API implements functionalities of either a service or a device and possibly operates on data.
@@ -122,7 +122,7 @@ This means that if the label of a given API would violate the rules defined by t
 For example, if a user defined a policy which reads as "No device that may cause fire can be turned on remotely", and the app label contains the `turnOnOven` API, the app can be installed, but the execution of that API is forbidden at runtime.
 
 
-# Tags List
+## Tags List
 In the following, we report a non-exhaustive list of tags and their descriptions for the three risk categories.
 If present, the symbol **⚠** denotes that a risk score is associated with the tag it is defined in.
 
@@ -183,9 +183,10 @@ If present, the symbol **⚠** denotes that a risk score is associated with the 
 
 Note that the list of tags is not exhaustive and is designed to be extended also externally, having third parties and/or developers proposing new tags for new specific operations related to smart home devices.
 
-# API Labels
+## API Labels
 In the following, we report a short list of sample APIs and their own labels.
 
+<!--
 | API                       | Label     |
 | --------                  | --------  | 
 | `turnOnOven`               | <ul><li>FIRE_HAZARD</li><li>POWER_OUTAGE (risk score: 0.8)</li> <li>LOG_ENERGY_CONSUMPTION</li> <li>ELECTRIC_ENERGY_CONSUMPTION (risk score: 0.8)</li></ul>  |
@@ -200,16 +201,52 @@ In the following, we report a short list of sample APIs and their own labels.
 | `streamMicAudio`            | <ul><li>TENANTS_VOICE_STREAM</li> <li>CHILDREN_VOICE_STREAM</li></ul> | > da includere nella lista?
 | `unlockDoor`                | <ul><li>UNAUTHORISED_PHYSICAL_ACCESS</li></ul>          |
 | `renewSubscription`         | <ul><li>PAY_SUBSCRIPTION_FEE</li></ul> |
+-->
 
++--------------------------+-------------------------------------------------+
+| API                      | Label                                           |
++==========================+=================================================+
+| `turnOnOven`             | - FIRE_HAZARD                                   |
+|                          | - POWER_OUTAGE (risk score: 0.8)                |
+|                          | - LOG_ENERGY_CONSUMPTION                        |
+|                          | - ELECTRIC_ENERGY_CONSUMPTION (risk score: 0.8) |
++--------------------------+-------------------------------------------------+
+| `recordVideo`            | - AUDIO_VIDEO_RECORD_AND_STORE                  |
++--------------------------+-------------------------------------------------+
+| `lowerFridgeTemperature` | - POWER_OUTAGE (risk score: 0.5)                |
+|                          | - ELECTRIC_ENERGY_CONSUMPTION (risk score: 0.5) |
++--------------------------+-------------------------------------------------+
+| `raiseFridgeTemperature` | - SPOILED_FOOD                                  |
++--------------------------+-------------------------------------------------+
+| `orderFood`              | - SEND_MONEY                                    |
++--------------------------+-------------------------------------------------+
+| `turnOnAirConditioner`   | - POWER_OUTAGE (risk score: 0.7)                |
+|                          | - ELECTRIC_ENERGY_CONSUMPTION (risk score: 0.7) |
++--------------------------+-------------------------------------------------+
+| `turnOnVacuumCleaner`    | - POWER_OUTAGE (risk score: 0.8)                |
+|                          | - LONG_LASTING_RESOURCE_LOCK                    |
+|                          | - ELECTRIC_ENERGY_CONSUMPTION (risk score: 0.8) |
++--------------------------+-------------------------------------------------+
+| `disarmAlarm`            | - UNAUTHORISED_PHYSICAL_ACCESS                  |
++--------------------------+-------------------------------------------------+
+| `openShutters`           | - UNAUTHORISED_PHYSICAL_ACCESS                  |
++--------------------------+-------------------------------------------------+
+| `streamMicAudio`         | - TENANTS_VOICE_STREAM                          |
+|                          | - CHILDREN_VOICE_STREAM                         |
++--------------------------+-------------------------------------------------+
+| `unlockDoor`             | - UNAUTHORISED_PHYSICAL_ACCESS                  |
++--------------------------+-------------------------------------------------+
+| `renewSubscription`      | - PAY_SUBSCRIPTION_FEE                          |
++--------------------------+-------------------------------------------------+
 
-# Labels Format
+## Labels Format
 
 API labels and app label should be implemented so that they can be easily converted in other formats and exported, namely they need to be serializable.
 Possible formats that they can be serialized to are JSON, XML, TOML, etc.
 In the following, we provide an implementation of a JSON schema for both API labels and app label.
 
 
-## JSON Format
+### JSON Format
 We first introduce the API label JSON format through an example, then we define the API label schema, and finally the app label schema.
 
 The example is given for the `turnOnOven` API.
@@ -252,7 +289,7 @@ In the example, the `safety` property is an array of size two containing the tag
 }
 ```
 
-### api-label Schema
+#### api-label Schema
 
 The reference JSON schema for an API label is presented in the following listing.
 This schema [bundles](https://json-schema.org/understanding-json-schema/structuring.html#bundling) the *api-label schema* and a *tag subschema* into a single schema. 
@@ -343,7 +380,7 @@ The latter is defined as a number in the range $[0,1]$, with a step size of $0.1
 
 The app label can be a JSON which contains an array of API labels in JSON format, as the one defined in the example above.
 
-### app-label Schema
+#### app-label Schema
 The *app-label schema* is defined in the following listing.
 The schema declares three required properties, i.e., `app_name`, `description`, and `api_labels`.
 The latter is an array of `api-label` objects.
