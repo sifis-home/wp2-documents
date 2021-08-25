@@ -129,14 +129,14 @@ If present, the symbol **⚠** denotes that a risk score is associated with the 
 | **Safety**| 
 | -------- | 
 | FIRE_HAZARD    <br />*The execution may cause fire.* |
-| AIR_POISONING  <br />*The execution may release toxic gasses.*
-| BURST          <br />*The execution may cause an explosion.*
-| ASPHYXIA       <br />*The execution may cause oxygen deficiency by gaseous substances.*
-| WATER_FLOODING <br />*The execution allows water usage which may lead to flood.*
-| POWER_OUTAGE --- **⚠**  <br />*The execution may cause an interruption in the supply of electricity.*
-| POWER_SURGE    <br />*The execution may expose to high voltage.*
-| UNAUTHORISED_PHYSICAL_ACCESS   <br />*The execution disables a protection mechanism and unaccredited individuals may physically enter home.*
-| SPOILED_FOOD   <br />*The execution may lead to rotten food.*
+| AIR_POISONING  <br />*The execution may release toxic gasses.* |
+| BURST          <br />*The execution may cause an explosion.* |
+| ASPHYXIA       <br />*The execution may cause oxygen deficiency by gaseous substances.* |
+| WATER_FLOODING <br />*The execution allows water usage which may lead to flood.* |
+| POWER_OUTAGE --- **⚠**  <br />*The execution may cause an interruption in the supply of electricity.* |
+| POWER_SURGE    <br />*The execution may expose to high voltage.* |
+| UNAUTHORISED_PHYSICAL_ACCESS   <br />*The execution disables a protection mechanism and unaccredited individuals may physically enter home.* |
+| SPOILED_FOOD   <br />*The execution may lead to rotten food.* |
 |
 | **Privacy** | 
 | AUDIO_VIDEO_STREAM       <br />*The execution authorises the app to obtain a video stream with audio.* |
