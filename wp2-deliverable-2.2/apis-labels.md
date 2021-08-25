@@ -132,7 +132,7 @@ If present, the symbol **⚠** denotes that a risk score is associated with the 
   *The execution may cause fire.* |
 | AIR_POISONING\
   *The execution may release toxic gasses.* |
-| BURST\ 
+| BURST\
   *The execution may cause an explosion.* |
 | ASPHYXIA\
   *The execution may cause oxygen deficiency by gaseous substances.* |
@@ -140,9 +140,9 @@ If present, the symbol **⚠** denotes that a risk score is associated with the 
   *The execution allows water usage which may lead to flood.* |
 | POWER_OUTAGE --- **⚠**\
   *The execution may cause an interruption in the supply of electricity.* |
-| POWER_SURGE\ 
+| POWER_SURGE\
   *The execution may expose to high voltage.* |
-| UNAUTHORISED_PHYSICAL_ACCESS\ 
+| UNAUTHORISED_PHYSICAL_ACCESS\
   *The execution disables a protection mechanism and unaccredited individuals may physically enter home.* |
 | SPOILED_FOOD\
   *The execution may lead to rotten food.* |
@@ -158,9 +158,9 @@ If present, the symbol **⚠** denotes that a risk score is associated with the 
   *The execution authorises the app to get and save information about app's energy impact on the  device the app runs on.* |
 | RECORD_USER_PREFERENCES\
   *The execution authorises the app to get and save information about user's preferences.* |
-| RECORD_ISSUED_COMMANDS\ 
+| RECORD_ISSUED_COMMANDS\
   *The execution authorises the app to get and save user inputs.* |
-| TAKE_PICTURES\ 
+| TAKE_PICTURES\
   *The execution authorises the app to use a camera and take photos.* |
 | TAKE_DEVICE_SCREENSHOTS\
   *The execution authorises the app to read the display output and take screenshots of it.* |
@@ -174,10 +174,11 @@ If present, the symbol **⚠** denotes that a risk score is associated with the 
   *The execution enables a device that consumes electricity.* |
 | GAS_CONSUMPTION --- **⚠**\
   *The execution enables a device that consumes gas.* |
-| WATER_CONSUMPTION --- **⚠**\ 
+| WATER_CONSUMPTION --- **⚠**\
   *The execution enables a device that consumes water.* |
 
-> [name=marco-rasori] | Hypothermia / Freeze hazard   <br />*The execution may freeze either food or living being.*
+> [name=marco-rasori] | Hypothermia / Freeze hazard\
+> *The execution may freeze either food or living being.*
 
 
 Note that the list of tags is not exhaustive and is designed to be extended also externally, having third parties and/or developers proposing new tags for new specific operations related to smart home devices.
