@@ -301,9 +301,10 @@ Many commercial tools measure a variant called "multiple condition coverage". It
 
 For example, the same two lines of pseudo-code:
 
-```if (a > 0)```
-
-```	    do_something();```
+```
+if (a > 0)
+  do_something();
+```
 
 should be tested with a > 0 and with a <= 0.
 
