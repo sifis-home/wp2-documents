@@ -127,7 +127,6 @@ For example, if a user defined a policy which reads as "No device that may cause
 In the following, we report a non-exhaustive list of tags and their descriptions for the three risk categories.
 If present, the symbol **⚠** denotes that a risk score is associated with the tag it is defined in.
 
-<!--
 | **Safety**| 
 | -------- | 
 | FIRE_HAZARD\
@@ -178,82 +177,6 @@ If present, the symbol **⚠** denotes that a risk score is associated with the 
   *The execution enables a device that consumes gas.* |
 | WATER_CONSUMPTION --- **⚠**\
   *The execution enables a device that consumes water.* |
--->
-
-| **Safety**| 
-| -------- | 
-| FIRE_HAZARD\
-  *The execution may cause fire.* |
-| -------- |
-| AIR_POISONING\
-  *The execution may release toxic gasses.* |
-| -------- |
-| BURST\
-  *The execution may cause an explosion.* |
-| -------- |
-| ASPHYXIA\
-  *The execution may cause oxygen deficiency by gaseous substances.* |
-| -------- |
-| WATER_FLOODING\
-  *The execution allows water usage which may lead to flood.* |
-| -------- |
-| POWER_OUTAGE --- **⚠**\
-  *The execution may cause an interruption in the supply of electricity.* |
-| -------- |
-| POWER_SURGE\
-  *The execution may expose to high voltage.* |
-| -------- |
-| UNAUTHORISED_PHYSICAL_ACCESS\
-  *The execution disables a protection mechanism and unaccredited individuals may physically enter home.* |
-| -------- |
-| SPOILED_FOOD\
-  *The execution may lead to rotten food.* |
-| -------- | 
-|
-| **Privacy** | 
-| -------- |
-| AUDIO_VIDEO_STREAM\
-  *The execution authorises the app to obtain a video stream with audio.* |
-| -------- |
-| AUDIO_VIDEO_RECORD_AND_STORE\
-  *The execution authorises the app to record and save a video with audio on persistent storage.* |
-| -------- |
-| LOGGING_USAGE_TIME\
-  *The execution authorises the app to get and save information about app's duration of use.* |
-| -------- |
-| LOG_ENERGY_CONSUMPTION\
-  *The execution authorises the app to get and save information about app's energy impact on the  device the app runs on.* |
-| -------- |
-| RECORD_USER_PREFERENCES\
-  *The execution authorises the app to get and save information about user's preferences.* |
-| -------- |
-| RECORD_ISSUED_COMMANDS\
-  *The execution authorises the app to get and save user inputs.* |
-| -------- |
-| TAKE_PICTURES\
-  *The execution authorises the app to use a camera and take photos.* |
-| -------- |
-| TAKE_DEVICE_SCREENSHOTS\
-  *The execution authorises the app to read the display output and take screenshots of it.* |
-| -------- |
-|
-| **Financial** | 
-| -------- |
-| SPEND_MONEY\
-  *The execution authorises the app to use payment information and make a payment transaction.* |
-| -------- |
-| PAY_SUBSCRIPTION_FEE\
-  *The execution authorises the app to use payment information and make a periodic payment.* |
-| -------- |
-| ELECTRIC_ENERGY_CONSUMPTION --- **⚠**\
-  *The execution enables a device that consumes electricity.* |
-| -------- |
-| GAS_CONSUMPTION --- **⚠**\
-  *The execution enables a device that consumes gas.* |
-| -------- |
-| WATER_CONSUMPTION --- **⚠**\
-  *The execution enables a device that consumes water.* |
-| -------- |
 
 <!--
 > [name=marco-rasori] | Hypothermia / Freeze hazard\
@@ -282,43 +205,6 @@ In the following, we report a short list of sample APIs and their own labels.
 | `renewSubscription`         | <ul><li>PAY_SUBSCRIPTION_FEE</li></ul> |
 -->
 
-<!-- 
-+--------------------------+-------------------------------------------------+
-| API                      | Label                                           |
-+==========================+=================================================+
-| `turnOnOven`             | - FIRE_HAZARD                                   |
-|                          | - POWER_OUTAGE (risk score: 0.8)                |
-|                          | - LOG_ENERGY_CONSUMPTION                        |
-|                          | - ELECTRIC_ENERGY_CONSUMPTION (risk score: 0.8) |
-+--------------------------+-------------------------------------------------+
-| `recordVideo`            | - AUDIO_VIDEO_RECORD_AND_STORE                  |
-+--------------------------+-------------------------------------------------+
-| `lowerFridgeTemperature` | - POWER_OUTAGE (risk score: 0.5)                |
-|                          | - ELECTRIC_ENERGY_CONSUMPTION (risk score: 0.5) |
-+--------------------------+-------------------------------------------------+
-| `raiseFridgeTemperature` | - SPOILED_FOOD                                  |
-+--------------------------+-------------------------------------------------+
-| `orderFood`              | - SEND_MONEY                                    |
-+--------------------------+-------------------------------------------------+
-| `turnOnAirConditioner`   | - POWER_OUTAGE (risk score: 0.7)                |
-|                          | - ELECTRIC_ENERGY_CONSUMPTION (risk score: 0.7) |
-+--------------------------+-------------------------------------------------+
-| `turnOnVacuumCleaner`    | - POWER_OUTAGE (risk score: 0.8)                |
-|                          | - LONG_LASTING_RESOURCE_LOCK                    |
-|                          | - ELECTRIC_ENERGY_CONSUMPTION (risk score: 0.8) |
-+--------------------------+-------------------------------------------------+
-| `disarmAlarm`            | - UNAUTHORISED_PHYSICAL_ACCESS                  |
-+--------------------------+-------------------------------------------------+
-| `openShutters`           | - UNAUTHORISED_PHYSICAL_ACCESS                  |
-+--------------------------+-------------------------------------------------+
-| `streamMicAudio`         | - TENANTS_VOICE_STREAM                          |
-|                          | - CHILDREN_VOICE_STREAM                         |
-+--------------------------+-------------------------------------------------+
-| `unlockDoor`             | - UNAUTHORISED_PHYSICAL_ACCESS                  |
-+--------------------------+-------------------------------------------------+
-| `renewSubscription`      | - PAY_SUBSCRIPTION_FEE                          |
-+--------------------------+-------------------------------------------------+
--->
 
 +--------------------------+-------------------------------------------------+
 | API                      | Label                                           |
@@ -327,34 +213,35 @@ In the following, we report a short list of sample APIs and their own labels.
 |                          | - POWER_OUTAGE (risk score: 0.8)                |
 |                          | - LOG_ENERGY_CONSUMPTION                        |
 |                          | - ELECTRIC_ENERGY_CONSUMPTION (risk score: 0.8) |
-+==========================+=================================================+
++--------------------------+-------------------------------------------------+
 | `recordVideo`            | - AUDIO_VIDEO_RECORD_AND_STORE                  |
-+==========================+=================================================+
++--------------------------+-------------------------------------------------+
 | `lowerFridgeTemperature` | - POWER_OUTAGE (risk score: 0.5)                |
 |                          | - ELECTRIC_ENERGY_CONSUMPTION (risk score: 0.5) |
-+==========================+=================================================+
++--------------------------+-------------------------------------------------+
 | `raiseFridgeTemperature` | - SPOILED_FOOD                                  |
-+==========================+=================================================+
++--------------------------+-------------------------------------------------+
 | `orderFood`              | - SEND_MONEY                                    |
-+==========================+=================================================+
++--------------------------+-------------------------------------------------+
 | `turnOnAirConditioner`   | - POWER_OUTAGE (risk score: 0.7)                |
 |                          | - ELECTRIC_ENERGY_CONSUMPTION (risk score: 0.7) |
-+==========================+=================================================+
++--------------------------+-------------------------------------------------+
 | `turnOnVacuumCleaner`    | - POWER_OUTAGE (risk score: 0.8)                |
 |                          | - LONG_LASTING_RESOURCE_LOCK                    |
 |                          | - ELECTRIC_ENERGY_CONSUMPTION (risk score: 0.8) |
-+==========================+=================================================+
++--------------------------+-------------------------------------------------+
 | `disarmAlarm`            | - UNAUTHORISED_PHYSICAL_ACCESS                  |
-+==========================+=================================================+
++--------------------------+-------------------------------------------------+
 | `openShutters`           | - UNAUTHORISED_PHYSICAL_ACCESS                  |
-+==========================+=================================================+
++--------------------------+-------------------------------------------------+
 | `streamMicAudio`         | - TENANTS_VOICE_STREAM                          |
 |                          | - CHILDREN_VOICE_STREAM                         |
-+==========================+=================================================+
++--------------------------+-------------------------------------------------+
 | `unlockDoor`             | - UNAUTHORISED_PHYSICAL_ACCESS                  |
-+==========================+=================================================+
++--------------------------+-------------------------------------------------+
 | `renewSubscription`      | - PAY_SUBSCRIPTION_FEE                          |
-+==========================+=================================================+
++--------------------------+-------------------------------------------------+
+
 
 ## Labels Format
 
