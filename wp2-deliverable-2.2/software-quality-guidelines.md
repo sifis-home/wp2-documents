@@ -273,29 +273,70 @@ As for the code quality metrics, we recommend the use of *rust-code-analysis* fo
 
 ### Dynamic analysis
 
-@lucaardito 
+With dynamic analysis (or dynamic code analysis), a developer analyzes a computer software by running the program. The goal is to find errors in a program while it is executed instead of examining the code offline. This process is the opposite of static analysis.
 
-TODO EVERYTHING
-(simple resume from a developer perspective)
+Dynamic analysis can spot: lack of code coverage, errors in memory allocation and leaks, fault localization according to failing and passing test cases, concurrency errors (race conditions, exceptions, resource & memory leaks, and security attack vulnerabilities), and performance bottlenecks and security vulnerabilities. 
 
-Look at static analysis as example
 
-- What information do we get from a dynamic analysis? 
-- Why is it so important?
-- Which tools do we recommend to do it and why them?
+
+| Software | Analysis  |  |
+| -------- | --------  | -------- |
+| [Valgrind](https://valgrind.org) | Memory, Thread | Virtual Machine with in-memory binary patching |
+| [miri](https://github.com/rust-lang/miri/)| Memory, Thread, Undefined Behavior, Soundness | Rust-specific instrumentation and virtual machine | 
+| Clang/Gcc [AddressSanitizer](https://clang.llvm.org/docs/AddressSanitizer.html) | Memory     | Compiler instrumentation |
+| Clang/Gcc [UndefinedBehaviourSanitizer](https://clang.llvm.org/docs/UndefinedBehaviorSanitizer.html) | Undefined Behaviour     | Compiler instrumentation |
+| Clang/Gcc [ThreadSanitizer](https://clang.llvm.org/docs/AddressSanitizer.html) | Thread     | Compiler instrumentation |
+| [kcov](https://github.com/SimonKagstrom/kcov) | Code Coverage | Relies on DWARF debugging information and kernel-specific debugging features
+| Clang/Gcc/Rustc [gcov](https://gcc.gnu.org/onlinedocs/gcc/Gcov-Data-Files.html) output and [grcov](https://github.com/mozilla/grcov)/[gcovr](https://gcovr.com/en/stable/)/[lcov](http://ltp.sourceforge.net/coverage/lcov.php) analysis  | Code Coverage | Compiler instrumentation, and offline analysis |
+
+
 
 ### Code coverage
 
-@lucaardito 
+Code coverage is a metric that can help developers understand how much source code is tested. It can help assess the quality of a test suite.
 
-TODO EVERYTHING
-(simple resume from a developer perspective)
+A simple coverage measure is to record which lines of code were executed. This type of coverage is usually called "statement coverage".
 
-Look at static analysis as example
+Many commercial tools measure a variant called "multiple condition coverage". It measures whether each logical condition in the code has been evaluated both true and false (in some execution of the program, not necessarily in the same one).
 
-- What is it? 
-- Why is it so important?
-- Which tools do we recommend to do it and why them?
+For example, the same two lines of pseudo-code:
+
+```if (a > 0)```
+
+```	    do_something();```
+
+should be tested with a > 0 and with a <= 0.
+
+As pointed out by R.Hamedy in [^1], some common reasons that make code coverage necessary are:
+
+[^1]: https://codeburst.io/10-reasons-why-code-coverage-matters-9a6272f224ae
+
+- Find out what parts of the codebase is covered by tests and what is not;
+- Find out which code execution paths are missed
+- High code coverage points to a well-written and testable code
+- A developer is more likely to write a unit test if the coverage drops
+- Enforce a culture of writing unit tests using code coverage rules
+- High code coverage leads to confidence in code
+- High code coverage is crucial to investors
+- High code coverage matters to some potential customers
+- Code coverage could lead to code refactoring
+- Code coverage can verify whether tests are executed or not
+
+In the market, it is possible to find many tools (open source or proprietary) that can be used to calculate the code coverage. The tools are often for a specific programming language. It means that a developer shall find a tool based on the used programming language.
+
+In the following list, some tools will be listed, along with the programming language they support and if it is open source or not.
+
+- Cobertura, Java, open-source
+- Coverage.py, Python, open-source
+- JaCoCo, Java, open-source
+- OpenClover, Java and Groovy, open-source
+- Bullseye Coverage, C/C++, proprietary
+- NCover, .NET suite, proprietary
+- Vector Cast C++, C/C++, proprietary
+- Devel:Cover, Perl, open-source
+- dotCover, .NET, proprietary
+- Visual Studio, .NET, proprietary
+- Istanbul, Javascript, open-source
 
 ## Metrics Categories
 
@@ -348,11 +389,6 @@ All other possible combinations lead to a <span style="color:red">*red*</span> c
 We would like to clarify that those requirements should not be interpreted as if the software is **free** by any faults, but rather that the tools used by a developer for its certification have **not** detected any problem.
 
 Some programming languages could implement out of box features that prevent certain classes of mistakes. In that case, a developer **must** provide an official reference to the programming language specification in order to skip certain workflow steps.
-
-@lu-zero After the workflows will be finished
-> [name=mik] Non si capisce la frase sotto, va contestualizzata meglio con il paragrafo precedente creando una storia. 
-
-It is advised to run all the check nonetheless during the integration tests.
 
 ### Code Quality Stamp
 
