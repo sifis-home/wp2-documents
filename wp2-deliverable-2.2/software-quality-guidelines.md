@@ -341,7 +341,7 @@ In the following list, some tools will be listed, along with the programming lan
 
 ## Metrics Categories
 
-Some of the metrics described above identifies faults that can lead to security problems or make a software unusable because of crashes, while other ones aim at detecting the parts of code affected by complexity problems that **may** transform into bugs and dangers in future refactors.
+Some of the metrics described above identifies faults that can lead to security problems or make a software unusable because of crashes, while other ones aim at detecting the parts of code that possibly hide deeper problems and **may** transform into bugs and dangers in future refactors.
 
 This distinction leads to define two categories:
 
@@ -350,13 +350,13 @@ This distinction leads to define two categories:
 
 *Fault metrics* describe the *objective* defects present in a software, such as memory faults, security issues, and the presence of a limited test suite. Those metrics are called *static* when are computed analyzing a code in search of errors, while are *dynamic* when count the number of passed unit and integration tests, estimate the percentage of code covered by the test suite, and detect some other faults at runtime. Practically, *Fault metrics* represent every *unambiguous* problem that could arise in a code and, consequently, in the final binary.
 
-*Code quality metrics* instead identify the portions of code that are complex to understand at first glance and the ones that could become serious threats in the future. Practically, this category provides some indications to a developer in order to improve code quality, more specifically the static metrics such as code complexity and code clarity.
+*Code quality metrics*, instead, identify the portions of a code that are complex to understand at first glance as well as *code smells*, thus weaknesses in design that **may** slow down the development process or increase the risk of bugs and failures in the future. Practically, this category provides some indications to a developer in order to improve code quality, more specifically the static metrics such as code complexity and code clarity. Those metrics are usually computed by *heuristic* algorithms that indicate to a developer when it is necessary to refactor the code.
 
 ## Software Quality Certification
 
-The software quality certification is a procedure that a developer **must** undertake to guarantee to users, and even other developers, that a software is reliable, secure, well tested, and with a code written in a comprehensible way.
+The software quality certification is a procedure that a developer **must** undertake to guarantee to users, third-parties, and other developers too, that a software is reliable, secure, well tested, and with a code written in a comprehensible way.
 
-This certification procedure consists of assigning a colored stamp at each of the *two* metrics category defined above. The color of a stamp represents the requirements satisfied for a determined category. The stamp associated to *Fault Metrics* is called *Fault Stamp* and it is **mandatory**, while the one for *Code Quality Metrics* is called *Code Quality Stamp* and is **optional**, so it should be considered as an added value for determining the quality of a software.
+This certification procedure consists of assigning a stamp to a software that satisfy a list of requirements, each of them based on the *Fault metrics* category. The color of a stamp then represents set of requirements satisfied by a developer. The stamp is called *Fault Stamp* and it is **mandatory**.
 
 ### Fault Stamp
 
@@ -391,25 +391,9 @@ We would like to clarify that those requirements should not be interpreted as if
 
 Some programming languages could implement out of box features that prevent certain classes of mistakes. In that case, a developer **must** provide an official reference to the programming language specification in order to skip certain workflow steps.
 
-### Code Quality Stamp
+### Code Quality Evaluation
 
-The meaning of the colors for the *second* certification level is:
 
-* <span style="color:grey">*Grey*</span>: **none** of the optional metrics has been computed, so the developer has decided **not** to consider the second certification level
-* <span style="color:orange">*Orange*</span>: **only** some of the optional metrics have been computed
-* <span style="color:green">*Green*</span>: **every** optional metric has been computed
-
-Difficoltà per sviluppatore a contribuire perché il codice è molto complicato.
-
-E anche, quello che tu sviluppatore stai facendo rende il tuo codice complicato o meno complicato.
-
-The second certification level provides information about the code and the software through the computation of the *Informative metrics*.
-
-The output of those metrics **may** be added alongside the ones from the *Fault metrics*.
-
-This certification level is optional since it provides information on how maintainable is the software, but not how inherently secure or trustworthy it is.
-
-More complex code statistically may hide more logic issues, the developers **should** focus on the components of the code that are harder to understand according to the metrics either by improving the metrics through refactoring and/or provide extensive documentation and a comprehensive testing suite. 
 
 ## Additional notes
 
