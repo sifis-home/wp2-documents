@@ -15,11 +15,9 @@ Regarding software quality instead, in deliverable 2.1 we have identified a seri
 * *Dynamic analysis*: analyzes a running software with the purpose of finding possible memory faults and security issues. In addition, it also detects the parts of a program that can be further optimized. 
 * *Code coverage*: determines the percentage of source code covered by the test suite.
 
-Some metrics can only give information on the status of a code or the bad practices adopted during the development phase, while other ones identify the faults present in a software. For this reason, we have grouped the metrics in two categories: *Fault metrics* and *Quality metrics*. Then, we have used those categories to define the stamps that allow to determine the quality level of a software.
+For what concerns the arguments treated in this section, we start presenting the workflow structure followed by a practical workflow example based on the notorious *C* language.
 
-For what concerns the arguments treated in this section, we start presenting the workflow structure followed by some practical workflow examples. The examples are focused on two languages, an innovative one called *Rust*, and the notorious *C* language.
-
-Subsequently, we illustrate some software quality notions from a developer perspective, the meaning of the two metrics categories and finally the definition of the stamps.
+Subsequently, we illustrate some notions about software quality from a developer perspective and a possible definition for a stamp.
 
 In the last part instead, we will provide some additional notes about the *Rust* language, since it tries to solve by construction some of the defects pointed out by metrics, and some information on the *reproducibility* of the results obtained during the workflow steps.
 
@@ -27,28 +25,32 @@ We would like to specify that those guidelines are thought **only** for develope
 
 ## Workflow Structure
 
-Multiple tool may fit the same role within a good workflow, this chapter just suggests the phases and does not mention specific software, for specific scenarios please refer to [Example C Workflow][] and [Example Rust Workflow][].
+Multiple tool may fit the same role within a good workflow, this chapter just suggests the phases and does not mention specific software, for a specific example scenario please refer to [Example C Workflow][].
 
 ### Main components
+
 The workflow assumes a single project exists, with its **Build System**, it has a **Continuous Integration** setup and that includes a **Continuous Delivery** phase.
 
 ### Lifecycle
-The workflow assumes that the software is developed using the **Pull Request** model:
-- A patcheset is prepared, containing features and fixes and tests covering the code changes.
-- The patchset is put in **review**
-- The continuous integration automation will run a set of **fast static analysis**, as a rule of thumb this phase should be at least twice as fast as building the project:
-    - Coding style checks
-    - Code Quality Analysis
-- If the phase passes then the CI will run increasingly more resource intensive tasks:
-    - Compile tests
-    - Static Fault Analysis
-    - Unit tests
-    - Integration tests
-    - Code coverage evaluation
-    - Dynamic Fault Analysis
 
-- Once those phases pass and it is possible to prepare packages and ensure that the software would be ready for distribution.
-- If all those phases passes and the **reviewers** approve the changes, the patchset is merged.
+The workflow assumes that the software is developed using the **Pull Request** model:
+
+* A patcheset is prepared, containing features and fixes and tests covering the code changes.
+* The patchset is put in **review**
+* The continuous integration automation will run a set of **fast static analysis**, as a rule of thumb this phase should be at least twice as fast as building the project:
+    * Coding style checks
+    * Code Quality Analysis
+* If the phase passes then the CI will run increasingly more resource intensive tasks:
+    * Compile tests
+    * Static Fault Analysis
+    * Unit tests
+    * Integration tests
+    * Code coverage evaluation
+    * Dynamic Fault Analysis
+* Once those phases pass and it is possible to prepare packages and ensure that the software would be ready for distribution.
+* If all those phases passes and the **reviewers** approve the changes, the patchset is merged.
+
+
 
 ### Phases in detail
 The workflow should try to minimize the developer wait time. As soon as a mistake is detected it should be reported. 
@@ -69,13 +71,6 @@ Setting up and keep operational a full test environment for many architectures c
 
 If the code stops compiling on an architecture the problem has to be solved as soon as possible.
 
-#### Static Fault Analysis
-This kind of static analysis usually is as slow or few times slower than building the software by a normal compiler.
-
-For many languages the compiler suite itself may include the capability.
-
-The static analyzers can detect a good number of mistakes that could be overlooked on review and it is usually still faster than the phases coming later.
-
 #### Testing
 Proper **unit** and **integration** tests make sure that the behavior of the software is correct.
 
@@ -92,16 +87,20 @@ Some require *instrumenting specifically* the build, adding another **compilatio
 
 Other use non-intrusive profiling to get less precise data at a fraction of the time.
 
-It is possible to use the code complexity/quality map together with the code coverage map to decide which area of the code should be prioritized and decide when the coverage is adequate. 
+It is possible to use the code complexity/quality map together with the code coverage map to decide which area of the code should be prioritized and to decide when the coverage is adequate. 
 
 If a new feature is introduced without enough tests covering it this phase would be able tell.
 
+Any pull request reducing the code coverage below a set threshold should be rejected.
+
 #### Static probable fault analysis
-Static analysis tools can detect code paths that might lead to a fault. 
+This kind of static analysis usually is as slow or few times slower than building the software by a normal compiler.
 
-Those tools generally augment the compiler with additional costly diagnostics that require a large amount of memory and cpu to complete.
+For many languages the compiler suite itself may include the capability.
 
-Their results may lead to few false-positives.
+The static analyzers can detect a good number of mistakes that could be overlooked on review and it is usually still faster than the phases coming later.
+
+Depending on the tool it can detect simple `use-after-free` or `null-dereferences` or actual API misuse such as [locking faults using pthreads](https://clang.llvm.org/docs/analyzer/checkers.html#alpha-unix-pthreadlock).
 
 #### Dynamic fault detection
 The tools available to dynamically detect faults in the code can be split in two groups:
@@ -112,7 +111,9 @@ This class of tools tend to execute between two times and tenfold times slower t
 
 They may be coupled with fuzzing technologies to detect faults and expand the code coverage, this activity should not happen on a per-pull request basis since it is extremely onerous.
 
-The tools in this class tend to not have false positive, usually caused by a miscompilation or due limitations in their cpu/memory models.
+The tools in this class tend to not have many false positive. When they do it is usually caused by a miscompilation or due limitations in their cpu/memory models.
+
+The tools in this group can easily find faults caused by unexpected interactions with external APIs that the static fault analysis cannot detect.
 
 #### Packaging checks
 
@@ -134,11 +135,11 @@ On unix-like platforms, traditionally the Posix Make and its [gnu dialect](https
 
 macOS has a mix of the two, with XCode and the unix-way coexisting.
 
-Nowadays [ninja](https://ninja-build.org/) is making strides, popularized by [cmake](https://cmake.org/) and [meson](https://mesonbuild.com/) replacing the traditional *configure* script.
+Nowadays [ninja](https://ninja-build.org/) is making strides, popularized by [cmake](https://cmake.org/) and [meson](https://mesonbuild.com/). With the latter two replacing the traditional *configure* script.
 
 For this example we'll use [meson](https://mesonbuild.com), since it provides a good, yet minimalistic, [test integration](https://mesonbuild.com/Unit-tests.html) that includes support for test coverage out of box.
 
-[cmake](https://cmake.org/)'s [testing support](https://cmake.org/cmake/help/latest/manual/ctest.1.html) is more complex and richer, that makes it less suited for an example.
+[cmake](https://cmake.org/)'s [testing support](https://cmake.org/cmake/help/latest/manual/ctest.1.html) is more complex and richer, but that makes it less suited for an example.
 
 ### Tests
 
@@ -186,9 +187,9 @@ It is possible to detect probable faults in the code by automatic means thanks t
 Running the tests under those tool takes between 2x and 10x the normal execution of a debug build.
 
 #### Static Analysis
-meson [integrates](https://mesonbuild.com/howtox.html#use-clang-static-analyzer) with [clang-analyzer](https://clang-analyzer.llvm.org/) `scan-build` and some partial support for [clang-tidy](https://clang.llvm.org/extra/clang-tidy/). 
+meson [integrates](https://mesonbuild.com/howtox.html#use-clang-static-analyzer) with [clang-analyzer](https://clang-analyzer.llvm.org/) `scan-build` and it has some partial support for [clang-tidy](https://clang.llvm.org/extra/clang-tidy/). 
 
-Any tool that can consume the [compile_commands.json](https://clang.llvm.org/docs/JSONCompilationDatabase.html) can be executed with success.
+Any tool that can consume the [compile_commands.json](https://clang.llvm.org/docs/JSONCompilationDatabase.html) can be used with success.
 
 #### Dynamic Analysis
 The analysis tools that work on non-instrumented binaries can use the `--wrap` option for the test runner:
@@ -339,39 +340,17 @@ In the following list, some tools will be listed, along with the programming lan
 - Visual Studio, .NET, proprietary
 - Istanbul, Javascript, open-source
 
-## Metrics Categories
-
-Some of the metrics described above identifies faults that can lead to security problems or make a software unusable because of crashes, while other ones aim at detecting the parts of code that possibly hide deeper problems and **may** transform into bugs and dangers in future refactors.
-
-This distinction leads to define two categories:
-
-* *Fault metrics*
-* *Code quality metrics*
-
-*Fault metrics* describe the *objective* defects present in a software, such as memory faults, security issues, and the presence of a limited test suite. Those metrics are called *static* when are computed analyzing a code in search of errors, while are *dynamic* when count the number of passed unit and integration tests, estimate the percentage of code covered by the test suite, and detect some other faults at runtime. Practically, *Fault metrics* represent every *unambiguous* problem that could arise in a code and, consequently, in the final binary.
-
-*Code quality metrics*, instead, identify the portions of a code that are complex to understand at first glance as well as *code smells*, thus weaknesses in design that **may** slow down the development process or increase the risk of bugs and failures in the future. Practically, this category provides some indications to a developer in order to improve code quality, more specifically the static metrics such as code complexity and code clarity. Those metrics are usually computed by *heuristic* algorithms that indicate to a developer when it is necessary to refactor the code.
-
 ## Software Quality Certification
 
 The software quality certification is a procedure that a developer **must** undertake to guarantee to users, third-parties, and other developers too, that a software is reliable, secure, well tested, and with a code written in a comprehensible way.
 
-This certification procedure consists of assigning a stamp to a software that satisfy a list of requirements, each of them based on the *Fault metrics* category. The color of a stamp then represents set of requirements satisfied by a developer. The stamp is called *Fault Stamp* and it is **mandatory**.
+This procedure consists of assigning a colored stamp to a software. The colors are based on a traffic-light system model and represent the set of requirements satisfied by a developer:
 
-### Fault Stamp
-
-The main task for the *Fault Stamp* consists of evaluating the security and reliability of a software.
-
-To do so, a developer **must** compute the *Fault metrics* and present their values alongside the list of tools used to obtain them. 
-It is strongly recommended to save those metrics in a machine-readable format in order to simplify a possible future processing, but any other human-comprehensible format (just to cite few: HTML, MarkDown, Yaml) can also be valid.
-
-The colors associated to this stamp are based on a traffic-light system:
-
-* <span style="color:red">*Red*</span>: the software is **dangerous** and **unreliable**. Its use is not recommended
+* <span style="color:red">*Red*</span>: The software is **dangerous** and **unreliable**. Its use is not recommended
 * <span style="color:orange">*Orange*</span>: The software can be used, but it is not **fully** certified
 * <span style="color:green">*Green*</span>: The software has been **entirely** certified, so its use is recommended
 
-The minimal set of requirements a software **must** satisfy to obtain the <span style="color:orange">*orange*</span> color is:
+The minimal set of requirements thar a software **must** satisfy to obtain the <span style="color:orange">*orange*</span> color is:
 
 * No memory faults detected
 * No undefined behaviors
@@ -387,13 +366,83 @@ To obtain a <span style="color:green">*green*</span> color instead:
 
 All other possible combinations lead to a <span style="color:red">*red*</span> color.
 
+The code coverage we are referring above is the one computed with the model described in the next paragraph.
+
 We would like to clarify that those requirements should not be interpreted as if the software is **free** by any faults, but rather that the tools used by a developer for its certification have **not** detected any problem.
 
 Some programming languages could implement out of box features that prevent certain classes of mistakes. In that case, a developer **must** provide an official reference to the programming language specification in order to skip certain workflow steps.
 
-### Code Quality Evaluation
+### Code Coverage Model
 
+The code coverage value can be improved **automatically** through the definition of a new model that makes use of code complexity to obtain a more precise result.
 
+This model has been written starting from the following observations:
+
+* A bunch of lines are covered, but they present an high value for code complexity. This case is not so dangerous because if some bugs will be introduced with future refactors, due to the high complexity value, tests will fail preserving the functionalities of that code. Obviously, to better maintain and comprehend the code, the developer is recommended to reduce the code complexity value. 
+* A bunch of lines are **not** covered and they present an high value for code complexity. This is the worst case because bugs could **already** be present in the current code, since there is not any tests to verify its functionalities, and other ones could be easily introduced with future refactors.
+* The missing cases, no code coverage and low code complexity and code coverage and low code complexity, are already taken into account by the common code coverage. The former can be solved with the addition of some tests to the uncovered lines, while the latter represents the best possible case.
+
+To better describe this model, we need to clarify the concepts and definition used in it.
+
+First, the source code needs to be divided in spaces. A space is any structure that incorporates a function. A list of the space kinds that can be found in C, C++, and Rust source files: *function*, *class* (C++), *struct* (Rust, C, C++), *trait* (Rust), *impl* (Rust), *unit* (all languages), *namespace* (C++).
+
+As for code complexity metrics, we are going to use the cognitive and cyclomatic complexity, since they are more intuitive and documented. The acceptable values for those metrics, as stated by one of the cognitive complexity author[^complexity_threshold], are less than 15 for cognitive and less than 10 for cyclomatic. Actually, those thresholds vary depending on the programming language, in fact for the C language is recommended a value less than 25[^C_complexity_threshold]. The minimum value for both of them instead is 1. Any other value **must** be considered as an high code complexity value and thus a complex code.
+
+[^complexity_threshold]: https://community.sonarsource.com/t/how-to-use-cognitive-complexity/1894/4
+[^C_complexity_threshold]: https://community.sonarsource.com/t/how-to-use-cognitive-complexity/1894/4
+
+Now that all the notions have been defined, the next step consists in the creation of a model to compute the certification stamp which is the code coverage value updated taking into account code complexity too.
+
+The model is structured in this way:
+
+* Each covered line has a weight of 1, otherwise is 0
+* If the code complexity value exceeds one of the thresholds described above, the weight for code complexity is 2, otherwise is 1
+* The new code coverage value for a space is obtained multiplying **the sum of the code coverage weights** by **the code complexity weight associated to that space**
+* The global code coverage value is obtained dividing **the sum of the new code coverage values which are equals to the old ones** by **the number of physical lines in a source file (PLOC)**. 
+
+### Model Example
+
+Let `foo` and `bar` be two functions, so two spaces, of five lines each and written in a simple pseudo-code with a code complexity value of 16 and 5 respectively. Therefore, the code complexity weights are 2 and 1.
+
+```
+function foo() {
+  instruction 1
+  instruction 2
+  instruction 3
+}
+
+function bar() {
+  instruction 1
+  instruction 2
+  instruction 3
+}
+```
+
+The number of covered lines is 5 for `foo` and 5 for `bar`.
+
+The new code coverage value for the `foo` space is 
+
+```
+5 * 2 = 10
+```
+
+which is doubled compared to the initial code coverage value and therefore it must be discarded.
+
+The new code coverage value for the `bar` space is 
+
+```
+5 * 1 = 5
+```
+
+which remains unaltered compared to the initial code coverage value.
+
+The global code coverage value is then equals to:
+
+```
+5 / 10 = 0.5
+```
+
+where the numerator corresponds to the `bar` new code coverage value, while the denominator is the *PLOC* metric. In this case, only the 50% of the source code lines are covered.
 
 ## Additional notes
 
@@ -431,17 +480,19 @@ A Rust project can easily integrate in a codebase through a C API/ABI, making ea
 - [bindgen](https://crates.io/crates/bindgen) can consume C headers to automatically generate low-level bindings.
 - [cargo-c](https://crates.io/crates/cargo-c) provides a simple way to build rust code into a library that any C-ABI consumer can use.
 
-There is ongoing work with [autocxx](https://crates.io/crates/autocxx) makes easy to consume strictly idiomatic `C++` libraries and [uniffi](https://crates.io/crates/uniffi) aims to provide automatic bindings for Swift and Kotlin, targeting the mobile app developers.
+An ongoing work with [autocxx](https://crates.io/crates/autocxx) makes easy to consume strictly idiomatic `C++` libraries and [uniffi](https://crates.io/crates/uniffi) aims to provide automatic bindings for Swift and Kotlin, targeting the mobile app developers.
 
 The additional guarantees provided by the languages, and the work to [formally prove](https://people.mpi-sws.org/~jung/phd/thesis-screen.pdf) them can provide a great starting point to build safe and trustworthy application with less effort to be spent on testing.
+
+Tools such as [rudra](https://github.com/sslab-gatech/Rudra) and [miri](https://github.com/rust-lang/miri/) are being developed to ensure that even the `unsafe` code is automatically validated.
 
 During T2.2 we will actively compare similar codebases and provide automations to reduce even further the setup of workflows based around the Rust ecosystem.
 
 
 ### Distribution Strategies
 
-To better distribute a software to third-parties, it **may** be useful to explain the mechanism, wherever possible, that has been adopted to obtain the results provided by a developer. In this way, any other developer will be able to *reproduce* the outcome at any time. Practically, if some additional step, outside the ones described in the workflow, has been done, it **may** be a good sign of quality describing them.  This explanation should be as much as possible independent from the local development environment.
+To better distribute a software to third-parties, it **may** be useful to explain the mechanism, wherever possible, that has been adopted to obtain the provided results. In this way, any other developer will be able to *reproduce* the outcome at any time. Practically, if some additional step, outside the ones described in the workflow, has been done, it **may** be a good sign of quality their description.  This explanation should be as much as possible independent from the local development environment.
 
-So, if the project is an open-source one, for example, a developer **might** present and comment out the various CI checks and scripts, the CI configuration, plus the scripts and programs used to benchmark the software.
+So, if the project is an open-source one, for example, a developer **might** present and comment out the various CI checks and scripts, the CI configuration, plus the scripts and programs used to test and interact with a software.
 
 In case of an closed-source project instead, a developer **might** at least describe the parameters and the configurations of the tools that had been run on the final binary.
