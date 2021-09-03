@@ -59,6 +59,7 @@ As it currently happens for Web of Things and FIWARE, new capabilities can be pr
 
 To be able to handle the privacy, safety, and security issues, within the activities of Task T2.3, we have defined a set of "Labels" representing safety, integrity, security, and privacy issues intrinsically related to the execution of each specific developer API.
 Such risks are generally related to either a misuse, or a malicious use of the functionality, e.g., decreasing excessively the refrigerator temperature to cause a greater energy consumption.
+
 The user must be informed of this possibility when installing an application on his SIFIS-Home devices, with the possibility of controlling the possibility of executing risky operations, by means of security and safety policies.
 We recall from D1.1 that such policies can be defined either by the user himself or by an external, expert maintainer.
 By binding the labels to specific APIs (API label in Figure), we ensure that if an API is invoked, the corresponding label is associated to the application, similarly to what happens with Android permissions.
@@ -70,10 +71,27 @@ The contract provides information on the application quality, on the identity an
 This document provides useful information to the user, for deciding whether to install or not the application.
 At the same time, the contract is analysed by the SIFIS-Home framework, which, according to the enforced policies, will handle the privacy, security, and safety risk by possibly limiting the application functionalities, and/or warning the user or maintainer about possible inconsistencies with the user decision of enabling the application functionalities, and about identified misbehaviours.
 In the following, we will report the process of defining API labels for the SIFIS-Home developer APIs, also by discussing some proposed capabilities.
-We assume that for new proposed capabilities, the assignment of one or more API labels will be performed by a SIFIS-Home aware certifier.
-This certifier will also have the task of periodically reviewing those APIs which are connected to each SIFIS-Home API.
 
+We assume that for new proposed capabilities, the assignment of one or more API labels will be performed by a SIFIS-Home  certifier consortium.
 
+The certification system would behave similarly to what is in place regarding the [CE conformance marking](https://ec.europa.eu/growth/single-market/ce-marking/manufacturers_en): depending on the API in use a self-assessment would be sufficient to enter the SIFIS-marketplaces, dangerous API would require an independent party to confirm the safety of the API in use and that the software behind the API surface conforms to an adequate development standard.
+
+![Flow](./resources/flow.png){#fig:flow}
+
+In Figure 2, we show how the SIFIS-Home API relates to various components of the architecture. In particular, we point out that an API label is assigned to a SIFIS-Home API; the SIFIS-Home aware app code includes SIFIS-Home APIs, whose API labels compose the App Label.
+A SIFIS-Home API abstracts an API (producer API) that was written by the device producer developer.
+The execution of a SIFIS-Home API is secured by the SIFIS-Home Framework, which is installed on smart devices. This means that the SIFIS-Home API includes some code that verifies whether such API can be executed or not, according to the security policies defined by the user.
+
+The following listing shows an example of pseudocode for the SIFIS-Home API `SIFIS-LowerFridgeTemp()`.
+```
+SIFIS-LowerFridgeTemp(){
+makeSecure();
+ 	WoT-LowerFridgeTemp(){
+  		linkToProducerLowerFridgeTemp();
+ 	}
+}
+```
+The `makeSecure()` method implements the security checks that are performed before executing the actual capability.
 
 ## Labelling Mechanism
 
@@ -86,7 +104,7 @@ Safety risks are mainly due to events that produce a direct effect on the physic
 Therefore, many APIs that trigger an actuator are associated with this kind of risk.
 Indeed, the smart home environment includes appliances that may cause injury, or even death, if misused. For instance, a smart cooktop could set the house on fire if unattended.
 Furthermore, safety risks regard all the threats that may put people and assets in danger.
-An undesired release of the door lock may lead to  physical intrusion.
+An undesired release of the door lock may lead to physical intrusion. 
 
 Privacy risks are related to operations that manage sensitive information.
 This kind of risk is associated with APIs that access resources and read data.
@@ -107,7 +125,7 @@ To make some practical examples, an API which has the effect of turning the oven
 Another example is an API that acquires video signal from a video camera and stores it locally; this API may store frames containing children, which could represent a privacy concern for the end user; the tag "CHILDREN_RECORDING" will be embedded in the API label.
 Again, an API that authorises the payment of an asset will have a label embedding the tag "SPEND_MONEY". 
 
-Developers use our set of APIs to build SIFIS-Home-aware apps. 
+Developers use our set of APIs to build SIFIS-Home-aware apps.
 When an app is ready for deployment, it is packaged in an *app bundle*.
 The app bundle contains the *application*, i.e., the executable, and the *app contract*, which consists of the *app label* and *code quality metadata*.
 The app label is automatically generated during the packaging phase and is populated with all the labels belonging to the APIs used within the app code.
@@ -120,7 +138,7 @@ This allows a more straightforward perception.
 
 Besides informing the end user about app's behaviour and possible risks, the app label seamlessly integrates with user-defined policies.
 This means that if the label of a given API would violate the rules defined by the user, its execution is automatically denied.
-For example, if a user defined a policy which reads as "No device that may cause fire can be turned on remotely", and the app label contains the `turnOnOven` API, the app can be installed, but the execution of that API is forbidden at runtime.
+For example, if a user defined a policy which reads as "No device that may cause fire can be turned on remotely", and the app label contains the `turnOnOven` API, the app can be installed, but the execution of that API is forbidden at runtime if the initiator is outside the local perimeter.
 
 
 ## Tags List
