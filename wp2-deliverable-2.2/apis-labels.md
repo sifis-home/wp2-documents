@@ -42,7 +42,7 @@ However, this approach is not convenient in our scenario because it requires use
 ![Architecture](./resources/labels.png){#fig:architecture}
 
 
-As shown in Figure, the SIFIS-Home Developer APIs are designed to extend and improve service level APIs such as those offered by WebThings or Yggio.
+As shown in Figure @fig:architecture, the SIFIS-Home Developer APIs are designed to extend and improve service level APIs such as those offered by WebThings or Yggio.
 The SIFIS-Home developers APIs build upon this already existing model, which is used to abstract from the specific producer-based implementation of functionalities used to provide generic services, such as "Switch on Light", "Open Lock", "Increase Temperature", etc. 
 Following the Web of Things terminology, we can name these services "Capabilities". 
 The Capabilities help developers of third-party applications to provide applications able to invoke these generic services, without having to be worried about the actual implementation which in general is device specific.
@@ -72,13 +72,13 @@ This document provides useful information to the user, for deciding whether to i
 At the same time, the contract is analysed by the SIFIS-Home framework, which, according to the enforced policies, will handle the privacy, security, and safety risk by possibly limiting the application functionalities, and/or warning the user or maintainer about possible inconsistencies with the user decision of enabling the application functionalities, and about identified misbehaviours.
 In the following, we will report the process of defining API labels for the SIFIS-Home developer APIs, also by discussing some proposed capabilities.
 
-We assume that for new proposed capabilities, the assignment of one or more API labels will be performed by a SIFIS-Home  certifier consortium.
+We assume that for new proposed capabilities, the assignment of one or more API labels will be performed by a SIFIS-Home certifier consortium.
 
 The certification system would behave similarly to what is in place regarding the [CE conformance marking](https://ec.europa.eu/growth/single-market/ce-marking/manufacturers_en): depending on the API in use a self-assessment would be sufficient to enter the SIFIS-marketplaces, dangerous API would require an independent party to confirm the safety of the API in use and that the software behind the API surface conforms to an adequate development standard.
 
-![Flow](./resources/api_flow.png){#fig:flow}
+![SIFIS-Home APIs integration and interaction with other components](./resources/api_flow.png){#fig:flow}
 
-In Figure 2, we show how the SIFIS-Home API relates to various components of the architecture. In particular, we point out that an API label is assigned to a SIFIS-Home API; the SIFIS-Home aware app code includes SIFIS-Home APIs, whose API labels compose the App Label.
+In Figure @fig:flow, we show how the SIFIS-Home API relates to various components of the architecture. In particular, we point out that an API label is assigned to a SIFIS-Home API; the SIFIS-Home aware app code includes SIFIS-Home APIs, whose API labels compose the App Label.
 A SIFIS-Home API abstracts an API (producer API) that was written by the device producer developer.
 The execution of a SIFIS-Home API is secured by the SIFIS-Home Framework, which is installed on smart devices. This means that the SIFIS-Home API includes some code that verifies whether such API can be executed or not, according to the security policies defined by the user.
 
