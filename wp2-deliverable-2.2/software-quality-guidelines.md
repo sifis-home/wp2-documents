@@ -50,7 +50,7 @@ The workflow assumes that the software is developed using the **Pull Request** m
 * Once those phases pass and it is possible to prepare packages and ensure that the software would be ready for distribution.
 * If all those phases passes and the **reviewers** approve the changes, the patchset is merged.
 
-
+![Global Workflow](./resources/WorkflowGlobal.png)
 
 ### Phases in detail
 The workflow should try to minimize the developer wait time. As soon as a mistake is detected it should be reported. 
@@ -64,6 +64,8 @@ The fast static analysis is meant to enforce a level of uniformity through the l
 
 The code quality metrics execute quickly and their output can help the developer and the reviewer by highlighting the part of the code that have higher complexity and thus require more documentation and additional tests.
 
+![Fast static analysis](./resources/WorkflowFastStaticAnalysis.png)
+
 #### Compile test
 Making sure the code builds for all the supported targets is important even if you are not going to run tests on all of them.
 
@@ -71,7 +73,9 @@ Setting up and keep operational a full test environment for many architectures c
 
 If the code stops compiling on an architecture the problem has to be solved as soon as possible.
 
-#### Testing
+![Compile test](./resources/WorkflowCompileTest.png)
+
+#### Unit and Integration testing
 Proper **unit** and **integration** tests make sure that the behavior of the software is correct.
 
 A single unit test is quick to write and usually quick to execute, but it adds up quickly and completing the unit test suite may require some time and resources.
@@ -80,7 +84,9 @@ Integration tests may be more cumbersome in general but they consider a bigger p
 
 In general the tests should **cover** as much of the codebase as possible.
 
-#### Coverage analysis
+![Testing](./resources/WorkflowTest.png)
+
+##### Coverage analysis
 In order to measure how much of the code the tests cover some tools can be used for the purpose.
 
 Some require *instrumenting specifically* the build, adding another **compilation** phase.
@@ -102,6 +108,8 @@ The static analyzers can detect a good number of mistakes that could be overlook
 
 Depending on the tool it can detect simple `use-after-free` or `null-dereferences` or actual API misuse such as [locking faults using pthreads](https://clang.llvm.org/docs/analyzer/checkers.html#alpha-unix-pthreadlock).
 
+![Static fault analysis](./resources/WorkflowStaticFaultAnalisys.png)
+
 #### Dynamic fault detection
 The tools available to dynamically detect faults in the code can be split in two groups:
 - Those that require custom build and instrumentation
@@ -114,6 +122,8 @@ They may be coupled with fuzzing technologies to detect faults and expand the co
 The tools in this class tend to not have many false positive. When they do it is usually caused by a miscompilation or due limitations in their cpu/memory models.
 
 The tools in this group can easily find faults caused by unexpected interactions with external APIs that the static fault analysis cannot detect.
+
+![Dynamic fault detection](./resources/WorkflowFuzzing.png)
 
 #### Packaging checks
 
