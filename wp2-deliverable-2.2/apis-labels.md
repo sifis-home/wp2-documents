@@ -76,7 +76,7 @@ We assume that for new proposed capabilities, the assignment of one or more API 
 
 The certification system would behave similarly to what is in place regarding the [CE conformance marking](https://ec.europa.eu/growth/single-market/ce-marking/manufacturers_en): depending on the API in use a self-assessment would be sufficient to enter the SIFIS-marketplaces, dangerous API would require an independent party to confirm the safety of the API in use and that the software behind the API surface conforms to an adequate development standard.
 
-![Flow](./resources/flow.png){#fig:flow}
+![Flow](./resources/api_flow.png){#fig:flow}
 
 In Figure 2, we show how the SIFIS-Home API relates to various components of the architecture. In particular, we point out that an API label is assigned to a SIFIS-Home API; the SIFIS-Home aware app code includes SIFIS-Home APIs, whose API labels compose the App Label.
 A SIFIS-Home API abstracts an API (producer API) that was written by the device producer developer.
