@@ -50,7 +50,7 @@ The workflow assumes that the software is developed using the **Pull Request** m
 * Once those phases pass and it is possible to prepare packages and ensure that the software would be ready for distribution.
 * If all those phases passes and the **reviewers** approve the changes, the patchset is merged.
 
-![Global Workflow](./resources/WorkflowGlobal.png) {#fig:wfg}
+![Global Workflow](./resources/WorkflowGlobal.png){#fig:wfg}
 
 ### Phases in detail
 The workflow should try to minimize the developer wait time. As soon as a mistake is detected it should be reported. 
