@@ -51,5 +51,5 @@ We explore the main requirements found in GDPR, mainly specified in articles 13,
 
 In the end, we propose a “traffic-light system” based upon different criteria through which software can be evaluated in the matter of privacy and licensing.
 
-![Main GDPR requirements and recommendations flowchart](./resources/legals_guidelines.png){#fig:legal}
+![Main GDPR requirements and recommendations flowchart](./resources/legal_guidelines.png){#fig:legal}
 
