@@ -1,0 +1,7 @@
+\newpage
+<!-- Temporarily makes \makebox a no-op during the setting of \tableofcontents. -->
+\def\makebox[#1][#2]#3{#3}
+\tableofcontents\thispagestyle{fancy}
+\newpage
+\fancyfoot[L]{\fontsize{9}{11} Version: <version> } <!-- Set left footer -->
+\fancyfoot[R]{\fontsize{9}{11} Page \thepage\ of \pageref{LastPage}} <!-- Set right footer -->

@@ -11,6 +11,10 @@ pushd wp2-deliverable-2.2
 ./deliverable.sh
 popd
 
+pushd wp2-deliverable-2.3
+./deliverable.sh
+popd
+
 pushd draft
 ./draft.sh
 popd
