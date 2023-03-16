@@ -14,7 +14,7 @@
     "behavior_label": {
       "type": "array",
       "items": {
-        "$ref": "/schemas/functionality"
+        "$ref": "#/definitions/functionality"
       }
     },
     "security_label": {
@@ -23,19 +23,19 @@
         "safety": {
           "type": "array",
           "items": {
-            "$ref": "/schemas/hazard"
+            "$ref": "#/definitions/hazard"
           }
         },
         "privacy": {
           "type": "array",
           "items": {
-            "$ref": "/schemas/hazard"
+            "$ref": "#/definitions/hazard"
           }
         },
         "financial": {
           "type": "array",
           "items": {
-            "$ref": "/schemas/hazard"
+            "$ref": "#/definitions/hazard"
           }
         }
       },
@@ -54,7 +54,6 @@
   ],
   "definitions": {
     "hazard": {
-      "$id": "/schemas/hazard",
       "type": "object",
       "properties": {
         "name": {
@@ -76,7 +75,6 @@
       ]
     },
     "functionality": {
-      "$id": "/schemas/functionality",
       "type": "object",
       "properties": {
         "device_type": {
