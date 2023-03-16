@@ -1,73 +1,95 @@
 {
-   "$schema":"http://json-schema.org/draft-07/schema#",
-   "$id":"https://raw.githubusercontent.com/sifis-home/wp2-documents/master/wp2-deliverable-2.2/schemas/api-label.jschema",
-   "title":"SIFIS-Home API label schema.",
-   "description":"JSON schema defining the API security label structure within the SIFIS-Home framework.",
-   "type":"object",
-   "properties":{
-      "api_name":{
-         "type":"string"
-      },
-      "description":{
-         "type":"string"
-      },
-      "security_label":{
-         "type":"object",
-         "properties":{
-            "safety":{
-               "type":"array",
-               "items":{
-                  "$ref":"/schemas/tag"
-               }
-            },
-            "privacy":{
-               "type":"array",
-               "items":{
-                  "$ref":"/schemas/tag"
-               }
-            },
-            "financial":{
-               "type":"array",
-               "items":{
-                  "$ref":"/schemas/tag"
-               }
-            }
-         },
-         "required":[
-            "safety",
-            "privacy",
-            "financial"
-         ]
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/sifis-home/wp2-documents/master/wp2-deliverable-2.2/schemas/api-label.jschema",
+  "title": "SIFIS-Home API label schema.",
+  "description": "JSON schema defining the API behavior label and the API security label structures for the SIFIS-Home framework in the context of the SIFIS-Home developer APIs.",
+  "type": "object",
+  "properties": {
+    "api_name": {
+      "type": "string"
+    },
+    "api_description": {
+      "type": "string"
+    },
+    "behavior_label": {
+      "type": "array",
+      "items": {
+        "$ref": "/schemas/functionality"
       }
-   },
-   "required":[
-      "api_name",
-      "description",
-      "security_label"
-   ],
-   
-   "definitions":{
-      "tag":{
-         "$id":"/schemas/tag",
-         "type":"object",
-         "properties":{
-            "name":{
-               "type":"string"
-            },
-            "description":{
-               "type":"string"
-            },
-            "risk_score":{
-               "type":"number",
-               "minimum":0,
-               "maximum":1,
-               "multipleOf":0.1
-            }
-         },
-         "required":[
-            "name",
-            "description"
-         ]
-      }
-   }
+    },
+    "security_label": {
+      "type": "object",
+      "properties": {
+        "safety": {
+          "type": "array",
+          "items": {
+            "$ref": "/schemas/hazard"
+          }
+        },
+        "privacy": {
+          "type": "array",
+          "items": {
+            "$ref": "/schemas/hazard"
+          }
+        },
+        "financial": {
+          "type": "array",
+          "items": {
+            "$ref": "/schemas/hazard"
+          }
+        }
+      },
+      "required": [
+        "safety",
+        "privacy",
+        "financial"
+      ]
+    }
+  },
+  "required": [
+    "api_name",
+    "api_description",
+    "behavior_label",
+    "security_label"
+  ],
+  "definitions": {
+    "hazard": {
+      "$id": "/schemas/hazard",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "risk_score": {
+          "type": "number",
+          "minimum": 1,
+          "maximum": 10,
+          "multipleOf": 1
+        }
+      },
+      "required": [
+        "name",
+        "description"
+      ]
+    },
+    "functionality": {
+      "$id": "/schemas/functionality",
+      "type": "object",
+      "properties": {
+        "device_type": {
+          "type": "string"
+        },
+        "action": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "device_type",
+        "action"
+      ]
+    }
+  }
 }
